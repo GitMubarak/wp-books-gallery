@@ -1,7 +1,7 @@
 === WP Books Gallery ===
 Contributors: mhmrajib
 Donate link: https://www.paypal.me/mhmrajib/2
-Tags: book, bookstore, store, bookcase, booklet
+Tags: book, gallery, store, affiliate, library
 Requires at least: 4.6
 Tested up to: 5.4
 Stable tag: 1.5
@@ -13,30 +13,53 @@ A simple plugin to display books in your Post/Page area. Use shortcode: [wp_book
 
 == Description ==
 
-[WP Books Gallery](http://www.hossnimubarak.com) is a Responsive Book catalog plugin to display Books in your Post/Page area. 
-In Book deatils page it display Book Cover, Author, Published On, Publisher, ISBN, Total Pages, Country, Language, Book Dimensions, File Size, Description etc.
-Display anywhere in your Page or Post by using shortcode: [wp_books_gallery].
+This [WP Books Gallery](http://www.hossnimubarak.com) plugin will build a beautiful mobile-friendly gallery in a few minutes.
 
-WP Books Gallery is simple, effective and powerful plugin to showcase your desired Books.
+When you click on a book, it will open with a details page, where you will find Book Cover, Author, Published On, Publisher, ISBN, Total Pages, Country, Language, Book Dimensions, File Size, Description etc. 
+Use the shortcode: [wp_books_gallery] to display your books in your web page.
+
+WP Books Gallery is a simple, effective and powerful plugin to showcase your desired Books.
 
 **🌟 Plugin Features:**
 
 * Easy to install
 * Fully integrated in WordPress
 * Display books in catalog/showcase style
-* Easy to use and customize
-* Display on both Post and Page
+* Easy to use
+* Lots of customization options
 * Add Unlimited Books
-* Options for Download Link or Affiliate Marketing Link
 * Fully Responsive Plugin
-* Display anywhere in your Page or Post by using shortcode: [wp_books_gallery]
-* Options for display Book Author, Published On, Publisher, ISBN, Total Pages, Country, Language, Book Dimensions, File Size and Description.
-* Option to Active/Inactive books
-* Option to control the number of books to be shown
-* Option to display books by category
-* Option to display pagination
 
-➡️Useage of Shortcode:⬅️
+**🌟 Options You'll Find:**
+
+* Active / Inactive a book
+* Number of books to be shown ( using shortcode )
+* Display books by category  ( using shortcode )
+* Pagination ( using shortcode )
+* Number of showing Gallery columns 2,3 and 4
+* Book title word legth
+* Open book details on same tab or a new tab
+* Category Label Text option
+* Author Label Text option
+* Option to display category in Gallery page
+* Option to display author in Gallery page
+* Option to display description in Gallery page
+* Option to display BuyNow / Download button in Gallery page
+* BuyNow / Download button text option
+* Option to display Author and Author Label text in details page
+* Option to display Category and Category Label text in details page
+* Option to display Publisher and Publisher Label text in details page
+* Option to display Publish Date and Publish Date Label text in details page
+* Option to display ISBN and ISBN Label text in details page
+* Option to display Pages and Pages Label text in details page
+* Option to display Country and Country Label text in details page
+* Option to display Language and Language Label text in details page
+* Option to display Dimension and Dimension Label text in details page
+* Option to display File Size and File Size Label text in details page
+* Option to display BuyNow / Download button in details page
+* Option to display Description and Description Label text in details page
+
+➡️️Usage of Shortcode:⬅️
 <strong> Show all Books </strong>
 
 <pre> [wp_books_gallery] </pre>
@@ -55,21 +78,23 @@ WP Books Gallery is simple, effective and powerful plugin to showcase your desir
 
 
 **📋 Feedback/Rating:**
-If you find this plugin helpful, feel free to give us your valuable review and share this plugin with friends and others. This will help us to improve this plugin.
+If you find this plugin helpful, feel free to give us your valuable review. Rate us and share this plugin with your friends and others. This will help us to grow.
 
 
 
 **🔥 Other Plugins from [HM Plugins](http://www.hossnimubarak.com)**
 
-* [HM Product Catalog](https://wordpress.org/plugins/hm-product-catalog/) HM Product Catalog
-* [HM – Cool Author Box](https://wordpress.org/plugins/hm-cool-author-box-widget/) Author Box plugin
-* [Worldwide Breaking News Headlines](https://wordpress.org/plugins/worldwide-breaking-news-headlines/) Breaking News, Headlines plugin
-* [WP Scroll To Post](https://wordpress.org/plugins/wp-scroll-to-post/) Display random post(Single) at the bottom right corner
-* [HM Recent Posts Widget](https://wordpress.org/plugins/hm-recent-posts-widget/) Ticker Post plugin
-* [WP Alert Bars](https://wordpress.org/plugins/wp-alert-bars/) Notification/Alert box Plugin in Post/Page
-* [WP Top News](https://wordpress.org/plugins/wp-top-news/) Top News, Breaking News, Headlines Plugin
-* [Tiny Bar](https://wordpress.org/plugins/tiny-bar/) Display a bar at Top or Bottom
-* [Classic Facebook LikeBox](https://wordpress.org/plugins/hm-simple-facebook-page/) Facebook LikeBox Plugin
+👉 [Worldwide Breaking News Headlines](https://wordpress.org/plugins/worldwide-breaking-news-headlines/) Breaking News, Headlines plugin
+👉 [WP Top News](https://wordpress.org/plugins/wp-top-news/) Top News, Breaking News, Headlines Plugin
+👉 [Tiny Bar](https://wordpress.org/plugins/tiny-bar/) Display a bar at Top or Bottom
+👉 [WordPress Stripe Donation](https://wordpress.org/plugins/wp-stripe-donation/) This plugin allows you to collect donations via Stripe
+👉 [HM Product Catalog](https://wordpress.org/plugins/hm-product-catalog/) A product catalog plugin
+👉 [HM Resume Manager](https://wordpress.org/plugins/hm-resume-manager/) A resume manager plugin
+👉 [HM Wc Product Advertiser](https://wordpress.org/plugins/hm-wc-product-advertiser/) Wocommerce Product Advertiser
+👉 [HM – Cool Author Box](https://wordpress.org/plugins/hm-cool-author-box-widget/) Author Box plugin
+👉 [WP Scroll To Post](https://wordpress.org/plugins/wp-scroll-to-post/) Display random post(Single) at the bottom right corner
+👉 [HM Recent Posts Widget](https://wordpress.org/plugins/hm-recent-posts-widget/) Ticker Post plugin
+👉 [WP Alert Bars](https://wordpress.org/plugins/wp-alert-bars/) Notification/Alert box Plugin in Post/Page
 
 
 == Installation ==
@@ -111,6 +136,38 @@ Please go to WGB Books menu, and add your desired books.
 7. WP Books Gallery Details Page View
 
 == Changelog ==
+
+= 1.5 =
+* Flush Rewrite applied upon plugin activation
+* Gallery and Book Detail Settings menu included in admin area
+* Grid layout implemented in Gallery page
+* Display Gallery columns option added
+* Book title word legth option added
+* Open book details page when click on image added
+* Open book details on same tab or a new tab option added
+* Category Label Text option added
+* Author Label Text option added
+* Option to display category in Gallery page
+* Option to display author in Gallery page
+* Option to display description in Gallery page
+* Option to display Buy now / Download button in Gallery page
+* Buy now / Download button text option added
+* Option to display Author  and Author Label text in details page
+* Option to display Category and Category Label text in details page
+* Option to display Publisher and Publisher Label text in details page
+* Option to display Publish Date and Publish Date Label text in details page
+* Option to display ISBN and ISBN Label text in details page
+* Option to display Pages and Pages Label text in details page
+* Option to display Country and Country Label text in details page
+* Option to display Language and Language Label text in details page
+* Option to display Dimension and Dimension Label text in details page
+* Option to display File Size and File Size Label text in details page
+* Option to display BuyNow / Download button in details page
+* Option to display Description and Description Label text in details page
+
+= 1.4 =
+* Bug fixes
+* Layout improved
 
 = 1.3 =
 * Shortcode included: Display Option, Pagination Option, Category Option

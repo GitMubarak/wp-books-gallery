@@ -24,4 +24,14 @@ define('WBG_VERSION', '1.5');
 require_once WBG_PATH . 'inc/' . WBG_CLS_PRFX . 'master.php';
 $wbg = new WBG_Master();
 $wbg->wbg_run();
+
+function wbg_plugin_settings_flush_rewrite()
+{
+    if (get_option('plugin_settings_have_changed') == true) {
+        flush_rewrite_rules();
+        update_option('plugin_settings_have_changed', false);
+    }
+}
+add_action('admin_init', 'wbg_plugin_settings_flush_rewrite');
+
 register_deactivation_hook(__FILE__, array($wbg, WBG_PRFX . 'unregister_settings'));

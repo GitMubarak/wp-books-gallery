@@ -1,54 +1,38 @@
-/* Your Admin Style */
-table.wab-form-table{
-    max-width:720px;
-}
-table.wab-form-table tr.wab_shortcode{
-    height:80px;
-    width: 720px;
-}
-#wab_shortcode{
+table.wbg-details-settings-table tr th,
+table.wbg-details-settings-table tr td {
+    border: 0px solid #000;
     padding: 10px;
-    text-align: center;
-    border: 2px dotted #FF0000;
-    background: #FFAA2B;
-    font-size: 18px;
-    font-weight: 600;
-    max-width: 430px;
-}
-table.wab-alert-bar-table{
-    border:1px solid #CCC;
-}
-table.wab-alert-bar-table th, table.wab-alert-bar-table td{
-    padding:5px;
-    border-bottom: 1px solid #CCC;
-    background: #F8F8F8;
-    text-align: center;
-}
-a.delete{
-    color: #CC0000;
-}
-a.delete:hover{
-    color: #FF0000;
 }
 
+table.wbg-details-settings-table tr th {
+    font-weight: 600;
+}
+
+
 /* Alert Bar Started */
-.wab-alert {
-    padding: 20px!important;
+
+.wbg-alert {
+    padding: 20px !important;
     color: white;
 }
-.wab-alert.success {
+
+.wbg-alert.success {
     background-color: #6ABD6E;
 }
-.wab-alert.error {
+
+.wbg-alert.error {
     background-color: #F66358;
 }
-.wab-alert.warning {
+
+.wbg-alert.warning {
     background-color: #FFAA2B;
 }
-.wab-alert.info {
+
+.wbg-alert.info {
     background-color: #47A8F5;
 }
-.wab-closebtn {
+
+.wbg-closebtn {
     margin-left: 15px;
     color: white;
     font-weight: bold;
@@ -58,7 +42,10 @@ a.delete:hover{
     cursor: pointer;
     transition: 0.3s;
 }
-.wab-closebtn:hover {
-color: black;
+
+.wbg-closebtn:hover {
+    color: black;
 }
+
+
 /* Alert Bar Ended */
