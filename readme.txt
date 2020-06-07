@@ -1,24 +1,24 @@
-=== WP Books Gallery ===
+=== WordPress Books Gallery ===
 Contributors: mhmrajib
 Donate link: https://www.paypal.me/mhmrajib/2
 Tags: book, gallery, store, affiliate, library
 Requires at least: 4.6
 Tested up to: 5.4
-Stable tag: 1.5
+Stable tag: 1.6
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple plugin to display books in your Post/Page area. Use shortcode: [wp_books_gallery]
+A simple plugin to display books in your Page area. Use shortcode: [wp_books_gallery]
 
 == Description ==
 
-This [WP Books Gallery](http://www.hossnimubarak.com) plugin will build a beautiful mobile-friendly gallery in a few minutes.
+This [WordPress Books Gallery](http://www.hossnimubarak.com) plugin will build a beautiful mobile-friendly Book Store/Gallery in a few minutes.
 
 When you click on a book, it will open with a details page, where you will find Book Cover, Author, Published On, Publisher, ISBN, Total Pages, Country, Language, Book Dimensions, File Size, Description etc. 
 Use the shortcode: [wp_books_gallery] to display your books in your web page.
 
-WP Books Gallery is a simple, effective and powerful plugin to showcase your desired Books.
+WordPress Books Gallery is a simple, effective and powerful plugin to showcase your desired Books.
 
 **🌟 Plugin Features:**
 
@@ -66,19 +66,19 @@ WP Books Gallery is a simple, effective and powerful plugin to showcase your des
 
 <strong> Showing 5 Books with Pagination </strong>
 
-<pre> [wp_books_gallery display="5" pagination="true"]</pre>
+<pre> [wp_books_gallery display=5 pagination=true] </pre>
 
 <strong> Showing Books from a category </strong>
 
-<pre> [wp_books_gallery category="Noble"</pre>
+<pre> [wp_books_gallery category="Noble"] </pre>
 
 
-**Demo:**
-[See the Demo](http://plugin.hossnimubarak.com/books/)
+**Demo/ Support/ Live Chat:**
+[WordPress Books Gallery: Demo](http://plugin.hossnimubarak.com/wp-books-gallery/)
 
 
 **📋 Feedback/Rating:**
-If you find this plugin helpful, feel free to give us your valuable review. Rate us and share this plugin with your friends and others. This will help us to grow.
+If you find this plugin helpful, feel free to give us your valuable review. Rate us and share this plugin with your friends and others. This will motivate us and help us to grow.
 
 
 
@@ -99,19 +99,19 @@ If you find this plugin helpful, feel free to give us your valuable review. Rate
 
 == Installation ==
 
-Install WP Books Gallery as a regular WordPress plugin. Here are different ways to install plugin:
+Install WordPress Books Gallery as a regular WordPress plugin. Here are different ways to install plugin:
 
 **Install by search plugin:**
 
 1. In your Admin, go to menu Plugins > Add New
-2. Search WP Books Gallery
+2. Search WordPress Books Gallery
 3. Click to install
 4. Activate the plugin
 5. Setup the proper settings in WGB Books menu
 
 **Install by upload plugin:**
 
-1. Download the latest version of WP Books Gallery (.zip file)
+1. Download the latest version of WordPress Books Gallery (.zip file)
 2. In your Admin, go to menu Plugins > Add New
 3. Select "Upload Plugin"
 4. Click on "Choose File"
@@ -127,15 +127,19 @@ Please go to WGB Books menu, and add your desired books.
 
 == Screenshots ==
 
-1. Download & install the plugin
+1. Showing Books Gallery with different columns
 2. Find the WBG Books menu
-3. Add new books and category
-4. WP Books Gallery Desktop view
-5. WP Books Gallery Tab view (Responsive)
-6. WP Books Gallery Mobile view
-7. WP Books Gallery Details Page View
+3. Add New Book
+4. Gellary Settings Page
+5. Book Details Page Settings
+6. WordPress Books Gallery Web View
+7. WordPress Books Gallery Mobile View
+8. WordPress Books Gallery Details Page View
 
 == Changelog ==
+
+= 1.6 =
+* Flush Rewrite applied upon plugin activation
 
 = 1.5 =
 * Flush Rewrite applied upon plugin activation
