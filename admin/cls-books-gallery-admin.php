@@ -73,69 +73,71 @@ class WBG_Admin
 		);
 	}
 
-	function wbg_custom_post_type()
-	{
+	function wbg_custom_post_type() {
 		$labels = array(
-			'name'                => __('Books'),
-			'singular_name'       => __('Book'),
-			'menu_name'           => __('WBG Books'),
-			'parent_item_colon'   => __('Parent Book'),
-			'all_items'           => __('All Books'),
-			'view_item'           => __('View Book'),
-			'add_new_item'        => __('Add New Book'),
-			'add_new'             => __('Add New'),
-			'edit_item'           => __('Edit Book'),
-			'update_item'         => __('Update Book'),
-			'search_items'        => __('Search Book'),
-			'not_found'           => __('Not Found'),
-			'not_found_in_trash'  => __('Not found in Trash')
+			'name'                	=> __('Books'),
+			'singular_name'       	=> __('Book'),
+			'menu_name'           	=> __('WBG Books'),
+			'parent_item_colon'   	=> __('Parent Book'),
+			'all_items'           	=> __('All Books'),
+			'view_item'           	=> __('View Book'),
+			'add_new_item'        	=> __('Add New Book'),
+			'add_new'             	=> __('Add New'),
+			'edit_item'           	=> __('Edit Book'),
+			'update_item'         	=> __('Update Book'),
+			'search_items'        	=> __('Search Book'),
+			'not_found'           	=> __('Not Found'),
+			'not_found_in_trash'  	=> __('Not found in Trash')
 		);
 		$args = array(
-			'label'               => __('books'),
-			'description'         => __('Description For Books'),
-			'labels'              => $labels,
-			'supports'            => array('title', 'editor', 'thumbnail'),
-			'public'              => true,
-			'hierarchical'        => false,
-			'show_ui'             => true,
-			'show_in_menu'        => true,
-			'show_in_nav_menus'   => true,
-			'show_in_admin_bar'   => true,
-			'has_archive'         => false,
-			'can_export'          => true,
-			'exclude_from_search' => false,
-			'yarpp_support'       => true,
-			'taxonomies' 	      => array('post_tag'),
-			'publicly_queryable'  => true,
-			'capability_type'     => 'page',
-			'menu_icon'           => 'dashicons-book'
+			'label'               	=> __('books'),
+			'description'         	=> __('Description For Books'),
+			'labels'              	=> $labels,
+			'supports'            	=> array('title', 'editor', 'thumbnail'),
+			'public'              	=> true,
+			'hierarchical'        	=> true,
+			'show_ui'             	=> true,
+			'show_in_menu'        	=> true,
+			'show_in_nav_menus'   	=> true,
+			'show_in_admin_bar'   	=> true,
+			'has_archive'         	=> true,
+        	'has_category'         	=> true, 
+			'can_export'          	=> true,
+			'exclude_from_search' 	=> false,
+			'yarpp_support'       	=> true,
+			//'taxonomies' 	      	=> array('post_tag'),
+			'publicly_queryable'  	=> true,
+			'capability_type'       => 'post',
+			'menu_icon'           	=> 'dashicons-book',
+			'query_var' 		  	=> true,
+			'taxonomies'  			=> array( 'category' ),
+        	'rewrite'				=> array('slug' => 'books'),
 		);
 		register_post_type('books', $args);
 	}
 
-	function wbg_taxonomy_for_books()
-	{
+	function wbg_taxonomy_for_books() {
 		$labels = array(
-			'name' => _x('Book Categories', 'taxonomy general name'),
-			'singular_name' => _x('Book Category', 'taxonomy singular name'),
-			'search_items' =>  __('Search Book Categories'),
-			'all_items' => __('All Book Categories'),
-			'parent_item' => __('Parent Book Category'),
-			'parent_item_colon' => __('Parent Book Category:'),
-			'edit_item' => __('Edit Book Category'),
-			'update_item' => __('Update Book Category'),
-			'add_new_item' => __('Add New Book Category'),
-			'new_item_name' => __('New Book Category Name'),
-			'menu_name' => __('Book Categories'),
+			'name' 				=> _x('Book Categories', 'taxonomy general name'),
+			'singular_name' 	=> _x('Book Category', 'taxonomy singular name'),
+			'search_items' 		=>  __('Search Book Categories'),
+			'all_items' 		=> __('All Book Categories'),
+			'parent_item' 		=> __('Parent Book Category'),
+			'parent_item_colon'	=> __('Parent Book Category:'),
+			'edit_item' 		=> __('Edit Book Category'),
+			'update_item' 		=> __('Update Book Category'),
+			'add_new_item' 		=> __('Add New Book Category'),
+			'new_item_name' 	=> __('New Book Category Name'),
+			'menu_name' 		=> __('Book Categories'),
 		);
 
 		register_taxonomy('book_category', array('books'), array(
-			'hierarchical' => true,
-			'labels' => $labels,
-			'show_ui' => true,
+			'hierarchical' 		=> true,
+			'labels' 			=> $labels,
+			'show_ui' 			=> true,
 			'show_admin_column' => true,
-			'query_var' => true,
-			'rewrite' => array('slug' => 'book-category'),
+			'query_var' 		=> true,
+			'rewrite' 			=> array('slug' => 'book-category'),
 		));
 	}
 

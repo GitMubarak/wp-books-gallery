@@ -33,7 +33,7 @@
     font-weight: 400;
     display: inline-block;
     border: 0px solid #000;
-    text-decoration: none;
+    text-decoration: none!important;
     width: 100%;
     outline: none;
     line-height: 22px;
@@ -87,7 +87,7 @@
     line-height: 14px;
     font-size: 14px;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none!important;
     width: auto;
     color: #EAEAEA;
     background: #269FC6;
@@ -119,6 +119,73 @@
 a.page-numbers:hover {
     background: #f9f9f9;
 }
+
+
+/* Search Form Started */
+
+.wbg-search-form-container {
+    width: 100%;
+}
+
+.wbg-search-form-container table.wbg-search-form-table {
+    border: 0px solid #000;
+    width: 100%;
+}
+
+.wbg-search-form-container table.wbg-search-form-table tbody tr td {
+    border: 1px solid #DDD;
+    background: #F2F2F2;
+    padding: 10px;
+    width: 20%!important;
+}
+
+.wbg-search-form-container table.wbg-search-form-table tbody tr td input,
+.wbg-search-form-container table.wbg-search-form-table tbody tr td select {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat scroll right 15px center;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    color: #333333;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s linear;
+}
+
+.wbg-search-form-container table.wbg-search-form-table tbody tr td input[type='text'] {
+    background: #FFF;
+    padding: 15px 13px;
+    line-height: 30px;
+    height: 45px;
+    color: #333!important;
+}
+
+.wbg-search-form-container table.wbg-search-form-table tbody tr td .submit-btn {
+    width: 100%;
+    background: #269FC6;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 3px 0px 0.5px #317081;
+    transition: all 0.3s linear;
+    transform: translateY(0);
+    display: inline-block;
+}
+
+
+/* Search Form Ended */
 
 
 /*******************
@@ -249,5 +316,12 @@ a.page-numbers:hover {
     }
     .wbg-details-wrapper .wbg-details-summary {
         padding: 10px;
+    }
+    .wbg-search-form-container table.wbg-search-form-table tbody tr td {
+        border: 1px solid #DDD;
+        background: #F2F2F2;
+        padding: 10px;
+        width: 100%!important;
+        display: block;
     }
 }

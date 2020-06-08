@@ -2,7 +2,7 @@
 
 <?php
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
-$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : '';
+$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download / Buynow';
 
 $wbgDetailSettings          = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
 $wbgAuthorInfo              = isset($wbgDetailSettings['wbg_author_info']) ? $wbgDetailSettings['wbg_author_info'] : 1;
@@ -31,7 +31,6 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
 ?>
 
 <div class="wbg-details-wrapper">
-
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
         <div class="wbg-details-image">
@@ -40,7 +39,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                 the_post_thumbnail('full');
             } else {
             ?>
-                <img src="img_snow.jpg" alt="Snow" style="width:100%">
+                <img src="<?php echo esc_attr( WBG_ASSETS . 'img/noimage.jpg' ); ?>" alt="No Image Available">
             <?php } ?>
         </div>
         <div class="wbg-details-summary">

@@ -4,6 +4,7 @@ if( isset( $_POST['updateGeneralSettings'] ) ) {
     
     $wbgGeneralSettingsInfo = array(
         'wbg_gallary_column'        => ( isset( $_POST['wbg_gallary_column'] ) && filter_var( $_POST['wbg_gallary_column'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_gallary_column'] : 3,
+        'wbg_gallary_sorting'       => ( isset( $_POST['wbg_gallary_sorting'] ) && filter_var( $_POST['wbg_gallary_sorting'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_gallary_sorting'] : 'title',
         'wbg_details_is_external'   => ( isset( $_POST['wbg_details_is_external'] ) && filter_var( $_POST['wbg_details_is_external'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_details_is_external'] : '',
         'wbg_title_length'          => ( isset( $_POST['wbg_title_length'] ) && filter_var( $_POST['wbg_title_length'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_title_length'] : 4,
         'wbg_display_category'      => ( isset( $_POST['wbg_display_category'] ) && filter_var( $_POST['wbg_display_category'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_category'] : '',
@@ -18,10 +19,8 @@ if( isset( $_POST['updateGeneralSettings'] ) ) {
     $wbgShowGeneralMessage = update_option( 'wbg_general_settings', serialize( $wbgGeneralSettingsInfo ) );
 }
 
-$wbgGeneralSettings = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
-//echo "<pre>";
-//print_r($wbgGeneralSettings);
-
+$wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
+$wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
 $wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '';
 $wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '';
 $wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '';
@@ -43,7 +42,7 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                     <label for="wbg_gallary_column"><?php esc_html_e('Gallary Columns:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <select name="wbg_gallary_column" class="small-text">
+                    <select name="wbg_gallary_column" class="medium-text">
                         <option value=""><?php esc_html_e('--Select One--', WBG_TXT_DOMAIN); ?></option>
                         <option value="2"
                             <?php if ('2' == esc_attr($wbgGeneralSettings['wbg_gallary_column'])) echo 'selected'; ?>>
@@ -57,6 +56,23 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                             <?php if ('4' == esc_attr($wbgGeneralSettings['wbg_gallary_column'])) echo 'selected'; ?>>
                             <?php esc_html_e('4', WBG_TXT_DOMAIN); ?>
                         </option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="wbg_gallary_sorting">
+                <th scope="row">
+                    <label for="wbg_gallary_sorting"><?php esc_html_e('Sorting By:', WBG_TXT_DOMAIN); ?></label>
+                </th>
+                <td>
+                    <select name="wbg_gallary_sorting" class="medium-text">
+                        <option value=""><?php esc_html_e('--Select One--', WBG_TXT_DOMAIN); ?></option>
+                        <option value="title" <?php echo ( 'title' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Name', WBG_TXT_DOMAIN); ?></option>
+                        <option value="wbg_author" <?php echo ( 'wbg_author' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Author', WBG_TXT_DOMAIN); ?></option>
+                        <option value="date" <?php echo ( 'date' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Date', WBG_TXT_DOMAIN); ?></option>
+                        <option value="wbg_publisher" <?php echo ( 'wbg_publisher' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Publisher', WBG_TXT_DOMAIN); ?></option>
+                        <option value="wbg_published_on" <?php echo ( 'wbg_published_on' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Published On', WBG_TXT_DOMAIN); ?></option>
+                        <option value="wbg_language" <?php echo ( 'wbg_language' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Language', WBG_TXT_DOMAIN); ?></option>
+                        <option value="wbg_country" <?php echo ( 'wbg_country' === $wbg_gallary_sorting ) ? 'selected' : ''; ?> ><?php esc_html_e('Country', WBG_TXT_DOMAIN); ?></option>
                     </select>
                 </td>
             </tr>

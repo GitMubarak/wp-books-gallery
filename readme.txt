@@ -58,6 +58,8 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Option to display File Size and File Size Label text in details page
 * Option to display BuyNow / Download button in details page
 * Option to display Description and Description Label text in details page
+* Sorting by Name, Author, Date etc.
+* Various search option
 
 ➡️️Usage of Shortcode:⬅️
 <strong> Show all Books </strong>
@@ -139,7 +141,9 @@ Please go to WGB Books menu, and add your desired books.
 == Changelog ==
 
 = 1.6 =
-* Flush Rewrite applied upon plugin activation
+* Various search option added
+* Sorting by Name, Author, Date etc.
+* No image preview added if image not found
 
 = 1.5 =
 * Flush Rewrite applied upon plugin activation
