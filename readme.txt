@@ -3,8 +3,8 @@ Contributors: mhmrajib
 Donate link: https://www.paypal.me/mhmrajib/2
 Tags: book, gallery, store, affiliate, library
 Requires at least: 4.6
-Tested up to: 5.4
-Stable tag: 1.6
+Tested up to: 5.4.2
+Stable tag: 1.7
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -86,17 +86,20 @@ If you find this plugin helpful, feel free to give us your valuable review. Rate
 
 **🔥 Other Plugins from [HM Plugins](http://www.hossnimubarak.com)**
 
-👉 [Worldwide Breaking News Headlines](https://wordpress.org/plugins/worldwide-breaking-news-headlines/) Breaking News, Headlines plugin
-👉 [WP Top News](https://wordpress.org/plugins/wp-top-news/) Top News, Breaking News, Headlines Plugin
-👉 [Tiny Bar](https://wordpress.org/plugins/tiny-bar/) Display a bar at Top or Bottom
+👉 [Worldwide Breaking News Headlines](https://wordpress.org/plugins/worldwide-breaking-news-headlines/) Breaking News, Headlines Widget Plugin
+👉 [WP Top News](https://wordpress.org/plugins/wp-top-news/) Top News, Breaking News, Headlines Shortcoded Plugin
+👉 [Tiny Bar](https://wordpress.org/plugins/tiny-bar/) Display a bar with a message and button at the Top or Bottom of your page
+👉 [WP Books Gallery](https://wordpress.org/plugins/wp-books-gallery/) Display Books Gallery with shortcoded
 👉 [WordPress Stripe Donation](https://wordpress.org/plugins/wp-stripe-donation/) This plugin allows you to collect donations via Stripe
-👉 [HM Product Catalog](https://wordpress.org/plugins/hm-product-catalog/) A product catalog plugin
+👉 [HM – Cool Author Box](https://wordpress.org/plugins/hm-cool-author-box-widget/) Author Box plugin widget to display author info
 👉 [HM Resume Manager](https://wordpress.org/plugins/hm-resume-manager/) A resume manager plugin
+👉 [HM Product Catalog](https://wordpress.org/plugins/hm-product-catalog/) A product catalog plugin
 👉 [HM Wc Product Advertiser](https://wordpress.org/plugins/hm-wc-product-advertiser/) Wocommerce Product Advertiser
-👉 [HM – Cool Author Box](https://wordpress.org/plugins/hm-cool-author-box-widget/) Author Box plugin
 👉 [WP Scroll To Post](https://wordpress.org/plugins/wp-scroll-to-post/) Display random post(Single) at the bottom right corner
 👉 [HM Recent Posts Widget](https://wordpress.org/plugins/hm-recent-posts-widget/) Ticker Post plugin
 👉 [WP Alert Bars](https://wordpress.org/plugins/wp-alert-bars/) Notification/Alert box Plugin in Post/Page
+👉 [FaceBook LikeBox](https://wordpress.org/plugins/hm-simple-facebook-page/) A FaceBook LikeBox Widget
+👉 [WP Display FAQ](https://wordpress.org/plugins/wp-display-faq/) Display FAQs in your page
 
 
 == Installation ==
@@ -139,6 +142,9 @@ Please go to WGB Books menu, and add your desired books.
 8. WordPress Books Gallery Details Page View
 
 == Changelog ==
+
+= 1.7 =
+* Various search option added
 
 = 1.6 =
 * Various search option added
