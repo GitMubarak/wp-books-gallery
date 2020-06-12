@@ -98,57 +98,90 @@ $wbgCatLbl                  = ( $wbgGeneralSettings['wbg_cat_label_txt'] != '' )
 $wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
 $wbgAuthorLbl               = ( $wbgGeneralSettings['wbg_author_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_author_label_txt'] : '';
 $wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '';
+$wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
 $wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
+$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
+
+// Search Panel
+$wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
+$wbg_display_search_panel     = isset( $wbgSearchSettings['wbg_display_search_panel'] ) ? $wbgSearchSettings['wbg_display_search_panel'] : '';
+$wbg_display_search_title     = isset( $wbgSearchSettings['wbg_display_search_title'] ) ? $wbgSearchSettings['wbg_display_search_title'] : '';
+$wbg_display_search_category  = isset( $wbgSearchSettings['wbg_display_search_category'] ) ? $wbgSearchSettings['wbg_display_search_category'] : '';
+$wbg_display_search_author    = isset( $wbgSearchSettings['wbg_display_search_author'] ) ? $wbgSearchSettings['wbg_display_search_author'] : '';
+$wbg_display_search_publisher = isset( $wbgSearchSettings['wbg_display_search_publisher'] ) ? $wbgSearchSettings['wbg_display_search_publisher'] : '';
 ?>
 
-<div class="wrap wbg-search-form-container">
-    <form action="" method="POST" id="wbg-search-form">
-        <table class="wbg-search-form-table"> 
-            <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
-            <tbody>
-              <tr>
-                <td>
-                    <input type="text" name="wbg_title_s" placeholder="Book Name" value="<?php echo esc_attr( $wbg_title_s ); ?>">
-                </td>
-                <td>
-                    <select id="wbg_category_s" name="wbg_category_s">
-                        <option value="">All Category</option>
-                        <?php
-                        $wbg_book_categories = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, ) );
-                        foreach( $wbg_book_categories as $book_category) { ?>
-                          <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_book_category == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
-                        <?php } ?>
-                    </select>
-                </td>
-                <td>
-                    <select id="wbg_author_s" name="wbg_author_s">
-                        <option value="">All Author</option>
-                        <?php
-                        $wbg_authors = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books'", ARRAY_A );
-                        foreach( $wbg_authors as $author ) { ?>
-                          <option value="<?php echo esc_attr( $author['meta_value'] ); ?>" <?php echo ( $wbg_author_s == $author['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $author['meta_value'] ); ?></option>
-                        <?php } ?>
-                    </select>
-                </td>
-                <td>
-                    <select id="wbg_publisher_s" name="wbg_publisher_s">
-                        <option value="">All Publisher</option>
-                        <?php
-                        $wbg_publishers = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_publisher' and p.post_type = 'books'", ARRAY_A );
-                        foreach( $wbg_publishers as $publisher ) { ?>
-                          <option value="<?php echo esc_attr( $publisher['meta_value'] ); ?>" <?php echo ( $wbg_publisher_s == $publisher['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $publisher['meta_value'] ); ?></option>
-                        <?php } ?>
-                    </select>
-                </td>
-                <td>
-                  <input type="submit" name="submit" class="button submit-btn" value="Seach Books" />
-                </td>
-              </tr>
-            </tbody>
-        </table>
-    </form>
-</div>
+<?php
+if( '1' === $wbg_display_search_panel ) {
+  ?>
+  <form action="" method="POST" id="wbg-search-form">
+  <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
+    <div class="wrap wbg-search-container">
+      <?php
+      if( '1' === $wbg_display_search_title ) {
+        ?>
+        <div class="wbg-search-item">
+          <input type="text" name="wbg_title_s" placeholder="<?php esc_attr_e('Book Name', WBG_TXT_DOMAIN); ?>" value="<?php echo esc_attr( $wbg_title_s ); ?>">
+        </div>
+        <?php
+      }
+      
+      if( '1' === $wbg_display_search_category ) {
+        ?>
+        <div class="wbg-search-item">
+          <select id="wbg_category_s" name="wbg_category_s">
+              <option value=""><?php esc_html_e('All Category', WBG_TXT_DOMAIN); ?></option>
+              <?php
+              $wbg_book_categories = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, ) );
+              foreach( $wbg_book_categories as $book_category) { ?>
+                <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_book_category == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
+              <?php } ?>
+          </select>
+        </div>
+        <?php
+      }
+
+      if( '1' === $wbg_display_search_author ) {
+        ?>
+        <div class="wbg-search-item">
+          <select id="wbg_author_s" name="wbg_author_s">
+              <option value=""><?php esc_html_e('All Author', WBG_TXT_DOMAIN); ?></option>
+              <?php
+              $wbg_authors = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books'", ARRAY_A );
+              foreach( $wbg_authors as $author ) { ?>
+                <option value="<?php echo esc_attr( $author['meta_value'] ); ?>" <?php echo ( $wbg_author_s == $author['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $author['meta_value'] ); ?></option>
+              <?php } ?>
+          </select>
+        </div>
+        <?php
+      }
+
+      if( '1' === $wbg_display_search_publisher ) {
+        ?>
+        <div class="wbg-search-item">
+          <select id="wbg_publisher_s" name="wbg_publisher_s">
+              <option value=""><?php esc_html_e('All Publisher', WBG_TXT_DOMAIN); ?></option>
+              <?php
+              $wbg_publishers = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_publisher' and p.post_type = 'books'", ARRAY_A );
+              foreach( $wbg_publishers as $publisher ) { ?>
+                <option value="<?php echo esc_attr( $publisher['meta_value'] ); ?>" <?php echo ( $wbg_publisher_s == $publisher['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $publisher['meta_value'] ); ?></option>
+              <?php } ?>
+          </select>
+        </div>
+        <?php
+      }
+      ?>
+
+      <div class="wbg-search-item">
+        <input type="submit" name="submit" class="button submit-btn" value="<?php esc_attr_e('Seach Books', WBG_TXT_DOMAIN); ?>" />
+      </div>
+
+    </div>
+  </form>
+  <?php
+}
+?>
 
 <div class="wbg-main-wrapper <?php echo esc_attr('wbg-product-column-' . $wbgGalleryColumn); ?>">
     <?php 
@@ -169,7 +202,7 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
         </a>
         <?php if( '1' === $wbg_display_description ) { ?>
           <div class="wbg-description-content">
-            <?php echo wp_trim_words( get_the_content(), 20, '...' ); ?>
+            <?php echo wp_trim_words( get_the_content(), $wbg_description_length, '...' ); ?>
         </div>
         <?php } ?>
         <?php if( '1' === $wbg_display_category ) { ?>
@@ -194,12 +227,11 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
           <?php
             $wbgLink = get_post_meta( $post->ID, 'wbg_download_link', true );
             if ( ! empty( $wbgLink ) ) {
-                $wbgLink2 = $wbgLink;
-            } else {
-                $wbgLink2 = "#";
+              ?>
+              <a href="<?php echo esc_url( $wbgLink ); ?>" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
+              <?php
             }
           ?>
-          <a href="<?php echo esc_url( $wbgLink2 ); ?>" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
         <?php } ?>
       </div>
     <?php endwhile; ?>

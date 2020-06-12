@@ -25,9 +25,9 @@ $wbg_display_dimension      = isset( $wbgDetailSettings['wbg_display_dimension']
 $wbg_dimension_label        = isset( $wbgDetailSettings['wbg_dimension_label'] ) ? $wbgDetailSettings['wbg_dimension_label'] : 'Dimension';
 $wbg_display_filesize       = isset( $wbgDetailSettings['wbg_display_filesize'] ) ? $wbgDetailSettings['wbg_display_filesize'] : '1';
 $wbg_filesize_label         = isset( $wbgDetailSettings['wbg_filesize_label'] ) ? $wbgDetailSettings['wbg_filesize_label'] : 'File Size';
-$wbg_display_download_button   = isset( $wbgDetailSettings['wbg_display_download_button'] ) ? $wbgDetailSettings['wbg_display_download_button'] : '1';
-$wbg_display_description       = isset( $wbgDetailSettings['wbg_display_description'] ) ? $wbgDetailSettings['wbg_display_description'] : '1';
-$wbg_description_label          = isset( $wbgDetailSettings['wbg_description_label'] ) ? $wbgDetailSettings['wbg_description_label'] : 'Description';
+$wbg_display_download_button    = isset( $wbgDetailSettings['wbg_display_download_button'] ) ? $wbgDetailSettings['wbg_display_download_button'] : '1';
+$wbg_display_description    = isset( $wbgDetailSettings['wbg_display_description'] ) ? $wbgDetailSettings['wbg_display_description'] : '1';
+$wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label'] ) ? $wbgDetailSettings['wbg_description_label'] : 'Description';
 ?>
 
 <div class="wbg-details-wrapper">
@@ -152,20 +152,19 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                             ?>
                 </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_download_button ) { ?>
+            <?php 
+            if ( '1' === $wbg_display_download_button ) { ?>
                 <?php
                 $wbgLink = get_post_meta($post->ID, 'wbg_download_link', true);
-                if (!empty($wbgLink)) {
-                    $wbgLink2 = $wbgLink;
-                } else {
-                    $wbgLink2 = "#";
-                }
-                ?>
-                <span>
-                    <br>
-                    <a href="<?php echo esc_url($wbgLink2); ?>" target="blank" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
-                </span>
-            <?php } ?>
+                if( ! empty( $wbgLink ) ) {
+                    ?>
+                    <span>
+                        <a href="<?php echo esc_url( $wbgLink ); ?>" target="blank" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
+                    </span>
+                    <?php 
+                } 
+            }
+            ?>
         </div>
         
         <div class="wbg-details-description">

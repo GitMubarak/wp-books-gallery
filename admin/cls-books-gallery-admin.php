@@ -37,6 +37,15 @@ class WBG_Admin
 			'wbg-details-settings',
 			array($this, WBG_PRFX . 'details_settings')
 		);
+
+		add_submenu_page(
+			$wbg_cpt_menu,
+			esc_html__('Search Panel Settings', WBG_TXT_DOMAIN),
+			esc_html__('Search Panel Settings', WBG_TXT_DOMAIN),
+			'manage_options',
+			'wbg-search-panel-settings',
+			array($this, WBG_PRFX . 'search_panel_settings')
+		);
 	}
 
 	/**
@@ -110,7 +119,7 @@ class WBG_Admin
 			'capability_type'       => 'post',
 			'menu_icon'           	=> 'dashicons-book',
 			'query_var' 		  	=> true,
-			'taxonomies'  			=> array( 'category' ),
+			'taxonomies'  			=> array( 'category', 'post_tag' ),
         	'rewrite'				=> array('slug' => 'books'),
 		);
 		register_post_type('books', $args);
@@ -312,23 +321,26 @@ class WBG_Admin
 		endforeach;
 	}
 
-	function wbg_general_settings()
-	{
+	function wbg_general_settings() {
 		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'general-settings.php';
 	}
 
-	function wbg_details_settings()
-	{
+	function wbg_details_settings() {
 		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'details-settings.php';
 	}
 
-	function wbg_display_notification($type, $msg)
-	{ ?>
-<div class="wbg-alert <?php printf('%s', $type); ?>">
-    <span class="wbg-closebtn">&times;</span>
-    <strong><?php esc_html_e(ucfirst($type), WPHPC_TXT_DOMAIN); ?>!</strong>
-    <?php esc_html_e($msg, WPHPC_TXT_DOMAIN); ?>
-</div>
-<?php }
+	function wbg_search_panel_settings() {
+		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'search-settings.php';
+	}
+
+	function wbg_display_notification($type, $msg) { 
+		?>
+		<div class="wbg-alert <?php printf('%s', $type); ?>">
+			<span class="wbg-closebtn">&times;</span>
+			<strong><?php esc_html_e(ucfirst($type), WPHPC_TXT_DOMAIN); ?>!</strong>
+			<?php esc_html_e($msg, WPHPC_TXT_DOMAIN); ?>
+		</div>
+		<?php 
+	}
 }
 ?>

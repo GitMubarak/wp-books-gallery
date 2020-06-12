@@ -29,37 +29,53 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Lots of customization options
 * Add Unlimited Books
 * Fully Responsive Plugin
+* Search By Various Options
+* Active/Inactive A Bbook
+* Number Of Books To Be Shown ( Using Shortcode )
+* Display Books By Category  ( Using Shortcode )
+* Pagination ( Using Shortcode )
 
-**🌟 Options You'll Find:**
 
-* Active / Inactive a book
-* Number of books to be shown ( using shortcode )
-* Display books by category  ( using shortcode )
-* Pagination ( using shortcode )
+** Options In Gallery Settings **
+
 * Number of showing Gallery columns 2,3 and 4
-* Book title word legth
-* Open book details on same tab or a new tab
-* Category Label Text option
-* Author Label Text option
-* Option to display category in Gallery page
-* Option to display author in Gallery page
-* Option to display description in Gallery page
-* Option to display BuyNow / Download button in Gallery page
-* BuyNow / Download button text option
-* Option to display Author and Author Label text in details page
-* Option to display Category and Category Label text in details page
-* Option to display Publisher and Publisher Label text in details page
-* Option to display Publish Date and Publish Date Label text in details page
-* Option to display ISBN and ISBN Label text in details page
-* Option to display Pages and Pages Label text in details page
-* Option to display Country and Country Label text in details page
-* Option to display Language and Language Label text in details page
-* Option to display Dimension and Dimension Label text in details page
-* Option to display File Size and File Size Label text in details page
-* Option to display BuyNow / Download button in details page
-* Option to display Description and Description Label text in details page
-* Sorting by Name, Author, Date etc.
-* Various search option
+* Sorting By Name, Author, Date etc.
+* Open Book Details On Same Tab Or A New Tab
+* Book Title Word Legth
+* Show/Hide Category
+* Category Label Text
+* Show/Hide Author
+* Author Label Text
+* Show/Hide Description
+* Description Word Length
+* Show/Hide BuyNow / Download Button
+* BuyNow / Download Button Text
+
+
+** Options In Search Panel **
+
+* Show/Hide Search Panel
+* Show/Hide Search By Book Name
+* Show/Hide Search By Category
+* Show/Hide Search By Author
+* Show/Hide Search By Publisher
+
+
+** Options In Books Details Settings **
+
+* Display Author and Author Label Text
+* Display Category and Category Label Text
+* Display Publisher and Publisher Label Text
+* Display Publish Date and Publish Date Label Text
+* Display ISBN and ISBN Label Text
+* Display Pages and Pages Label Text
+* Display Country and Country Label Text
+* Display Language and Language Label Text
+* Display Dimension and Dimension Label Text
+* Display File Size and File Size Label Text
+* Display BuyNow / Download Button
+* Display Description and Description Label Text
+
 
 ➡️️Usage of Shortcode:⬅️
 <strong> Show all Books </strong>
@@ -144,7 +160,16 @@ Please go to WGB Books menu, and add your desired books.
 == Changelog ==
 
 = 1.7 =
-* Various search option added
+* Search Panel Settings Included In Admin Menu
+* Show/Hide Search Panel Option Added
+* Show/Hide Search By Book Name Option Added
+* Show/Hide Search By Category Option Added
+* Show/Hide Search By Author Option Added
+* Show/Hide Search By Publisher Option Added
+* Hide The Download Button If No External Link Available
+* Translate Enable Search Panel Text
+* Support For Post Tags
+* Description Word Length Option Added
 
 = 1.6 =
 * Various search option added

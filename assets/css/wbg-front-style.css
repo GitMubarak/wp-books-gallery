@@ -59,6 +59,7 @@
 .wbg-main-wrapper .wbg-item .wbg-description-content {
     font-size: 12px;
     color: #242424;
+    margin-top: 5px;
 }
 
 .wbg-main-wrapper .wbg-item span {
@@ -73,7 +74,8 @@
     background: #F8F8F8;
 }
 
-.wbg-main-wrapper .wbg-item a.wbg-btn {
+.wbg-main-wrapper .wbg-item a.wbg-btn,
+.wbg-details-summary span a.wbg-btn {
     display: inline-block;
     margin: 0;
     margin-top: 5px;
@@ -123,24 +125,26 @@ a.page-numbers:hover {
 
 /* Search Form Started */
 
-.wbg-search-form-container {
-    width: 100%;
-}
-
-.wbg-search-form-container table.wbg-search-form-table {
-    border: 0px solid #000;
-    width: 100%;
-}
-
-.wbg-search-form-container table.wbg-search-form-table tbody tr td {
+.wbg-search-container {
     border: 1px solid #DDD;
+    width: 100%;
+    display: grid;
+    grid-gap: 0px;
+    padding: 0px;
+    grid-template-columns: repeat( auto-fit, minmax(150px, 1fr));
+    margin-bottom: 10px;
     background: #F2F2F2;
-    padding: 10px;
-    width: 20%!important;
 }
 
-.wbg-search-form-container table.wbg-search-form-table tbody tr td input,
-.wbg-search-form-container table.wbg-search-form-table tbody tr td select {
+.wbg-search-container .wbg-search-item {
+    border: 0px solid #009900;
+    padding: 10px 0 10px 10px;
+    min-height: 50px;
+    text-align: center;
+}
+
+.wbg-search-container .wbg-search-item input,
+.wbg-search-container .wbg-search-item select {
     width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -156,9 +160,10 @@ a.page-numbers:hover {
     cursor: pointer;
     outline: none;
     transition: all 0.3s linear;
+    margin: 0px;
 }
 
-.wbg-search-form-container table.wbg-search-form-table tbody tr td input[type='text'] {
+.wbg-search-container .wbg-search-item input[type='text'] {
     background: #FFF;
     padding: 15px 13px;
     line-height: 30px;
@@ -166,8 +171,8 @@ a.page-numbers:hover {
     color: #333!important;
 }
 
-.wbg-search-form-container table.wbg-search-form-table tbody tr td .submit-btn {
-    width: 100%;
+.wbg-search-container .wbg-search-item .submit-btn {
+    width: 150px;
     background: #269FC6;
     color: #ffffff;
     padding: 10px;
@@ -317,11 +322,12 @@ a.page-numbers:hover {
     .wbg-details-wrapper .wbg-details-summary {
         padding: 10px;
     }
-    .wbg-search-form-container table.wbg-search-form-table tbody tr td {
-        border: 1px solid #DDD;
-        background: #F2F2F2;
-        padding: 10px;
-        width: 100%!important;
-        display: block;
+    .wbg-search-container {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .wbg-search-container .wbg-search-item {
+        padding-right: 10px;
+        padding-bottom: 0px;
     }
 }

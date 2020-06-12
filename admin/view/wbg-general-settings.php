@@ -12,6 +12,7 @@ if( isset( $_POST['updateGeneralSettings'] ) ) {
         'wbg_display_author'        => ( isset( $_POST['wbg_display_author'] ) && filter_var( $_POST['wbg_display_author'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_author'] : '',
         'wbg_author_label_txt'      => ( sanitize_text_field($_POST['wbg_author_label_txt']) != '' ) ? sanitize_text_field( $_POST['wbg_author_label_txt'] ) : '',
         'wbg_display_description'   => ( isset( $_POST['wbg_display_description'] ) && filter_var( $_POST['wbg_display_description'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_description'] : '',
+        'wbg_description_length'    => ( isset( $_POST['wbg_description_length'] ) && filter_var( $_POST['wbg_description_length'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_description_length'] : 20,
         'wbg_display_buynow'        => ( isset( $_POST['wbg_display_buynow'] ) && filter_var( $_POST['wbg_display_buynow'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_buynow'] : '',
         'wbg_buynow_btn_txt'        => ( sanitize_text_field( $_POST['wbg_buynow_btn_txt'] ) != '' ) ? sanitize_text_field( $_POST['wbg_buynow_btn_txt'] ) : '',
     );
@@ -24,6 +25,7 @@ $wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] 
 $wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '';
 $wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '';
 $wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '';
+$wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
 $wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '';
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : '';
 ?>
@@ -140,6 +142,14 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                         <?php echo ( '1' === $wbg_display_description ) ? 'checked' : ''; ?> >
                 </td>
             </tr>
+            <tr class="wbg_description_length">
+                <th scope="row">
+                    <label for="wbg_description_length"><?php esc_html_e('Description Word Length:', WBG_TXT_DOMAIN); ?></label>
+                </th>
+                <td>
+                    <input type="number" name="wbg_description_length" class="medium-text" min="1" max="20" value="<?php echo esc_attr( $wbg_description_length ); ?>">
+                </td>
+            </tr>
             <tr class="wbg_display_buynow">
                 <th scope="row">
                     <label for="wbg_display_buynow"><?php esc_html_e('Display Buynow/Download Button?', WBG_TXT_DOMAIN); ?></label>
@@ -157,6 +167,14 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                     <input type="text" name="wbg_buynow_btn_txt" placeholder="Download / Buynow" class="medium-text"
                         value="<?php echo esc_attr( $wbg_buynow_btn_txt ); ?>">
                 </td>
+            </tr>
+            <tr class="wbg_shortcode">
+               <th scope="row">
+                    <label for="wbg_shortcode"><?php esc_html_e('Shortcode:', WBG_TXT_DOMAIN); ?></label>
+               </th>
+               <td>
+                    <input type="text" name="wbg_shortcode" id="wbg_shortcode" class="medium-text" value="[wp_books_gallery]" readonly />
+               </td>
             </tr>
         </table>
         <p class="submit"><button id="updateGeneralSettings" name="updateGeneralSettings"
