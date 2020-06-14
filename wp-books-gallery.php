@@ -25,6 +25,20 @@ require_once WBG_PATH . 'inc/' . WBG_CLS_PRFX . 'master.php';
 $wbg = new WBG_Master();
 $wbg->wbg_run();
 
+// Extra link to plugin description
+add_filter( 'plugin_row_meta', 'wbg_plugin_row_meta', 10, 2 );
+function wbg_plugin_row_meta( $links, $file ) {
+
+    if ( WBG_SLUG === $file ) {
+        $row_meta = array(
+          'wbg_donation'    => '<a href="' . esc_url( 'https://www.paypal.me/mhmrajib/2' ) . '" target="_blank" aria-label="' . esc_attr__( 'Plugin Additional Links', 'domain' ) . '" style="color:green; font-weight: bold;">' . esc_html__( 'Donate us', 'domain' ) . '</a>'
+        );
+ 
+        return array_merge( $links, $row_meta );
+    }
+    return (array) $links;
+}
+
 // rewrite_rules upon plugin activation
 register_activation_hook( __FILE__, 'wbg_myplugin_activate' );
 function wbg_myplugin_activate() {

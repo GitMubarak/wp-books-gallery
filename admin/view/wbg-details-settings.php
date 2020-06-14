@@ -12,6 +12,7 @@ if( isset( $_POST['updateDetailSettings'] ) ) {
         'wbg_publisher_label'       => sanitize_text_field($_POST['wbg_publisher_label']) != '' ? sanitize_text_field($_POST['wbg_publisher_label']) : 'Publisher',
         'wbg_display_publish_date'  => isset($_POST['wbg_display_publish_date']) && filter_var($_POST['wbg_display_publish_date'], FILTER_SANITIZE_NUMBER_INT) ? $_POST['wbg_display_publish_date'] : '',
         'wbg_publish_date_label'    => sanitize_text_field($_POST['wbg_publish_date_label']) != '' ? sanitize_text_field($_POST['wbg_publish_date_label']) : 'Publish',
+        'wbg_publish_date_format'   => isset( $_POST['wbg_publish_date_format'] ) && filter_var( $_POST['wbg_publish_date_format'], FILTER_SANITIZE_STRING ) ? $_POST['wbg_publish_date_format'] : 'full',
         'wbg_display_isbn'          => ( isset( $_POST['wbg_display_isbn'] ) && filter_var( $_POST['wbg_display_isbn'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_isbn'] : '',
         'wbg_isbn_label'            => ( sanitize_text_field( $_POST['wbg_isbn_label'] ) != '' ) ? sanitize_text_field( $_POST['wbg_isbn_label'] ) : 'ISBN',
         'wbg_display_page'          => ( isset( $_POST['wbg_display_page'] ) && filter_var( $_POST['wbg_display_page'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_page'] : '',
@@ -32,21 +33,22 @@ if( isset( $_POST['updateDetailSettings'] ) ) {
     $wbgShowDetailMessage = update_option( 'wbg_detail_settings', serialize( $wbgDetailSettingsInfo ) );
 }
 
-$wbgDetailSettings      = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
-$wbg_display_isbn       = isset( $wbgDetailSettings['wbg_display_isbn'] ) ? $wbgDetailSettings['wbg_display_isbn'] : '';
-$wbg_isbn_label         = isset( $wbgDetailSettings['wbg_isbn_label'] ) ? $wbgDetailSettings['wbg_isbn_label'] : 'ISBN';
-$wbg_display_page       = isset( $wbgDetailSettings['wbg_display_page'] ) ? $wbgDetailSettings['wbg_display_page'] : '';
-$wbg_page_label         = isset( $wbgDetailSettings['wbg_page_label'] ) ? $wbgDetailSettings['wbg_page_label'] : 'Pages';
-$wbg_display_country    = isset( $wbgDetailSettings['wbg_display_country'] ) ? $wbgDetailSettings['wbg_display_country'] : '';
-$wbg_country_label      = isset( $wbgDetailSettings['wbg_country_label'] ) ? $wbgDetailSettings['wbg_country_label'] : 'Country';
-$wbg_display_language   = isset( $wbgDetailSettings['wbg_display_language'] ) ? $wbgDetailSettings['wbg_display_language'] : '';
-$wbg_language_label     = isset( $wbgDetailSettings['wbg_language_label'] ) ? $wbgDetailSettings['wbg_language_label'] : 'Language';
-$wbg_display_dimension  = isset( $wbgDetailSettings['wbg_display_dimension'] ) ? $wbgDetailSettings['wbg_display_dimension'] : '';
-$wbg_dimension_label    = isset( $wbgDetailSettings['wbg_dimension_label'] ) ? $wbgDetailSettings['wbg_dimension_label'] : 'Dimension';
-$wbg_display_filesize   = isset( $wbgDetailSettings['wbg_display_filesize'] ) ? $wbgDetailSettings['wbg_display_filesize'] : '';
-$wbg_filesize_label     = isset( $wbgDetailSettings['wbg_filesize_label'] ) ? $wbgDetailSettings['wbg_filesize_label'] : 'File Size';
-$wbg_display_download_button   = isset( $wbgDetailSettings['wbg_display_download_button'] ) ? $wbgDetailSettings['wbg_display_download_button'] : '';
-$wbg_display_description       = isset( $wbgDetailSettings['wbg_display_description'] ) ? $wbgDetailSettings['wbg_display_description'] : '';
+$wbgDetailSettings          = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
+$wbg_publish_date_format    = isset( $wbgDetailSettings['wbg_publish_date_format'] ) ? $wbgDetailSettings['wbg_publish_date_format'] : 'full';
+$wbg_display_isbn           = isset( $wbgDetailSettings['wbg_display_isbn'] ) ? $wbgDetailSettings['wbg_display_isbn'] : '';
+$wbg_isbn_label             = isset( $wbgDetailSettings['wbg_isbn_label'] ) ? $wbgDetailSettings['wbg_isbn_label'] : 'ISBN';
+$wbg_display_page           = isset( $wbgDetailSettings['wbg_display_page'] ) ? $wbgDetailSettings['wbg_display_page'] : '';
+$wbg_page_label             = isset( $wbgDetailSettings['wbg_page_label'] ) ? $wbgDetailSettings['wbg_page_label'] : 'Pages';
+$wbg_display_country        = isset( $wbgDetailSettings['wbg_display_country'] ) ? $wbgDetailSettings['wbg_display_country'] : '';
+$wbg_country_label          = isset( $wbgDetailSettings['wbg_country_label'] ) ? $wbgDetailSettings['wbg_country_label'] : 'Country';
+$wbg_display_language       = isset( $wbgDetailSettings['wbg_display_language'] ) ? $wbgDetailSettings['wbg_display_language'] : '';
+$wbg_language_label         = isset( $wbgDetailSettings['wbg_language_label'] ) ? $wbgDetailSettings['wbg_language_label'] : 'Language';
+$wbg_display_dimension      = isset( $wbgDetailSettings['wbg_display_dimension'] ) ? $wbgDetailSettings['wbg_display_dimension'] : '';
+$wbg_dimension_label        = isset( $wbgDetailSettings['wbg_dimension_label'] ) ? $wbgDetailSettings['wbg_dimension_label'] : 'Dimension';
+$wbg_display_filesize       = isset( $wbgDetailSettings['wbg_display_filesize'] ) ? $wbgDetailSettings['wbg_display_filesize'] : '';
+$wbg_filesize_label         = isset( $wbgDetailSettings['wbg_filesize_label'] ) ? $wbgDetailSettings['wbg_filesize_label'] : 'File Size';
+$wbg_display_download_button    = isset( $wbgDetailSettings['wbg_display_download_button'] ) ? $wbgDetailSettings['wbg_display_download_button'] : '';
+$wbg_display_description        = isset( $wbgDetailSettings['wbg_display_description'] ) ? $wbgDetailSettings['wbg_display_description'] : '';
 $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_label'] ) ? $wbgDetailSettings['wbg_description_label'] : 'Description';
 ?>
 <div id="wph-wrap-all" class="wrap wbg-settings-page">
@@ -121,6 +123,16 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                 <td>
                     <input type="text" name="wbg_publish_date_label" class="medium-text" placeholder="Publish"
                         value="<?php echo esc_attr($wbgDetailSettings['wbg_publish_date_label']); ?>">
+                </td>
+                <th scope="row" style="text-align: right;">
+                    <label for="wbg_publish_date_format"><?php esc_html_e('Date Format:', WBG_TXT_DOMAIN); ?></label>
+                </th>
+                <td>
+                    <input type="radio" name="wbg_publish_date_format" class="wbg_publish_date_format" value="full" <?php echo ( 'year' !== $wbg_publish_date_format ) ? 'checked' : ''; ?> >
+                    <label for="default-templates"><span></span><?php esc_html_e( 'Full', WBG_TXT_DOMAIN ); ?></label>
+                        &nbsp;&nbsp;
+                    <input type="radio" name="wbg_publish_date_format" class="wbg_publish_date_format" value="year" <?php echo ( 'year' === $wbg_publish_date_format ) ? 'checked' : ''; ?> >
+                    <label for="csutom-design"><span></span><?php esc_html_e( 'Only Year', WBG_TXT_DOMAIN ); ?></label>
                 </td>
             </tr>
             <tr class="wbg_display_isbn">

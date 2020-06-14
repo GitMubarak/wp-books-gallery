@@ -21,20 +21,21 @@ if( isset( $_POST['updateGeneralSettings'] ) ) {
 }
 
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
+$wbg_gallary_column         = isset( $wbgGeneralSettings['wbg_gallary_column'] ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
 $wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
-$wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '';
-$wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '';
-$wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '';
+$wbg_title_length           = isset( $wbgGeneralSettings['wbg_title_length'] ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
+$wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
+$wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
+$wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '1';
 $wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
-$wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '';
+$wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : '';
 ?>
 <div id="wph-wrap-all" class="wrap wbg-settings-page">
     <div class="settings-banner">
-        <h2><?php esc_html_e('Gallery Settings', WBG_TXT_DOMAIN); ?></h2>
+        <h2><?php esc_html_e('Books Gallery Settings', WBG_TXT_DOMAIN); ?></h2>
     </div>
-    <?php if ($wbgShowGeneralMessage) : $this->wbg_display_notification('success', 'Your information updated successfully.');
-    endif; ?>
+    <?php if( $wbgShowGeneralMessage ) { $this->wbg_display_notification('success', 'Your information updated successfully.'); } ?>
 
     <form name="wbg_general_settings_form" role="form" class="form-horizontal" method="post" action=""
         id="wbg-general-settings-form">
@@ -46,18 +47,9 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                 <td>
                     <select name="wbg_gallary_column" class="medium-text">
                         <option value=""><?php esc_html_e('--Select One--', WBG_TXT_DOMAIN); ?></option>
-                        <option value="2"
-                            <?php if ('2' == esc_attr($wbgGeneralSettings['wbg_gallary_column'])) echo 'selected'; ?>>
-                            <?php esc_html_e('2', WBG_TXT_DOMAIN); ?>
-                        </option>
-                        <option value="3"
-                            <?php if ('3' == esc_attr($wbgGeneralSettings['wbg_gallary_column'])) echo 'selected'; ?>>
-                            <?php esc_html_e('3', WBG_TXT_DOMAIN); ?>
-                        </option>
-                        <option value="4"
-                            <?php if ('4' == esc_attr($wbgGeneralSettings['wbg_gallary_column'])) echo 'selected'; ?>>
-                            <?php esc_html_e('4', WBG_TXT_DOMAIN); ?>
-                        </option>
+                        <option value="2" <?php echo ( '2' == $wbg_gallary_column ) ? 'selected' : ''; ?> ><?php esc_html_e('2', WBG_TXT_DOMAIN); ?></option>
+                        <option value="3" <?php echo ( '3' == $wbg_gallary_column ) ? 'selected' : ''; ?> ><?php esc_html_e('3', WBG_TXT_DOMAIN); ?></option>
+                        <option value="4" <?php echo ( '4' == $wbg_gallary_column ) ? 'selected' : ''; ?> ><?php esc_html_e('4', WBG_TXT_DOMAIN); ?></option>
                     </select>
                 </td>
             </tr>
@@ -93,8 +85,7 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                     <label for="wbg_title_length"><?php esc_html_e('Title Word Length:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="number" name="wbg_title_length" class="medium-text" min="1" max="10"
-                        value="<?php echo esc_attr($wbgGeneralSettings['wbg_title_length']); ?>">
+                    <input type="number" name="wbg_title_length" class="medium-text" min="1" max="10" value="<?php echo esc_attr( $wbg_title_length ); ?>">
                 </td>
             </tr>
             <tr class="wbg_display_category">

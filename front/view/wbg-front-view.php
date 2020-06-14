@@ -1,14 +1,37 @@
 <?php
 global $wpdb;
 
+// Gallery Settings
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
-$wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'name';
+$wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
+$wbgGalleryColumn           = ( $wbgGeneralSettings['wbg_gallary_column'] != '' ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
+$wbgTitleLength             = ( $wbgGeneralSettings['wbg_title_length'] != '' ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
+$wbgDetailsExternal         = ( $wbgGeneralSettings['wbg_details_is_external'] == 1 ) ? ' target="_blank"' : '';
+$wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
+$wbgCatLbl                  = ( $wbgGeneralSettings['wbg_cat_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_cat_label_txt'] : '';
+$wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
+$wbgAuthorLbl               = ( $wbgGeneralSettings['wbg_author_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_author_label_txt'] : '';
+$wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '1';
+$wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
+$wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
+$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
+$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
 
-$wbgCategory =  isset($attr['category']) ? $attr['category'] : '';
-$wbgDisplay = isset($attr['display']) ? $attr['display'] : '';
-$wbgPagination = isset($attr['pagination']) ? $attr['pagination'] : false;
-$wbgPaged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+// Search Panel Settings
+$wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
+$wbg_display_search_panel     = isset( $wbgSearchSettings['wbg_display_search_panel'] ) ? $wbgSearchSettings['wbg_display_search_panel'] : '1';
+$wbg_display_search_title     = isset( $wbgSearchSettings['wbg_display_search_title'] ) ? $wbgSearchSettings['wbg_display_search_title'] : '1';
+$wbg_display_search_category  = isset( $wbgSearchSettings['wbg_display_search_category'] ) ? $wbgSearchSettings['wbg_display_search_category'] : '1';
+$wbg_display_search_author    = isset( $wbgSearchSettings['wbg_display_search_author'] ) ? $wbgSearchSettings['wbg_display_search_author'] : '1';
+$wbg_display_search_publisher = isset( $wbgSearchSettings['wbg_display_search_publisher'] ) ? $wbgSearchSettings['wbg_display_search_publisher'] : '1';
 
+// Shortcoded Options
+$wbgCategory          = isset( $attr['category'] ) ? $attr['category'] : '';
+$wbgDisplay           = isset( $attr['display'] ) ? $attr['display'] : '';
+$wbgPagination        = isset( $attr['pagination'] ) ? $attr['pagination'] : false;
+$wbgPaged             = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+// Main Query
 $wbgBooksArr = array(
   'post_type'   => 'books',
   'post_status' => 'publish',
@@ -24,14 +47,22 @@ $wbgBooksArr = array(
                     ),
 );
 
-if ($wbgDisplay != '') {
+// If display params found in shortcode
+if( $wbgDisplay != '' ) {
   $wbgBooksArr['posts_per_page'] = $wbgDisplay;
 }
 
+// If Pagination found in shortcode
+if( $wbgPagination == 'true' ) {
+  $wbgBooksArr['paged'] = $wbgPaged;
+}
+
+// Sorting Operation
 if( ( 'title' !== $wbg_gallary_sorting ) && ( 'date' !== $wbg_gallary_sorting ) ) {
   $wbgBooksArr['meta_key'] = $wbg_gallary_sorting;
 }
 
+// If Categor params found in shortcode
 if( $wbgCategory != '' ) {
   $wbgBooksArr['tax_query'] = array(
     array(
@@ -81,39 +112,29 @@ if( '' != $wbg_publisher_s ) {
                                   );
 }
 
-
-if( $wbgPagination == 'true' ) {
-  $wbgBooksArr['paged'] = $wbgPaged;
-}
-//echo '<pre>';
-//print_r($wbgBooksArr);
-wp_reset_query();
-$wbgBooks = new WP_Query($wbgBooksArr);
-
-$wbgGalleryColumn           = ( $wbgGeneralSettings['wbg_gallary_column'] != '' ) ? $wbgGeneralSettings['wbg_gallary_column'] : 4;
-$wbgTitleLength             = ( $wbgGeneralSettings['wbg_title_length'] != '' ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
-$wbgDetailsExternal         = ( $wbgGeneralSettings['wbg_details_is_external'] == 1 ) ? ' target="_blank"' : '';
-$wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
-$wbgCatLbl                  = ( $wbgGeneralSettings['wbg_cat_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_cat_label_txt'] : '';
-$wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
-$wbgAuthorLbl               = ( $wbgGeneralSettings['wbg_author_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_author_label_txt'] : '';
-$wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '';
-$wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
-$wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
-$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
-$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
-
-// Search Panel
-$wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
-$wbg_display_search_panel     = isset( $wbgSearchSettings['wbg_display_search_panel'] ) ? $wbgSearchSettings['wbg_display_search_panel'] : '';
-$wbg_display_search_title     = isset( $wbgSearchSettings['wbg_display_search_title'] ) ? $wbgSearchSettings['wbg_display_search_title'] : '';
-$wbg_display_search_category  = isset( $wbgSearchSettings['wbg_display_search_category'] ) ? $wbgSearchSettings['wbg_display_search_category'] : '';
-$wbg_display_search_author    = isset( $wbgSearchSettings['wbg_display_search_author'] ) ? $wbgSearchSettings['wbg_display_search_author'] : '';
-$wbg_display_search_publisher = isset( $wbgSearchSettings['wbg_display_search_publisher'] ) ? $wbgSearchSettings['wbg_display_search_publisher'] : '';
-?>
-
-<?php
+/*
+* Search Operation
+*/
 if( '1' === $wbg_display_search_panel ) {
+  $wbg_book_categories  = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, ) );
+  if( isset( $_POST['wbg_category_s'] ) && ( '' !== $_POST['wbg_category_s'] ) ) {
+    $wbg_authors_by_cat = "SELECT DISTINCT pm.meta_value
+                          FROM $wpdb->posts p
+                          LEFT JOIN $wpdb->term_relationships rel ON rel.object_id = p.ID
+                          LEFT JOIN $wpdb->term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
+                          LEFT JOIN $wpdb->terms t ON t.term_id = tax.term_id
+                          LEFT JOIN $wpdb->postmeta pm ON pm.post_id = p.ID
+                          WHERE post_status = 'publish'
+                          AND post_type = 'books'
+                          AND t.name = '". $_POST['wbg_category_s'] . "'
+                          AND tax.taxonomy = 'book_category'
+                          AND pm.meta_key = 'wbg_author'";
+    $wbg_authors  = $wpdb->get_results( $wbg_authors_by_cat, ARRAY_A );
+  } else {
+    $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books'", ARRAY_A );
+  }
+  // echo '<pre>';
+  // print_r( $wbg_authors );
   ?>
   <form action="" method="POST" id="wbg-search-form">
   <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
@@ -133,7 +154,6 @@ if( '1' === $wbg_display_search_panel ) {
           <select id="wbg_category_s" name="wbg_category_s">
               <option value=""><?php esc_html_e('All Category', WBG_TXT_DOMAIN); ?></option>
               <?php
-              $wbg_book_categories = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, ) );
               foreach( $wbg_book_categories as $book_category) { ?>
                 <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_book_category == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
               <?php } ?>
@@ -148,7 +168,6 @@ if( '1' === $wbg_display_search_panel ) {
           <select id="wbg_author_s" name="wbg_author_s">
               <option value=""><?php esc_html_e('All Author', WBG_TXT_DOMAIN); ?></option>
               <?php
-              $wbg_authors = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books'", ARRAY_A );
               foreach( $wbg_authors as $author ) { ?>
                 <option value="<?php echo esc_attr( $author['meta_value'] ); ?>" <?php echo ( $wbg_author_s == $author['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $author['meta_value'] ); ?></option>
               <?php } ?>
@@ -181,13 +200,17 @@ if( '1' === $wbg_display_search_panel ) {
   </form>
   <?php
 }
+
+wp_reset_query();
+$wbgBooks = new WP_Query( $wbgBooksArr );
 ?>
 
 <div class="wbg-main-wrapper <?php echo esc_attr('wbg-product-column-' . $wbgGalleryColumn); ?>">
     <?php 
-    while ($wbgBooks->have_posts()) : $wbgBooks->the_post();
-    global $post; 
-    ?>
+    while( $wbgBooks->have_posts() ) :
+      $wbgBooks->the_post();
+      global $post; 
+      ?>
       <div class="wbg-item">
         <a href="<?php echo get_the_permalink( $post->ID ); ?>" <?php printf( '%s', $wbgDetailsExternal ); ?>>
           <?php
@@ -236,25 +259,29 @@ if( '1' === $wbg_display_search_panel ) {
       </div>
     <?php endwhile; ?>
 </div>
-<?php if($wbgPagination == 'true') { ?>
-<div class="wbg-pagination">
-    <?php
-    $wbgTotalPages = $wbgBooks->max_num_pages;
+<?php 
+if( $wbgPagination == 'true' ) { 
+  ?>
+  <div class="wbg-pagination">
+      <?php
+      $wbgTotalPages = $wbgBooks->max_num_pages;
 
-    if ($wbgTotalPages > 1) {
+      if ($wbgTotalPages > 1) {
 
-      $wbgCurrentPage = max(1, get_query_var('paged'));
+        $wbgCurrentPage = max(1, get_query_var('paged'));
 
-      echo paginate_links(array(
-        'base'      => get_pagenum_link(1) . '%_%',
-        'format'    => '/page/%#%',
-        'current'   => $wbgCurrentPage,
-        'total'     => $wbgTotalPages,
-        'prev_text' => __('« '),
-        'next_text' => __(' »'),
-      ));
-    }
-    wp_reset_postdata();
-    ?>
-</div>
-<?php } ?>
+        echo paginate_links(array(
+          'base'      => get_pagenum_link(1) . '%_%',
+          'format'    => '/page/%#%',
+          'current'   => $wbgCurrentPage,
+          'total'     => $wbgTotalPages,
+          'prev_text' => __('« '),
+          'next_text' => __(' »'),
+        ));
+      }
+      wp_reset_postdata();
+      ?>
+  </div>
+  <?php 
+} 
+?>

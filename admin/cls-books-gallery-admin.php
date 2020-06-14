@@ -46,6 +46,15 @@ class WBG_Admin
 			'wbg-search-panel-settings',
 			array($this, WBG_PRFX . 'search_panel_settings')
 		);
+
+		add_submenu_page(
+			$wbg_cpt_menu,
+			esc_html__('Get Help', WBG_TXT_DOMAIN),
+			esc_html__('Get Help', WBG_TXT_DOMAIN),
+			'manage_options',
+			'wbg-get-help',
+			array( $this, WBG_PRFX . 'get_help' )
+		);
 	}
 
 	/**
@@ -331,6 +340,19 @@ class WBG_Admin
 
 	function wbg_search_panel_settings() {
 		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'search-settings.php';
+	}
+
+	function wbg_get_help() {
+		?>
+		<div id="poststuff" class="wrap">
+			<div class="postbox">
+				<div style="padding:20px;">
+					<h3>For any help or query please visit us:</h3>
+					<a href="<?php echo esc_url('http://plugin.hossnimubarak.com/wp-books-gallery/'); ?>" class="button button-primary" target="_blank"><?php esc_attr_e('Support & Live Chat', WBG_TXT_DOMAIN); ?></a>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 	function wbg_display_notification($type, $msg) { 

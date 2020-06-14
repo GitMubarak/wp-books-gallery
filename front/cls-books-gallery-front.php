@@ -13,11 +13,6 @@ class WBG_Front
 	
 	function wbg_front_assets(){
 		
-		wp_enqueue_style(	'wbg-front-style-w3',
-							WBG_ASSETS . 'css/' . $this->wbg_assets_prefix . 'w3.css',
-							array(),
-							$this->wbg_version,
-							FALSE );
 		wp_enqueue_style(	'wbg-front-style',
 							WBG_ASSETS . 'css/' . $this->wbg_assets_prefix . 'front-style.css',
 							array(),

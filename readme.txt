@@ -75,6 +75,7 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Display File Size and File Size Label Text
 * Display BuyNow / Download Button
 * Display Description and Description Label Text
+* Published Date Format: Full / Year
 
 
 ➡️️Usage of Shortcode:⬅️
@@ -166,10 +167,13 @@ Please go to WGB Books menu, and add your desired books.
 * Show/Hide Search By Category Option Added
 * Show/Hide Search By Author Option Added
 * Show/Hide Search By Publisher Option Added
+* Display Author By Category In Search Selection 
 * Hide The Download Button If No External Link Available
 * Translate Enable Search Panel Text
 * Support For Post Tags
 * Description Word Length Option Added
+* Published Date Format (Full/Year) Option Added
+* Minor bug fixes
 
 = 1.6 =
 * Various search option added

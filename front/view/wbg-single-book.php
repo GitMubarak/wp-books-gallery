@@ -5,7 +5,7 @@ $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_ge
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download / Buynow';
 
 $wbgDetailSettings          = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
-$wbgAuthorInfo              = isset($wbgDetailSettings['wbg_author_info']) ? $wbgDetailSettings['wbg_author_info'] : 1;
+$wbgAuthorInfo              = isset( $wbgDetailSettings['wbg_author_info'] ) ? $wbgDetailSettings['wbg_author_info'] : 1;
 $wbgAuthorLabel             = ($wbgDetailSettings['wbg_author_label'] != '') ? $wbgDetailSettings['wbg_author_label'] : 'Author';
 $wbgDisplayCategory         = isset($wbgDetailSettings['wbg_display_category']) ? $wbgDetailSettings['wbg_display_category'] : 1;
 $wbgCategoryLabel           = ($wbgDetailSettings['wbg_category_label'] != '') ? $wbgDetailSettings['wbg_category_label'] : 'Category';
@@ -13,6 +13,7 @@ $wbgDisplayPublisher        = isset($wbgDetailSettings['wbg_display_publisher'])
 $wbgPublisherLabel          = ($wbgDetailSettings['wbg_publisher_label'] != '') ? $wbgDetailSettings['wbg_publisher_label'] : 'Publisher';
 $wbg_display_publish_date   = isset($wbgDetailSettings['wbg_display_publish_date']) ? $wbgDetailSettings['wbg_display_publish_date'] : 1;
 $wbg_publish_date_label     = ($wbgDetailSettings['wbg_publish_date_label'] != '') ? $wbgDetailSettings['wbg_publish_date_label'] : 'Publish';
+$wbg_publish_date_format    = isset( $wbgDetailSettings['wbg_publish_date_format'] ) ? $wbgDetailSettings['wbg_publish_date_format'] : 'full';
 $wbg_display_isbn           = isset( $wbgDetailSettings['wbg_display_isbn'] ) ? $wbgDetailSettings['wbg_display_isbn'] : '1';
 $wbg_isbn_label             = isset( $wbgDetailSettings['wbg_isbn_label'] ) ? $wbgDetailSettings['wbg_isbn_label'] : 'ISBN';
 $wbg_display_page           = isset( $wbgDetailSettings['wbg_display_page'] ) ? $wbgDetailSettings['wbg_display_page'] : '1';
@@ -44,26 +45,32 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
         </div>
         <div class="wbg-details-summary">
             <h5 class="wbg-details-book-title"><?php the_title(); ?></h5>
-            <?php if (1 == $wbgAuthorInfo) { ?>
-            <span>
-                <b><?php echo esc_html($wbgAuthorLabel); ?>:</b>
-                <?php
-                            $wbgAuthor = get_post_meta($post->ID, 'wbg_author', true);
-                            if (!empty($wbgAuthor)) {
-                                echo $wbgAuthor;
-                            }
-                            ?>
-            </span>
-            <?php } ?>
-            <?php if (1 == $wbgDisplayCategory) { ?>
-            <span>
-                <b><?php echo esc_html($wbgCategoryLabel); ?>:</b>
-                <?php
-                            $wbgCategory = wp_get_post_terms($post->ID, 'book_category', array('fields' => 'all'));
-                            echo $wbgCategory[0]->name;
-                            ?>
-            </span>
-            <?php } ?>
+            <?php 
+            if( 1 === $wbgAuthorInfo ) { 
+                ?>
+                <span>
+                    <b><?php echo esc_html( $wbgAuthorLabel ); ?>:</b>
+                    <?php
+                    $wbgAuthor = get_post_meta($post->ID, 'wbg_author', true);
+                    if (!empty($wbgAuthor)) {
+                        echo $wbgAuthor;
+                    }
+                    ?>
+                </span>
+                <?php 
+            } 
+            
+            if (1 == $wbgDisplayCategory) { 
+                ?>
+                <span>
+                    <b><?php echo esc_html($wbgCategoryLabel); ?>:</b>
+                    <?php
+                                $wbgCategory = wp_get_post_terms($post->ID, 'book_category', array('fields' => 'all'));
+                                echo $wbgCategory[0]->name;
+                                ?>
+                </span>
+                <?php 
+            } ?>
             <?php if (1 == $wbgDisplayPublisher) { ?>
             <span>
                 <b><?php echo esc_html($wbgPublisherLabel); ?>:</b>
@@ -80,8 +87,12 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                 <b><?php echo esc_html($wbg_publish_date_label); ?>:</b>
                 <?php
                     $wbgPublished = get_post_meta($post->ID, 'wbg_published_on', true);
-                    if (!empty($wbgPublished)) {
-                        echo date('d M, Y', strtotime($wbgPublished));
+                    if( ! empty( $wbgPublished ) ) {
+                        if( 'full' === $wbg_publish_date_format ) {
+                            echo date('d M, Y', strtotime( $wbgPublished ) );
+                        } else {
+                            echo date('Y', strtotime( $wbgPublished ) );
+                        }
                     }
                 ?>
             </span>
