@@ -4,6 +4,7 @@ if( isset( $_POST['updateGeneralSettings'] ) ) {
     
     $wbgGeneralSettingsInfo = array(
         'wbg_gallary_column'        => ( isset( $_POST['wbg_gallary_column'] ) && filter_var( $_POST['wbg_gallary_column'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_gallary_column'] : 3,
+        'wbg_gallary_column_mobile' => ( isset( $_POST['wbg_gallary_column_mobile'] ) && filter_var( $_POST['wbg_gallary_column_mobile'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_gallary_column_mobile'] : 1,
         'wbg_gallary_sorting'       => ( isset( $_POST['wbg_gallary_sorting'] ) && filter_var( $_POST['wbg_gallary_sorting'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_gallary_sorting'] : 'title',
         'wbg_details_is_external'   => ( isset( $_POST['wbg_details_is_external'] ) && filter_var( $_POST['wbg_details_is_external'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_details_is_external'] : '',
         'wbg_title_length'          => ( isset( $_POST['wbg_title_length'] ) && filter_var( $_POST['wbg_title_length'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_title_length'] : 4,
@@ -22,6 +23,7 @@ if( isset( $_POST['updateGeneralSettings'] ) ) {
 
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
 $wbg_gallary_column         = isset( $wbgGeneralSettings['wbg_gallary_column'] ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
+$wbg_gallary_column_mobile  = isset( $wbgGeneralSettings['wbg_gallary_column_mobile'] ) ? $wbgGeneralSettings['wbg_gallary_column_mobile'] : 1;
 $wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
 $wbg_title_length           = isset( $wbgGeneralSettings['wbg_title_length'] ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
 $wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
@@ -50,6 +52,17 @@ $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] )
                         <option value="2" <?php echo ( '2' == $wbg_gallary_column ) ? 'selected' : ''; ?> ><?php esc_html_e('2', WBG_TXT_DOMAIN); ?></option>
                         <option value="3" <?php echo ( '3' == $wbg_gallary_column ) ? 'selected' : ''; ?> ><?php esc_html_e('3', WBG_TXT_DOMAIN); ?></option>
                         <option value="4" <?php echo ( '4' == $wbg_gallary_column ) ? 'selected' : ''; ?> ><?php esc_html_e('4', WBG_TXT_DOMAIN); ?></option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="wbg_gallary_column_mobile">
+                <th scope="row">
+                    <label for="wbg_gallary_column_mobile"><?php esc_html_e('Gallary Columns In Mobile:', WBG_TXT_DOMAIN); ?></label>
+                </th>
+                <td>
+                    <select name="wbg_gallary_column_mobile" class="medium-text">
+                        <option value="1" <?php echo ( '1' == $wbg_gallary_column_mobile ) ? 'selected' : ''; ?> ><?php esc_html_e('1', WBG_TXT_DOMAIN); ?></option>
+                        <option value="2" <?php echo ( '2' == $wbg_gallary_column_mobile ) ? 'selected' : ''; ?> ><?php esc_html_e('2', WBG_TXT_DOMAIN); ?></option>
                     </select>
                 </td>
             </tr>

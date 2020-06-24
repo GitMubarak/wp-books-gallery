@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/mhmrajib/2
 Tags: book, gallery, store, affiliate, library
 Requires at least: 4.6
 Tested up to: 5.4.2
-Stable tag: 1.7
+Stable tag: 1.8
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -36,9 +36,10 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Pagination ( Using Shortcode )
 
 
-** Options In Gallery Settings **
+**✅ Options In Gallery Settings **
 
 * Number of showing Gallery columns 2,3 and 4
+* Number of showing Gallery columns in Mobile 1 or 2
 * Sorting By Name, Author, Date etc.
 * Open Book Details On Same Tab Or A New Tab
 * Book Title Word Legth
@@ -52,7 +53,7 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * BuyNow / Download Button Text
 
 
-** Options In Search Panel **
+**✅ Options In Search Panel **
 
 * Show/Hide Search Panel
 * Show/Hide Search By Book Name
@@ -61,7 +62,7 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Show/Hide Search By Publisher
 
 
-** Options In Books Details Settings **
+**✅ Options In Books Details Settings **
 
 * Display Author and Author Label Text
 * Display Category and Category Label Text
@@ -78,25 +79,25 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Published Date Format: Full / Year
 
 
-➡️️Usage of Shortcode:⬅️
-<strong> Show all Books </strong>
+➡️ Usage of Shortcode:⬅️
+<strong> Show Books Gallery </strong>
 
 <pre> [wp_books_gallery] </pre>
 
-<strong> Showing 5 Books with Pagination </strong>
+<strong> Showing 20 Books with Pagination </strong>
 
-<pre> [wp_books_gallery display=5 pagination=true] </pre>
+<pre> [wp_books_gallery display=20 pagination=true] </pre>
 
 <strong> Showing Books from a category </strong>
 
 <pre> [wp_books_gallery category="Noble"] </pre>
 
 
-**Demo/ Support/ Live Chat:**
+**👨‍💻 Demo/ Support/ Live Chat:**
 [WordPress Books Gallery: Demo](http://plugin.hossnimubarak.com/wp-books-gallery/)
 
 
-**📋 Feedback/Rating:**
+**👍 Feedback/Rating:**
 If you find this plugin helpful, feel free to give us your valuable review. Rate us and share this plugin with your friends and others. This will motivate us and help us to grow.
 
 
@@ -146,6 +147,22 @@ Install WordPress Books Gallery as a regular WordPress plugin. Here are differen
 
 Please go to WGB Books menu, and add your desired books.
 
+= Only 10 books are displayed, although there are much more books. Am I missed some kind of setup? =
+
+Two options you can apply:
+
+1: Increase the default post display settings from
+Settings => Reading -> Blog pages show at most
+
+Or
+
+2: Use the shortcode
+[wp_books_gallery display=20 pagination=true]
+
+= Book details page is not showing anything. =
+
+Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
+
 
 == Screenshots ==
 
@@ -159,6 +176,12 @@ Please go to WGB Books menu, and add your desired books.
 8. WordPress Books Gallery Details Page View
 
 == Changelog ==
+
+= 1.8 =
+* Option For Gallary Columns In Mobile Added
+* Author not showing in details page solved
+* Multiple category showing issue solved
+* Bug fixed
 
 = 1.7 =
 * Search Panel Settings Included In Admin Menu

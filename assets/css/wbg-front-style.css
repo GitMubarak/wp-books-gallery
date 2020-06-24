@@ -307,8 +307,11 @@ a.page-numbers:hover {
 }
 
 @media only screen and (max-width: 767px) {
-    .wbg-main-wrapper {
-        grid-template-columns: 100%;
+    .wbg-main-wrapper.wbg-product-column-mobile-1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .wbg-main-wrapper.wbg-product-column-mobile-2 {
+        grid-template-columns: repeat(2, 1fr);
     }
     .wbg-details-wrapper {
         display: block;

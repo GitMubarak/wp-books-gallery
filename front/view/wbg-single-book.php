@@ -2,7 +2,7 @@
 
 <?php
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
-$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download / Buynow';
+$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download/Buynow';
 
 $wbgDetailSettings          = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
 $wbgAuthorInfo              = isset( $wbgDetailSettings['wbg_author_info'] ) ? $wbgDetailSettings['wbg_author_info'] : 1;
@@ -46,7 +46,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
         <div class="wbg-details-summary">
             <h5 class="wbg-details-book-title"><?php the_title(); ?></h5>
             <?php 
-            if( 1 === $wbgAuthorInfo ) { 
+            if( 1 == $wbgAuthorInfo ) { 
                 ?>
                 <span>
                     <b><?php echo esc_html( $wbgAuthorLabel ); ?>:</b>
@@ -60,14 +60,18 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                 <?php 
             } 
             
-            if (1 == $wbgDisplayCategory) { 
+            if( 1 == $wbgDisplayCategory ) { 
                 ?>
                 <span>
-                    <b><?php echo esc_html($wbgCategoryLabel); ?>:</b>
+                    <b><?php echo esc_html( $wbgCategoryLabel ); ?>:</b>
                     <?php
-                                $wbgCategory = wp_get_post_terms($post->ID, 'book_category', array('fields' => 'all'));
-                                echo $wbgCategory[0]->name;
-                                ?>
+                    $wbgCatArray = array();
+                    $wbgCategory = wp_get_post_terms( $post->ID, 'book_category', array('fields' => 'all') );
+                    foreach( $wbgCategory as $cat) {
+                        $wbgCatArray[] = $cat->name . '';
+                    }
+                    echo implode( ', ', $wbgCatArray );
+                    ?>
                 </span>
                 <?php 
             } ?>
@@ -82,7 +86,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                             ?>
             </span>
             <?php } ?>
-            <?php if ( 1 === intval( $wbg_display_publish_date ) ) { ?>
+            <?php if ( 1 == intval( $wbg_display_publish_date ) ) { ?>
             <span>
                 <b><?php echo esc_html($wbg_publish_date_label); ?>:</b>
                 <?php
@@ -97,7 +101,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                 ?>
             </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_isbn ) { ?>
+            <?php if ( '1' == $wbg_display_isbn ) { ?>
                 <span>
                     <b><?php echo esc_html( $wbg_isbn_label ); ?>:</b>
                     <?php
@@ -108,7 +112,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                             ?>
                 </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_page ) { ?>
+            <?php if ( '1' == $wbg_display_page ) { ?>
                 <span>
                     <b><?php echo esc_html( $wbg_page_label ); ?>:</b>
                     <?php
@@ -119,7 +123,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                             ?>
                 </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_country ) { ?>
+            <?php if ( '1' == $wbg_display_country ) { ?>
                 <span>
                     <b><?php echo esc_html( $wbg_country_label ); ?>:</b>
                     <?php
@@ -130,7 +134,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                             ?>
                 </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_language ) { ?>
+            <?php if ( '1' == $wbg_display_language ) { ?>
                 <span>
                     <b><?php echo esc_html( $wbg_language_label ); ?>:</b>
                     <?php
@@ -141,7 +145,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                             ?>
                 </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_dimension ) { ?>
+            <?php if ( '1' == $wbg_display_dimension ) { ?>
                 <span>
                     <b><?php echo esc_html( $wbg_dimension_label ); ?>:</b>
                     <?php
@@ -152,7 +156,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                             ?>
                 </span>
             <?php } ?>
-            <?php if ( '1' === $wbg_display_filesize ) { ?>
+            <?php if ( '1' == $wbg_display_filesize ) { ?>
                 <span>
                     <b><?php echo esc_html( $wbg_filesize_label ); ?>:</b>
                     <?php
@@ -164,7 +168,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                 </span>
             <?php } ?>
             <?php 
-            if ( '1' === $wbg_display_download_button ) { ?>
+            if ( '1' == $wbg_display_download_button ) { ?>
                 <?php
                 $wbgLink = get_post_meta($post->ID, 'wbg_download_link', true);
                 if( ! empty( $wbgLink ) ) {
@@ -179,14 +183,16 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
         </div>
         
         <div class="wbg-details-description">
-            <?php if ( '1' === $wbg_display_description ) { ?>
-                <div class="wbg-details-description-title">
-                    <b><?php echo esc_html( $wbg_description_label ); ?>:</b>
-                    <hr>
-                </div>
-                <div class="wbg-details-description-content">
-                    <?php the_content(); ?>
-                </div>
+            <?php if ( '1' == $wbg_display_description ) { ?>
+                <?php if( ! empty( get_the_content() ) ) { ?>
+                    <div class="wbg-details-description-title">
+                        <b><?php echo esc_html( $wbg_description_label ); ?>:</b>
+                        <hr>
+                    </div>
+                    <div class="wbg-details-description-content">
+                        <?php the_content(); ?>
+                    </div>
+                <?php } ?>
             <?php } ?>
         </div>
         <?php 

@@ -4,7 +4,7 @@
  * Plugin Name:	WP Books Gallery
  * Plugin URI:	http://wordpress.org/plugins/wp-books-gallery/
  * Description:	A simple plugin to display Books Gallery in your Page, using Shortcode: [wp_books_gallery]
- * Version:		1.7
+ * Version:		1.8
  * Author:		Hossni Mubarak
  * Author URI:	http://www.hossnimubarak.com
  * License:		GPL-2.0+
@@ -19,7 +19,7 @@ define('WBG_SLUG', plugin_basename(__FILE__));
 define('WBG_PRFX', 'wbg_');
 define('WBG_CLS_PRFX', 'cls-books-gallery-');
 define('WBG_TXT_DOMAIN', 'wp-books-gallery');
-define('WBG_VERSION', '1.7');
+define('WBG_VERSION', '1.8');
 
 require_once WBG_PATH . 'inc/' . WBG_CLS_PRFX . 'master.php';
 $wbg = new WBG_Master();
@@ -63,6 +63,6 @@ function wbg_custom_post_type_cat_filter( $query ) {
         return $query;
     }
 }
-add_action('pre_get_posts', 'wbg_custom_post_type_cat_filter');   
+add_action('pre_get_posts', 'wbg_custom_post_type_cat_filter');
 
 register_deactivation_hook(__FILE__, array($wbg, WBG_PRFX . 'unregister_settings'));
