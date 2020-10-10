@@ -25,6 +25,10 @@ $wbg_display_search_title     = isset( $wbgSearchSettings['wbg_display_search_ti
 $wbg_display_search_category  = isset( $wbgSearchSettings['wbg_display_search_category'] ) ? $wbgSearchSettings['wbg_display_search_category'] : '1';
 $wbg_display_search_author    = isset( $wbgSearchSettings['wbg_display_search_author'] ) ? $wbgSearchSettings['wbg_display_search_author'] : '1';
 $wbg_display_search_publisher = isset( $wbgSearchSettings['wbg_display_search_publisher'] ) ? $wbgSearchSettings['wbg_display_search_publisher'] : '1';
+$wbg_search_btn_txt           = isset( $wbgSearchSettings['wbg_search_btn_txt'] ) ? $wbgSearchSettings['wbg_search_btn_txt'] : 'Search Books';
+
+$wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
+$wbg_btn_color                = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
 
 // Shortcoded Options
 $wbgCategory          = isset( $attr['category'] ) ? $attr['category'] : '';
@@ -137,6 +141,13 @@ if( '1' === $wbg_display_search_panel ) {
   // echo '<pre>';
   // print_r( $wbg_authors );
   ?>
+
+<style type="text/css">
+.wbg-search-container .wbg-search-item .submit-btn {
+  background: <?php echo esc_html( $wbg_btn_color ); ?>;
+}
+</style>
+
   <form action="" method="POST" id="wbg-search-form">
   <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
     <div class="wrap wbg-search-container">
@@ -194,7 +205,7 @@ if( '1' === $wbg_display_search_panel ) {
       ?>
 
       <div class="wbg-search-item">
-        <input type="submit" name="submit" class="button submit-btn" value="<?php esc_attr_e('Seach Books', WBG_TXT_DOMAIN); ?>" />
+        <input type="submit" name="submit" class="button submit-btn" value="<?php echo esc_attr( $wbg_search_btn_txt ); ?>">
       </div>
 
     </div>

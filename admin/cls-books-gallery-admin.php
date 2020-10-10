@@ -60,8 +60,7 @@ class WBG_Admin
 	/**
 	 *	Loading admin panel assets
 	 */
-	function wbg_enqueue_assets()
-	{
+	function wbg_enqueue_assets() {
 
 		wp_enqueue_style(
 			$this->wbg_assets_prefix . 'admin-style',
@@ -74,6 +73,9 @@ class WBG_Admin
 		// You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
 		wp_register_style('jquery-ui', '//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css');
 		wp_enqueue_style('jquery-ui');
+
+		wp_enqueue_style('wp-color-picker');
+		wp_enqueue_script('wp-color-picker');
 
 		if (!wp_script_is('jquery')) {
 			wp_enqueue_script('jquery');
@@ -339,6 +341,13 @@ class WBG_Admin
 	}
 
 	function wbg_search_panel_settings() {
+		
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+	
+		$tab = isset ( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : null;
+
 		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'search-settings.php';
 	}
 
@@ -359,8 +368,8 @@ class WBG_Admin
 		?>
 		<div class="wbg-alert <?php printf('%s', $type); ?>">
 			<span class="wbg-closebtn">&times;</span>
-			<strong><?php esc_html_e(ucfirst($type), WPHPC_TXT_DOMAIN); ?>!</strong>
-			<?php esc_html_e($msg, WPHPC_TXT_DOMAIN); ?>
+			<strong><?php esc_html_e( ucfirst( $type ), WBG_TXT_DOMAIN); ?>!</strong>
+			<?php esc_html_e( $msg, WBG_TXT_DOMAIN ); ?>
 		</div>
 		<?php 
 	}
