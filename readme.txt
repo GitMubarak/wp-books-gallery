@@ -36,6 +36,11 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Pagination ( Using Shortcode )
 
 
+**📋 Translation Ready:**
+
+* POT file included (/languages/)
+
+
 **✅ Options In Gallery Settings **
 
 * Number of showing Gallery columns 2,3 and 4
@@ -187,6 +192,7 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 * Search Books Button Border Color Option Added
 * Search Books Button Font Color Option Added
 * Bug Fixes Regarding Text Domain
+* Translation Ready: POT file included (/languages/)
 
 = 1.8 =
 * Option For Gallary Columns In Mobile Added

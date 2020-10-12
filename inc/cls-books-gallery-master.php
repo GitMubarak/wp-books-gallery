@@ -15,9 +15,14 @@ class WBG_Master
 	function __construct()
 	{
 		$this->wbg_version = WBG_VERSION;
+		add_action( 'plugins_loaded', array( $this, 'wbg_load_plugin_textdomain' ) );
 		$this->wbg_load_dependencies();
 		$this->wbg_trigger_admin_hooks();
 		$this->wbg_trigger_front_hooks();
+	}
+
+	function wbg_load_plugin_textdomain() {
+		load_plugin_textdomain( WBG_TXT_DOMAIN, FALSE, WBG_TXT_DOMAIN . '/languages/' );
 	}
 
 	private function wbg_load_dependencies()

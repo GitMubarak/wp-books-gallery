@@ -13,13 +13,13 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('WBG_PATH', plugin_dir_path(__FILE__));
-define('WBG_ASSETS', plugins_url('/assets/', __FILE__));
-define('WBG_SLUG', plugin_basename(__FILE__));
-define('WBG_PRFX', 'wbg_');
-define('WBG_CLS_PRFX', 'cls-books-gallery-');
-define('WBG_TXT_DOMAIN', 'wp-books-gallery');
-define('WBG_VERSION', '1.9');
+define( 'WBG_PATH', plugin_dir_path( __FILE__ ) );
+define( 'WBG_ASSETS', plugins_url('/assets/', __FILE__) );
+define( 'WBG_SLUG', plugin_basename( __FILE__ ) );
+define( 'WBG_PRFX', 'wbg_' );
+define( 'WBG_CLS_PRFX', 'cls-books-gallery-' );
+define( 'WBG_TXT_DOMAIN', 'wp-books-gallery' );
+define( 'WBG_VERSION', '1.9' );
 
 require_once WBG_PATH . 'inc/' . WBG_CLS_PRFX . 'master.php';
 $wbg = new WBG_Master();
