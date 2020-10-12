@@ -19,6 +19,8 @@ if ( isset( $_POST['updateSearchStyles'] ) ) {
     
     $wbgSearchStylesInfo = array(
         'wbg_btn_color'                 => isset( $_POST['wbg_btn_color'] ) ? sanitize_text_field( $_POST['wbg_btn_color'] ) : '#0274be',
+        'wbg_btn_border_color'          => isset( $_POST['wbg_btn_border_color'] ) ? sanitize_text_field( $_POST['wbg_btn_border_color'] ) : '#317081',
+        'wbg_btn_font_color'            => isset( $_POST['wbg_btn_font_color'] ) ? sanitize_text_field( $_POST['wbg_btn_font_color'] ) : '#FFFFFF',
     );
     
     $wbgShowSearchMessage = update_option( 'wbg_search_styles', serialize( $wbgSearchStylesInfo ) );
@@ -34,6 +36,8 @@ $wbg_search_btn_txt             = isset( $wbgSearchSettings['wbg_search_btn_txt'
 
 $wbgSearchStyles                = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                  = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
+$wbg_btn_border_color           = isset( $wbgSearchStyles['wbg_btn_border_color'] ) ? $wbgSearchStyles['wbg_btn_border_color'] : '#317081';
+$wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] ) ? $wbgSearchStyles['wbg_btn_font_color'] : '#FFFFFF';
 ?>
 <div id="wph-wrap-all" class="wrap wbg-settings-page">
     
@@ -65,6 +69,24 @@ $wbg_btn_color                  = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $
                             </th>
                             <td>
                                 <input class="wbg-wp-color" type="text" name="wbg_btn_color" id="wbg_btn_color" value="<?php echo esc_attr( $wbg_btn_color ); ?>">
+                                <div id="colorpicker"></div>
+                            </td>
+                        </tr>
+                        <tr class="wbg_btn_border_color">
+                            <th scope="row">
+                                <label for="wbg_btn_border_color"><?php esc_html_e('Button Border Color:', WBG_TXT_DOMAIN); ?></label>
+                            </th>
+                            <td>
+                                <input class="wbg-wp-color" type="text" name="wbg_btn_border_color" id="wbg_btn_border_color" value="<?php echo esc_attr( $wbg_btn_border_color ); ?>">
+                                <div id="colorpicker"></div>
+                            </td>
+                        </tr>
+                        <tr class="wbg_btn_font_color">
+                            <th scope="row">
+                                <label for="wbg_btn_font_color"><?php esc_html_e('Button Font Color:', WBG_TXT_DOMAIN); ?></label>
+                            </th>
+                            <td>
+                                <input class="wbg-wp-color" type="text" name="wbg_btn_font_color" id="wbg_btn_font_color" value="<?php echo esc_attr( $wbg_btn_font_color ); ?>">
                                 <div id="colorpicker"></div>
                             </td>
                         </tr>

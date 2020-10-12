@@ -29,6 +29,8 @@ $wbg_search_btn_txt           = isset( $wbgSearchSettings['wbg_search_btn_txt'] 
 
 $wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
+$wbg_btn_border_color           = isset( $wbgSearchStyles['wbg_btn_border_color'] ) ? $wbgSearchStyles['wbg_btn_border_color'] : '#317081';
+$wbg_btn_font_color           = isset( $wbgSearchStyles['wbg_btn_font_color'] ) ? $wbgSearchStyles['wbg_btn_font_color'] : '#FFFFFF';
 
 // Shortcoded Options
 $wbgCategory          = isset( $attr['category'] ) ? $attr['category'] : '';
@@ -120,9 +122,9 @@ if( '' != $wbg_publisher_s ) {
 /*
 * Search Operation
 */
-if( '1' === $wbg_display_search_panel ) {
+if ( '1' === $wbg_display_search_panel ) {
   $wbg_book_categories  = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, ) );
-  if( isset( $_POST['wbg_category_s'] ) && ( '' !== $_POST['wbg_category_s'] ) ) {
+  if ( isset( $_POST['wbg_category_s'] ) && ( '' !== $_POST['wbg_category_s'] ) ) {
     $wbg_authors_by_cat = "SELECT DISTINCT pm.meta_value
                           FROM $wpdb->posts p
                           LEFT JOIN $wpdb->term_relationships rel ON rel.object_id = p.ID
@@ -136,7 +138,7 @@ if( '1' === $wbg_display_search_panel ) {
                           AND pm.meta_key = 'wbg_author'";
     $wbg_authors  = $wpdb->get_results( $wbg_authors_by_cat, ARRAY_A );
   } else {
-    $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books'", ARRAY_A );
+    $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books' ORDER BY meta_value ASC", ARRAY_A );
   }
   // echo '<pre>';
   // print_r( $wbg_authors );
@@ -145,6 +147,8 @@ if( '1' === $wbg_display_search_panel ) {
 <style type="text/css">
 .wbg-search-container .wbg-search-item .submit-btn {
   background: <?php echo esc_html( $wbg_btn_color ); ?>;
+  box-shadow: 0 3px 0px 0.5px <?php echo esc_html( $wbg_btn_border_color ); ?>;
+  color: <?php echo esc_html( $wbg_btn_font_color ); ?>;
 }
 </style>
 
@@ -164,7 +168,7 @@ if( '1' === $wbg_display_search_panel ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_category_s" name="wbg_category_s">
-              <option value=""><?php esc_html_e('All Category', WBG_TXT_DOMAIN); ?></option>
+              <option value=""><?php esc_html_e('All Categories', WBG_TXT_DOMAIN); ?></option>
               <?php
               foreach( $wbg_book_categories as $book_category) { ?>
                 <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_book_category == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
@@ -178,7 +182,7 @@ if( '1' === $wbg_display_search_panel ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_author_s" name="wbg_author_s">
-              <option value=""><?php esc_html_e('All Author', WBG_TXT_DOMAIN); ?></option>
+              <option value=""><?php esc_html_e('All Authors', WBG_TXT_DOMAIN); ?></option>
               <?php
               foreach( $wbg_authors as $author ) { ?>
                 <option value="<?php echo esc_attr( $author['meta_value'] ); ?>" <?php echo ( $wbg_author_s == $author['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $author['meta_value'] ); ?></option>
@@ -192,7 +196,7 @@ if( '1' === $wbg_display_search_panel ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_publisher_s" name="wbg_publisher_s">
-              <option value=""><?php esc_html_e('All Publisher', WBG_TXT_DOMAIN); ?></option>
+              <option value=""><?php esc_html_e('All Publishers', WBG_TXT_DOMAIN); ?></option>
               <?php
               $wbg_publishers = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_publisher' and p.post_type = 'books'", ARRAY_A );
               foreach( $wbg_publishers as $publisher ) { ?>

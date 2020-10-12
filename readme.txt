@@ -60,8 +60,10 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Show/Hide Search By Category
 * Show/Hide Search By Author
 * Show/Hide Search By Publisher
-* Search Books Button Text Option Added
-* Search Books Button BG Color Option Added
+* Search Books Button Text
+* Search Books Button BG Color
+* Search Books Button Font Color
+* Search Books Button Border Color
 
 
 **✅ Options In Books Details Settings **
@@ -182,6 +184,8 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 = 1.9 =
 * Search Books Button Text Option Added
 * Search Books Button BG Color Option Added
+* Search Books Button Border Color Option Added
+* Search Books Button Font Color Option Added
 * Bug Fixes Regarding Text Domain
 
 = 1.8 =
