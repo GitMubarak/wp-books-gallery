@@ -40,11 +40,12 @@ class WBG_Front
 		return $output;
 	}
 
-	function wbg_load_single_template($template){
+	function wbg_load_single_template( $template ) {
+		
 		global $post;
 		
-		if ( 'books' === $post->post_type && locate_template( array( 'wbg-single-book.php' ) ) !== $template ) {
-			return WBG_PATH . 'front/view/' . $this->wbg_assets_prefix . 'single-book.php';
+		if ( 'books' === $post->post_type  ) {
+			return WBG_PATH . 'front/view/wbg-single-book.php';
 		}
 
 		return $template;

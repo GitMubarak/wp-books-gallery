@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WBG Bangla\n"
-"POT-Creation-Date: 2020-10-12 21:52+0600\n"
+"POT-Creation-Date: 2020-10-20 21:38+0600\n"
 "PO-Revision-Date: 2020-10-12 21:14+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -130,7 +130,7 @@ msgstr ""
 
 #: admin/view/wbg-details-settings.php:253
 #: admin/view/wbg-general-settings.php:185
-#: admin/view/wbg-search-settings.php:154
+#: admin/view/wbg-search-settings.php:196
 msgid "Update Settings"
 msgstr ""
 
@@ -244,62 +244,84 @@ msgstr ""
 msgid "Shortcode:"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:45
+#: admin/view/wbg-search-settings.php:51
 msgid "Search Panel Settings"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:68
+#: admin/view/wbg-search-settings.php:74
+msgid "Button:"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:80
 msgid "Button Color:"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:77
+#: admin/view/wbg-search-settings.php:89
 msgid "Button Border Color:"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:86
+#: admin/view/wbg-search-settings.php:98
 msgid "Button Font Color:"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:94
+#: admin/view/wbg-search-settings.php:106
 msgid "Update Styles"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:105
+#: admin/view/wbg-search-settings.php:117
 msgid "Display Search Panel?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:113
+#: admin/view/wbg-search-settings.php:125
 msgid "Search By Book Name?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:121
+#: admin/view/wbg-search-settings.php:133
 msgid "Search By Category?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:129
+#: admin/view/wbg-search-settings.php:139
+#: admin/view/wbg-search-settings.php:157
+#: admin/view/wbg-search-settings.php:175
+msgid "Order By:"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:143
+#: admin/view/wbg-search-settings.php:161
+#: admin/view/wbg-search-settings.php:179
+msgid "Ascending"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:146
+#: admin/view/wbg-search-settings.php:164
+#: admin/view/wbg-search-settings.php:182
+msgid "Descending"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:151
 msgid "Search By Author?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:137
+#: admin/view/wbg-search-settings.php:169
 msgid "Search By Publisher?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:145
+#: admin/view/wbg-search-settings.php:187
 msgid "Search Button Text:"
 msgstr ""
 
-#: front/view/wbg-front-view.php:162
+#: front/view/wbg-front-view.php:166
 msgid "Book Name"
 msgstr ""
 
-#: front/view/wbg-front-view.php:171
+#: front/view/wbg-front-view.php:175
 msgid "All Categories"
 msgstr ""
 
-#: front/view/wbg-front-view.php:185
+#: front/view/wbg-front-view.php:189
 msgid "All Authors"
 msgstr ""
 
-#: front/view/wbg-front-view.php:199
+#: front/view/wbg-front-view.php:203
 msgid "All Publishers"
 msgstr ""

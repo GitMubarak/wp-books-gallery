@@ -1,8 +1,14 @@
-<?php get_header(); ?>
+<?php 
+/**
+ * Template Name: WBG Books Details
+ *
+ */
+
+get_header(); ?>
 
 <?php
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
-$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download/Buynow';
+$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download';
 
 $wbgDetailSettings          = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
 $wbgAuthorInfo              = isset( $wbgDetailSettings['wbg_author_info'] ) ? $wbgDetailSettings['wbg_author_info'] : 1;
@@ -32,7 +38,9 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
 ?>
 
 <div class="wbg-details-wrapper">
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <?php 
+    if ( have_posts() ) {
+        while (have_posts()) { the_post(); ?>
 
         <div class="wbg-details-image">
             <?php
@@ -171,12 +179,14 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
             if ( '1' == $wbg_display_download_button ) { ?>
                 <?php
                 $wbgLink = get_post_meta($post->ID, 'wbg_download_link', true);
-                if( ! empty( $wbgLink ) ) {
+                if ( $wbgLink !== '' ) {
+                    if ( $wbg_buynow_btn_txt !== '' ) {
                     ?>
                     <span>
                         <a href="<?php echo esc_url( $wbgLink ); ?>" target="blank" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
                     </span>
-                    <?php 
+                    <?php
+                    }
                 } 
             }
             ?>
@@ -196,8 +206,9 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
             <?php } ?>
         </div>
         <?php 
-        endwhile;
-    endif; ?>
+        }
+    } 
+    ?>
 
 </div>
 

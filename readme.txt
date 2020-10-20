@@ -69,6 +69,9 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Search Books Button BG Color
 * Search Books Button Font Color
 * Search Books Button Border Color
+* Category Order ASC/DESC in Search Panel
+* Author Order ASC/DESC in Search Panel
+* Publisher Order ASC/DESC in Search Panel
 
 
 **✅ Options In Books Details Settings **
@@ -191,6 +194,9 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 * Search Books Button BG Color Option Added
 * Search Books Button Border Color Option Added
 * Search Books Button Font Color Option Added
+* Category Order ASC/DESC in Search Panel
+* Author Order ASC/DESC in Search Panel
+* Publisher Order ASC/DESC in Search Panel
 * Bug Fixes Regarding Text Domain
 * Translation Ready: POT file included (/languages/)
 

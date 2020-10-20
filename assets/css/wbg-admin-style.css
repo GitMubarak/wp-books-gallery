@@ -1,10 +1,13 @@
 table.wbg-details-settings-table tr th,
-table.wbg-details-settings-table tr td {
+table.wbg-details-settings-table tr td,
+table.wbg-search-settings-table tr th,
+table.wbg-search-settings-table tr td {
     border: 0px solid #000;
     padding: 10px;
 }
 
-table.wbg-details-settings-table tr th {
+table.wbg-details-settings-table tr th,
+table.wbg-search-settings-table tr th {
     font-weight: 600;
 }
 

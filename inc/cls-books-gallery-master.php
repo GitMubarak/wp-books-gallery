@@ -48,7 +48,7 @@ class WBG_Master
 	{
 		$wbg_front = new WBG_Front($this->wbg_version());
 		$this->wbg_loader->add_action('wp_enqueue_scripts', $wbg_front, WBG_PRFX . 'front_assets');
-		$this->wbg_loader->add_filter('single_template', $wbg_front, WBG_PRFX . 'load_single_template', 99);
+		$this->wbg_loader->add_filter('single_template', $wbg_front, 'wbg_load_single_template', 10);
 		$wbg_front->wbg_load_shortcode();
 	}
 

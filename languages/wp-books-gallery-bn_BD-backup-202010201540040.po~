@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WBG Bangla\n"
 "POT-Creation-Date: 2020-10-12 21:52+0600\n"
-"PO-Revision-Date: 2020-10-12 15:52+0000\n"
+"PO-Revision-Date: 2020-10-12 15:58+0000\n"
 "Last-Translator: Hossni Mubarak\n"
 "Language-Team: Bengali (Bangladesh)\n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,7 @@ msgstr ""
 
 #: front/view/wbg-front-view.php:162
 msgid "Book Name"
-msgstr ""
+msgstr "বইয়ের নাম"
 
 #: front/view/wbg-front-view.php:171
 msgid "All Categories"

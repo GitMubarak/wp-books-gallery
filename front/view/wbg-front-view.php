@@ -16,7 +16,7 @@ $wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_descriptio
 $wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
 $wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
-$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
+//$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
 
 // Search Panel Settings
 $wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
@@ -26,6 +26,9 @@ $wbg_display_search_category  = isset( $wbgSearchSettings['wbg_display_search_ca
 $wbg_display_search_author    = isset( $wbgSearchSettings['wbg_display_search_author'] ) ? $wbgSearchSettings['wbg_display_search_author'] : '1';
 $wbg_display_search_publisher = isset( $wbgSearchSettings['wbg_display_search_publisher'] ) ? $wbgSearchSettings['wbg_display_search_publisher'] : '1';
 $wbg_search_btn_txt           = isset( $wbgSearchSettings['wbg_search_btn_txt'] ) ? $wbgSearchSettings['wbg_search_btn_txt'] : 'Search Books';
+$wbg_display_category_order   = isset( $wbgSearchSettings['wbg_display_category_order'] ) ? $wbgSearchSettings['wbg_display_category_order'] : 'asc';
+$wbg_display_author_order     = isset( $wbgSearchSettings['wbg_display_author_order'] ) ? $wbgSearchSettings['wbg_display_author_order'] : 'asc';
+$wbg_display_publisher_order  = isset( $wbgSearchSettings['wbg_display_publisher_order'] ) ? $wbgSearchSettings['wbg_display_publisher_order'] : 'asc';
 
 $wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
@@ -42,7 +45,7 @@ $wbgPaged             = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 $wbgBooksArr = array(
   'post_type'   => 'books',
   'post_status' => 'publish',
-  'order'       => 'ASC',
+  'order'       => 'DESC',
   'orderby'     => $wbg_gallary_sorting,
   //'meta_key'    => $wbg_gallary_sorting,
   'meta_query'  => array(
@@ -123,7 +126,7 @@ if( '' != $wbg_publisher_s ) {
 * Search Operation
 */
 if ( '1' === $wbg_display_search_panel ) {
-  $wbg_book_categories  = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, ) );
+  $wbg_book_categories  = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, 'order' => $wbg_display_category_order ) );
   if ( isset( $_POST['wbg_category_s'] ) && ( '' !== $_POST['wbg_category_s'] ) ) {
     $wbg_authors_by_cat = "SELECT DISTINCT pm.meta_value
                           FROM $wpdb->posts p
@@ -135,22 +138,23 @@ if ( '1' === $wbg_display_search_panel ) {
                           AND post_type = 'books'
                           AND t.name = '". $_POST['wbg_category_s'] . "'
                           AND tax.taxonomy = 'book_category'
-                          AND pm.meta_key = 'wbg_author'";
+                          AND pm.meta_key = 'wbg_author'
+                          ORDER BY pm.meta_value {$wbg_display_author_order}";
     $wbg_authors  = $wpdb->get_results( $wbg_authors_by_cat, ARRAY_A );
   } else {
-    $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books' ORDER BY meta_value ASC", ARRAY_A );
+  $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_author_order}", ARRAY_A );
   }
   // echo '<pre>';
   // print_r( $wbg_authors );
   ?>
 
-<style type="text/css">
-.wbg-search-container .wbg-search-item .submit-btn {
-  background: <?php echo esc_html( $wbg_btn_color ); ?>;
-  box-shadow: 0 3px 0px 0.5px <?php echo esc_html( $wbg_btn_border_color ); ?>;
-  color: <?php echo esc_html( $wbg_btn_font_color ); ?>;
-}
-</style>
+  <style type="text/css">
+  .wbg-search-container .wbg-search-item .submit-btn {
+    background: <?php echo esc_html( $wbg_btn_color ); ?>;
+    box-shadow: 0 3px 0px 0.5px <?php echo esc_html( $wbg_btn_border_color ); ?>;
+    color: <?php echo esc_html( $wbg_btn_font_color ); ?>;
+  }
+  </style>
 
   <form action="" method="POST" id="wbg-search-form">
   <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
@@ -198,7 +202,7 @@ if ( '1' === $wbg_display_search_panel ) {
           <select id="wbg_publisher_s" name="wbg_publisher_s">
               <option value=""><?php esc_html_e('All Publishers', WBG_TXT_DOMAIN); ?></option>
               <?php
-              $wbg_publishers = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_publisher' and p.post_type = 'books'", ARRAY_A );
+              $wbg_publishers = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_publisher' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_publisher_order}", ARRAY_A );
               foreach( $wbg_publishers as $publisher ) { ?>
                 <option value="<?php echo esc_attr( $publisher['meta_value'] ); ?>" <?php echo ( $wbg_publisher_s == $publisher['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $publisher['meta_value'] ); ?></option>
               <?php } ?>
@@ -268,13 +272,15 @@ $wbgBooks = new WP_Query( $wbgBooksArr );
               ?>
           </span>
         <?php } ?>
-        <?php if( '1' == $wbg_display_buynow ) { ?>
+        <?php if ( '1' == $wbg_display_buynow ) { ?>
           <?php
             $wbgLink = get_post_meta( $post->ID, 'wbg_download_link', true );
-            if ( ! empty( $wbgLink ) ) {
+            if ( $wbgLink !== '' ) {
+              if ( $wbg_buynow_btn_txt !== '' ) {
               ?>
-              <a href="<?php echo esc_url( $wbgLink ); ?>" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
+                <a href="<?php echo esc_url( $wbgLink ); ?>" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
               <?php
+              }
             }
           ?>
         <?php } ?>
