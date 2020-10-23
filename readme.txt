@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/mhmrajib/2
 Tags: book, gallery, store, affiliate, library
 Requires at least: 4.6
 Tested up to: 5.5.1
-Stable tag: 1.9
+Stable tag: 2.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -188,6 +188,9 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 8. WordPress Books Gallery Details Page View
 
 == Changelog ==
+
+= 2.0 =
+* Search Books Button Text Option Added
 
 = 1.9 =
 * Search Books Button Text Option Added
