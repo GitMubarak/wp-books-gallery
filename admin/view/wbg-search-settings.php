@@ -68,7 +68,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
             case 'styles':
                 ?>
                 <form name="wbg_search_style_form" role="form" class="form-horizontal" method="post" action="" id="wbg-search-style-form">
-                    <table class="form-table">
+                    <table class="wbg-search-style-settings-table">
                         <tr class="wbg_btn_color">
                             <th scope="row" colspan="2">
                                 <label for="button_style_panel"><?php esc_html_e('Button:', WBG_TXT_DOMAIN); ?></label>

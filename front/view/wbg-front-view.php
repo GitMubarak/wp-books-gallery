@@ -4,10 +4,12 @@ global $wpdb;
 // Gallery Settings
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
 $wbgGalleryColumn           = ( $wbgGeneralSettings['wbg_gallary_column'] != '' ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
+$wbg_book_cover_width       = isset( $wbgGeneralSettings['wbg_book_cover_width'] ) ? $wbgGeneralSettings['wbg_book_cover_width'] : 'default';
 $wbg_gallary_column_mobile  = isset( $wbgGeneralSettings['wbg_gallary_column_mobile'] ) ? $wbgGeneralSettings['wbg_gallary_column_mobile'] : 1;
 $wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
 $wbgTitleLength             = ( $wbgGeneralSettings['wbg_title_length'] != '' ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
 $wbgDetailsExternal         = ( $wbgGeneralSettings['wbg_details_is_external'] == 1 ) ? ' target="_blank"' : '';
+$wbg_display_details_page   = isset( $wbgGeneralSettings['wbg_display_details_page'] ) ? $wbgGeneralSettings['wbg_display_details_page'] : '1';
 $wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
 $wbgCatLbl                  = ( $wbgGeneralSettings['wbg_cat_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_cat_label_txt'] : '';
 $wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
@@ -17,6 +19,8 @@ $wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length
 $wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
 //$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
+
+$wbg_books_order            = isset( $wbgGeneralSettings['wbg_books_order'] ) ? $wbgGeneralSettings['wbg_books_order'] : 'ASC';
 
 // Search Panel Settings
 $wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
@@ -39,13 +43,14 @@ $wbg_btn_font_color           = isset( $wbgSearchStyles['wbg_btn_font_color'] ) 
 $wbgCategory          = isset( $attr['category'] ) ? $attr['category'] : '';
 $wbgDisplay           = isset( $attr['display'] ) ? $attr['display'] : '';
 $wbgPagination        = isset( $attr['pagination'] ) ? $attr['pagination'] : false;
-$wbgPaged             = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+$wbgPaged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 // Main Query
 $wbgBooksArr = array(
   'post_type'   => 'books',
   'post_status' => 'publish',
-  'order'       => 'DESC',
+  'order'       => $wbg_books_order,
   'orderby'     => $wbg_gallary_sorting,
   //'meta_key'    => $wbg_gallary_sorting,
   'meta_query'  => array(
@@ -90,7 +95,7 @@ if( '' != $wbg_title_s ) {
 }
 
 $wbg_book_category = ( isset( $_POST['wbg_category_s'] ) && filter_var( $_POST['wbg_category_s'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_category_s'] : '';
-if( '' != $wbg_book_category ) {
+if( '' !== $wbg_book_category ) {
   $wbgBooksArr['tax_query'] = array(
                                       array(
                                         'taxonomy' => 'book_category',
@@ -154,9 +159,13 @@ if ( '1' === $wbg_display_search_panel ) {
     box-shadow: 0 3px 0px 0.5px <?php echo esc_html( $wbg_btn_border_color ); ?>;
     color: <?php echo esc_html( $wbg_btn_font_color ); ?>;
   }
+  .wbg-main-wrapper .wbg-item img {
+    width: <?php echo ( 'full' === $wbg_book_cover_width ) ? '100%' : 'auto'; ?> !important;
+    height: <?php echo ( 'full' === $wbg_book_cover_width ) ? 'auto' : '150px'; ?> !important;
+  }
   </style>
 
-  <form action="" method="POST" id="wbg-search-form">
+  <form action="<?php echo esc_attr( get_permalink( get_the_ID() ) ); ?>" method="POST" id="wbg-search-form">
   <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
     <div class="wrap wbg-search-container">
       <?php
@@ -225,91 +234,108 @@ wp_reset_query();
 $wbgBooks = new WP_Query( $wbgBooksArr );
 ?>
 
-<div class="wbg-main-wrapper <?php echo esc_attr( 'wbg-product-column-' . $wbgGalleryColumn ); ?> <?php echo esc_attr( 'wbg-product-column-mobile-' . $wbg_gallary_column_mobile ); ?>">
-    <?php 
-    while( $wbgBooks->have_posts() ) :
-      $wbgBooks->the_post();
-      global $post; 
-      ?>
-      <div class="wbg-item">
-        <a href="<?php echo get_the_permalink( $post->ID ); ?>" <?php printf( '%s', $wbgDetailsExternal ); ?>>
-          <?php
-            if( has_post_thumbnail() ) {
-              the_post_thumbnail();
-            } else { ?>
-              <img src="<?php echo esc_attr( WBG_ASSETS . 'img/noimage.jpg' ); ?>" alt="No Image Available">
-            <?php
-            }
-          ?>
-          <?php echo wp_trim_words( get_the_title(), $wbgTitleLength, '...' ); ?>
-        </a>
-        <?php if( '1' == $wbg_display_description ) { ?>
-          <?php if( ! empty( get_the_content() ) ) { ?>
-            <div class="wbg-description-content">
-              <?php echo wp_trim_words( get_the_content(), $wbg_description_length, '...' ); ?>
-            </div>
-          <?php } ?>
-        <?php } ?>
-        <?php if( '1' == $wbg_display_category ) { ?>
-          <span>
-              <?php echo esc_html( $wbgCatLbl ); ?>
-              <?php
-              $wbgCatArray = array();
-              $wbgCategory = wp_get_post_terms( $post->ID, 'book_category', array('fields' => 'all') );
-              foreach( $wbgCategory as $cat) {
-                  $wbgCatArray[] = $cat->name . '';
-              }
-              echo implode( ', ', $wbgCatArray );
-              ?>
-          </span>
-        <?php } ?>
-        <?php if( '1' == $wbg_display_author ) { ?>
-          <span>
-              <?php echo esc_html( $wbgAuthorLbl ); ?>
-              <?php
-              $wbgAuthor = get_post_meta( $post->ID, 'wbg_author', true );
-              echo (!empty($wbgAuthor)) ? $wbgAuthor : '';
-              ?>
-          </span>
-        <?php } ?>
-        <?php if ( '1' == $wbg_display_buynow ) { ?>
-          <?php
-            $wbgLink = get_post_meta( $post->ID, 'wbg_download_link', true );
-            if ( $wbgLink !== '' ) {
-              if ( $wbg_buynow_btn_txt !== '' ) {
-              ?>
-                <a href="<?php echo esc_url( $wbgLink ); ?>" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
-              <?php
-              }
-            }
-          ?>
-        <?php } ?>
-      </div>
-    <?php endwhile; ?>
-</div>
-<?php 
-if( $wbgPagination == 'true' ) { 
+<?php
+if ( $wbgBooks->have_posts() ) { 
   ?>
-  <div class="wbg-pagination">
+  <div class="wbg-main-wrapper <?php echo esc_attr( 'wbg-product-column-' . $wbgGalleryColumn ); ?> <?php echo esc_attr( 'wbg-product-column-mobile-' . $wbg_gallary_column_mobile ); ?>">
       <?php
-      $wbgTotalPages = $wbgBooks->max_num_pages;
-
-      if ($wbgTotalPages > 1) {
-
-        $wbgCurrentPage = max(1, get_query_var('paged'));
-
-        echo paginate_links(array(
-          'base'      => get_pagenum_link(1) . '%_%',
-          'format'    => '/page/%#%',
-          'current'   => $wbgCurrentPage,
-          'total'     => $wbgTotalPages,
-          'prev_text' => __('« '),
-          'next_text' => __(' »'),
-        ));
-      }
-      wp_reset_postdata();
+        while( $wbgBooks->have_posts() ) {
+          $wbgBooks->the_post();
+          global $post; 
+          ?>
+          <div class="wbg-item">
+            <?php
+            if ( '1' === $wbg_display_details_page ) {
+              $wbgDetailsHref = get_the_permalink( $post->ID );
+            } else {
+              $wbgDetailsHref = '#';
+              $wbgDetailsExternal = '';
+            }
+            ?>
+            <a href="<?php echo esc_url( $wbgDetailsHref ); ?>" <?php printf( '%s', $wbgDetailsExternal ); ?>>
+              <?php
+                if ( has_post_thumbnail() ) {
+                  the_post_thumbnail();
+                } else { ?>
+                  <img src="<?php echo esc_attr( WBG_ASSETS . 'img/noimage.jpg' ); ?>" alt="No Image Available">
+                <?php
+                }
+              ?>
+              <?php echo wp_trim_words( get_the_title(), $wbgTitleLength, '...' ); ?>
+            </a>
+            <?php if( '1' == $wbg_display_description ) { ?>
+              <?php if( ! empty( get_the_content() ) ) { ?>
+                <div class="wbg-description-content">
+                  <?php echo wp_trim_words( get_the_content(), $wbg_description_length, '...' ); ?>
+                </div>
+              <?php } ?>
+            <?php } ?>
+            <?php if( '1' == $wbg_display_category ) { ?>
+              <span>
+                  <?php echo esc_html( $wbgCatLbl ); ?>
+                  <?php
+                  $wbgCatArray = array();
+                  $wbgCategory = wp_get_post_terms( $post->ID, 'book_category', array('fields' => 'all') );
+                  foreach( $wbgCategory as $cat) {
+                      $wbgCatArray[] = $cat->name . '';
+                  }
+                  echo implode( ', ', $wbgCatArray );
+                  ?>
+              </span>
+            <?php } ?>
+            <?php if( '1' == $wbg_display_author ) { ?>
+              <span>
+                  <?php echo esc_html( $wbgAuthorLbl ); ?>
+                  <?php
+                  $wbgAuthor = get_post_meta( $post->ID, 'wbg_author', true );
+                  echo (!empty($wbgAuthor)) ? $wbgAuthor : '';
+                  ?>
+              </span>
+            <?php } ?>
+            <?php if ( '1' == $wbg_display_buynow ) { ?>
+              <?php
+                $wbgLink = get_post_meta( $post->ID, 'wbg_download_link', true );
+                if ( $wbgLink !== '' ) {
+                  if ( $wbg_buynow_btn_txt !== '' ) {
+                  ?>
+                    <a href="<?php echo esc_url( $wbgLink ); ?>" class="button wbg-btn"><?php echo esc_html( $wbg_buynow_btn_txt ); ?></a>
+                  <?php
+                  }
+                }
+              ?>
+            <?php } ?>
+          </div>
+          <?php 
+        }
       ?>
   </div>
   <?php 
-} 
+  if( $wbgPagination == 'true' ) { 
+    ?>
+    <div class="wbg-pagination">
+        <?php
+        $wbgTotalPages = $wbgBooks->max_num_pages;
+
+        if ($wbgTotalPages > 1) {
+
+          $wbgCurrentPage = max(1, get_query_var('paged'));
+
+          echo paginate_links(array(
+            'base'      => get_pagenum_link(1) . '%_%',
+            'format'    => 'page/%#%',
+            'current'   => $wbgCurrentPage,
+            'total'     => $wbgTotalPages,
+            'prev_text' => __('« '),
+            'next_text' => __(' »'),
+          ));
+        }
+        wp_reset_postdata();
+        ?>
+    </div>
+    <?php 
+  }
+} else {
+  _e( 'Sorry, no books were found.', WBG_TXT_DOMAIN );
+}
+wp_reset_postdata(); 
 ?>

@@ -56,12 +56,17 @@ function wbg_flush_rewrite_rules_maybe() {
 }
 
 
-// include your custom post type on category pages
+// include your custom post type on category and tags pages
 function wbg_custom_post_type_cat_filter( $query ) {
     if ( is_category() && ( ! isset( $query->query_vars['suppress_filters'] ) || false == $query->query_vars['suppress_filters'] ) ) {
         $query->set( 'post_type', array( 'post', 'books' ) );
-        return $query;
+        
     }
+    if ( $query->is_tag() && $query->is_main_query() ) {
+        $query->set( 'post_type', array( 'post', 'books' ) );
+    }
+    
+    return $query;
 }
 add_action('pre_get_posts', 'wbg_custom_post_type_cat_filter');
 

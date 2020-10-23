@@ -125,8 +125,9 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                     <b><?php echo esc_html( $wbg_page_label ); ?>:</b>
                     <?php
                             $wbgPages = get_post_meta($post->ID, 'wbg_pages', true);
-                            if (!empty($wbgPages)) {
-                                echo $wbgPages . ' Pages';
+                            if ( ! empty( $wbgPages ) ) {
+                                //echo $wbgPages . ' Pages';
+                                printf( esc_html__( '%d Pages', WBG_TXT_DOMAIN ), $wbgPages );
                             }
                             ?>
                 </span>
@@ -168,13 +169,26 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                 <span>
                     <b><?php echo esc_html( $wbg_filesize_label ); ?>:</b>
                     <?php
-                            $wbgFilesize = get_post_meta($post->ID, 'wbg_filesize', true);
-                            if (!empty($wbgFilesize)) {
-                                echo $wbgFilesize;
-                            }
-                            ?>
+                        $wbgFilesize = get_post_meta($post->ID, 'wbg_filesize', true);
+                        if ( ! empty( $wbgFilesize ) ) {
+                            echo $wbgFilesize;
+                        }
+                    ?>
                 </span>
             <?php } ?>
+            <?php
+            $wbgPostTags = get_the_tags();
+            $wbgTagsSeparator = ' | ';
+            $wgbOutput = '';
+            if ( ! empty( $wbgPostTags ) ) {
+                $wgbOutput .= '<span><b>Tags:</b>';
+                foreach ( $wbgPostTags as $tag ) {
+                    $wgbOutput .= '<a href="' . get_tag_link( $tag->term_id ) . '">' . $tag->name . '</a>' . $wbgTagsSeparator;
+                }
+                $wgbOutput .= '</span>';
+                echo trim( $wgbOutput, $wbgTagsSeparator );
+            }
+            ?>
             <?php 
             if ( '1' == $wbg_display_download_button ) { ?>
                 <?php

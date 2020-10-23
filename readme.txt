@@ -54,8 +54,11 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Author Label Text
 * Show/Hide Description
 * Description Word Length
-* Show/Hide BuyNow / Download Button
-* BuyNow / Download Button Text
+* Show/Hide BuyNow/Download Button
+* BuyNow/Download Button Text
+* Books display order ASC/DESC
+* Enable/Disable books details page
+* Books cover width full/default
 
 
 **✅ Options In Search Panel **
@@ -89,6 +92,7 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Display BuyNow / Download Button
 * Display Description and Description Label Text
 * Published Date Format: Full / Year
+* Showing the book’s tags in details page
 
 
 ➡️ Usage of Shortcode:⬅️
@@ -190,7 +194,13 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 == Changelog ==
 
 = 2.0 =
-* Search Books Button Text Option Added
+* Books display order ASC/DESC option added
+* Books cover width full/default option added
+* Enable/Disable book details page option added 
+* Showing the book’s tags in details page
+* Some styling fixed
+* Pages word included in translation in details page
+* Search issue on other page fixed
 
 = 1.9 =
 * Search Books Button Text Option Added
