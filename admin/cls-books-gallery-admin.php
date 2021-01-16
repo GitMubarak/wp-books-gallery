@@ -161,8 +161,7 @@ class WBG_Admin
 		));
 	}
 
-	function wbg_book_details_metaboxes()
-	{
+	function wbg_book_details_metaboxes() {
 		add_meta_box(
 			'wbg_book_details_link',
 			'Book Details',

@@ -126,11 +126,11 @@ a.page-numbers:hover {
 /* Search Form Started */
 
 .wbg-search-container {
-    border: 1px solid #DDD;
+    border: 1px solid #ddd;
     width: 100%;
     display: grid;
     grid-gap: 0px;
-    padding: 0px;
+    padding: 0 10px 0 0;
     grid-template-columns: repeat( auto-fit, minmax(150px, 1fr));
     margin-bottom: 10px;
     background: #F2F2F2;

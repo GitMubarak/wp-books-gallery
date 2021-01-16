@@ -1,9 +1,9 @@
 === WordPress Books Gallery ===
 Contributors: mhmrajib
-Donate link: https://www.paypal.me/mhmrajib/2
+Donate link: https://www.paypal.me/mhmrajib
 Tags: book, gallery, store, affiliate, library
 Requires at least: 4.6
-Tested up to: 5.5.1
+Tested up to: 5.6
 Stable tag: 2.0
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -34,6 +34,9 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Number Of Books To Be Shown ( Using Shortcode )
 * Display Books By Category  ( Using Shortcode )
 * Pagination ( Using Shortcode )
+* Search By ISBN
+* Search By Language
+* Search By Published Year
 
 
 **📋 Translation Ready:**
@@ -109,8 +112,8 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 <pre> [wp_books_gallery category="Noble"] </pre>
 
 
-**👨‍💻 Demo/ Support/ Live Chat:**
-[WordPress Books Gallery: Demo](http://plugin.hossnimubarak.com/wp-books-gallery/)
+**👨‍💻 Demo / Support/ Live Chat:**
+[WordPress Books Gallery: Demo](http://demo.hmplugin.com/wp-books-gallery/)
 
 
 **👍 Feedback/Rating:**
@@ -118,7 +121,7 @@ If you find this plugin helpful, feel free to give us your valuable review. Rate
 
 
 
-**🔥 Other Plugins from [HM Plugins](http://www.hossnimubarak.com)**
+**🔥 Other Plugins from [HM Plugin](http://www.hossnimubarak.com)**
 
 👉 [Worldwide Breaking News Headlines](https://wordpress.org/plugins/worldwide-breaking-news-headlines/) Breaking News, Headlines Widget Plugin
 👉 [WP Top News](https://wordpress.org/plugins/wp-top-news/) Top News, Breaking News, Headlines Shortcoded Plugin
@@ -201,6 +204,9 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 * Some styling fixed
 * Pages word included in translation in details page
 * Search issue on other page fixed
+* Search By ISBN option added
+* Search By Language option added
+* Search By Published Year option added
 
 = 1.9 =
 * Search Books Button Text Option Added

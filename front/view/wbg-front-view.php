@@ -1,26 +1,26 @@
 <?php
-global $wpdb;
+global $wpdb, $post;
 
 // Gallery Settings
-$wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
-$wbgGalleryColumn           = ( $wbgGeneralSettings['wbg_gallary_column'] != '' ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
-$wbg_book_cover_width       = isset( $wbgGeneralSettings['wbg_book_cover_width'] ) ? $wbgGeneralSettings['wbg_book_cover_width'] : 'default';
-$wbg_gallary_column_mobile  = isset( $wbgGeneralSettings['wbg_gallary_column_mobile'] ) ? $wbgGeneralSettings['wbg_gallary_column_mobile'] : 1;
-$wbg_gallary_sorting        = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
-$wbgTitleLength             = ( $wbgGeneralSettings['wbg_title_length'] != '' ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
-$wbgDetailsExternal         = ( $wbgGeneralSettings['wbg_details_is_external'] == 1 ) ? ' target="_blank"' : '';
-$wbg_display_details_page   = isset( $wbgGeneralSettings['wbg_display_details_page'] ) ? $wbgGeneralSettings['wbg_display_details_page'] : '1';
-$wbg_display_category       = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
-$wbgCatLbl                  = ( $wbgGeneralSettings['wbg_cat_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_cat_label_txt'] : '';
-$wbg_display_author         = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
-$wbgAuthorLbl               = ( $wbgGeneralSettings['wbg_author_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_author_label_txt'] : '';
-$wbg_display_description    = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '1';
-$wbg_description_length     = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
-$wbg_display_buynow         = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
-$wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
+$wbgGeneralSettings           = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
+$wbgGalleryColumn             = ( $wbgGeneralSettings['wbg_gallary_column'] != '' ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
+$wbg_book_cover_width         = isset( $wbgGeneralSettings['wbg_book_cover_width'] ) ? $wbgGeneralSettings['wbg_book_cover_width'] : 'default';
+$wbg_gallary_column_mobile    = isset( $wbgGeneralSettings['wbg_gallary_column_mobile'] ) ? $wbgGeneralSettings['wbg_gallary_column_mobile'] : 1;
+$wbg_gallary_sorting          = isset( $wbgGeneralSettings['wbg_gallary_sorting'] ) ? $wbgGeneralSettings['wbg_gallary_sorting'] : 'title';
+$wbgTitleLength               = ( $wbgGeneralSettings['wbg_title_length'] != '' ) ? $wbgGeneralSettings['wbg_title_length'] : 4;
+$wbgDetailsExternal           = ( $wbgGeneralSettings['wbg_details_is_external'] == 1 ) ? ' target="_blank"' : '';
+$wbg_display_details_page     = isset( $wbgGeneralSettings['wbg_display_details_page'] ) ? $wbgGeneralSettings['wbg_display_details_page'] : '1';
+$wbg_display_category         = isset( $wbgGeneralSettings['wbg_display_category'] ) ? $wbgGeneralSettings['wbg_display_category'] : '1';
+$wbgCatLbl                    = ( $wbgGeneralSettings['wbg_cat_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_cat_label_txt'] : '';
+$wbg_display_author           = isset( $wbgGeneralSettings['wbg_display_author'] ) ? $wbgGeneralSettings['wbg_display_author'] : '1';
+$wbgAuthorLbl                 = ( $wbgGeneralSettings['wbg_author_label_txt'] != '' ) ? $wbgGeneralSettings['wbg_author_label_txt'] : '';
+$wbg_display_description      = isset( $wbgGeneralSettings['wbg_display_description'] ) ? $wbgGeneralSettings['wbg_display_description'] : '1';
+$wbg_description_length       = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
+$wbg_display_buynow           = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
+$wbg_buynow_btn_txt           = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
 //$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
 
-$wbg_books_order            = isset( $wbgGeneralSettings['wbg_books_order'] ) ? $wbgGeneralSettings['wbg_books_order'] : 'ASC';
+$wbg_books_order              = isset( $wbgGeneralSettings['wbg_books_order'] ) ? $wbgGeneralSettings['wbg_books_order'] : 'ASC';
 
 // Search Panel Settings
 $wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
@@ -36,15 +36,30 @@ $wbg_display_publisher_order  = isset( $wbgSearchSettings['wbg_display_publisher
 
 $wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
-$wbg_btn_border_color           = isset( $wbgSearchStyles['wbg_btn_border_color'] ) ? $wbgSearchStyles['wbg_btn_border_color'] : '#317081';
+$wbg_btn_border_color         = isset( $wbgSearchStyles['wbg_btn_border_color'] ) ? $wbgSearchStyles['wbg_btn_border_color'] : '#317081';
 $wbg_btn_font_color           = isset( $wbgSearchStyles['wbg_btn_font_color'] ) ? $wbgSearchStyles['wbg_btn_font_color'] : '#FFFFFF';
+?>
 
+<style type="text/css">
+  .wbg-search-container .wbg-search-item .submit-btn {
+    background: <?php echo esc_html( $wbg_btn_color ); ?>;
+    box-shadow: 0 3px 0px 0.5px <?php echo esc_html( $wbg_btn_border_color ); ?>;
+    color: <?php echo esc_html( $wbg_btn_font_color ); ?>;
+  }
+  .wbg-main-wrapper .wbg-item img {
+    width: <?php echo ( 'full' === $wbg_book_cover_width ) ? '100%' : 'auto'; ?> !important;
+    height: <?php echo ( 'full' === $wbg_book_cover_width ) ? 'auto' : '150px'; ?> !important;
+  }
+</style>
+
+<?php
 // Shortcoded Options
 $wbgCategory          = isset( $attr['category'] ) ? $attr['category'] : '';
 $wbgDisplay           = isset( $attr['display'] ) ? $attr['display'] : '';
 $wbgPagination        = isset( $attr['pagination'] ) ? $attr['pagination'] : false;
 
-$wbgPaged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+$wbgPaged             = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+$wbg_book_category    = $wbg_book_category = ( isset( $_REQUEST['wbg_category_s'] ) && filter_var( $_REQUEST['wbg_category_s'], FILTER_SANITIZE_STRING ) ) ? $_REQUEST['wbg_category_s'] : ''; //$_REQUEST['wbg_category_s'];
 
 // Main Query
 $wbgBooksArr = array(
@@ -94,7 +109,7 @@ if( '' != $wbg_title_s ) {
   $wbgBooksArr['s'] = $wbg_title_s;
 }
 
-$wbg_book_category = ( isset( $_POST['wbg_category_s'] ) && filter_var( $_POST['wbg_category_s'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_category_s'] : '';
+//$wbg_book_category = ( isset( $_POST['wbg_category_s'] ) && filter_var( $_POST['wbg_category_s'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_category_s'] : '';
 if( '' !== $wbg_book_category ) {
   $wbgBooksArr['tax_query'] = array(
                                       array(
@@ -127,6 +142,39 @@ if( '' != $wbg_publisher_s ) {
                                   );
 }
 
+$wbg_isbn_s = ( isset( $_POST['wbg_isbn_s'] ) && ( sanitize_text_field( $_POST['wbg_isbn_s'] ) != '' ) ) ? $_POST['wbg_isbn_s'] : '';
+if( '' != $wbg_isbn_s ) {
+  $wbgBooksArr['meta_query'] = array(
+                                      array(
+                                        'key'     => 'wbg_isbn',
+                                        'value'   => $wbg_isbn_s,
+                                        'compare' => '='
+                                      )
+                                  );
+}
+
+$wbg_language_s = ( isset( $_POST['wbg_language_s'] ) && ( sanitize_text_field( $_POST['wbg_language_s'] ) != '' ) ) ? $_POST['wbg_language_s'] : '';
+if( '' != $wbg_language_s ) {
+  $wbgBooksArr['meta_query'] = array(
+                                      array(
+                                        'key'     => 'wbg_language',
+                                        'value'   => $wbg_language_s,
+                                        'compare' => '='
+                                      )
+                                  );
+}
+
+$wbg_published_on_s = ( isset( $_POST['wbg_published_on_s'] ) && ( sanitize_text_field( $_POST['wbg_published_on_s'] ) != '' ) ) ? $_POST['wbg_published_on_s'] : '';
+if( '' != $wbg_published_on_s ) {
+  $wbgBooksArr['meta_query'] = array(
+                                      array(
+                                        'key'     => 'wbg_published_on',
+                                        'value'   => $wbg_published_on_s,
+                                        'compare' => 'LIKE'
+                                      )
+                                  );
+}
+
 /*
 * Search Operation
 */
@@ -153,20 +201,9 @@ if ( '1' === $wbg_display_search_panel ) {
   // print_r( $wbg_authors );
   ?>
 
-  <style type="text/css">
-  .wbg-search-container .wbg-search-item .submit-btn {
-    background: <?php echo esc_html( $wbg_btn_color ); ?>;
-    box-shadow: 0 3px 0px 0.5px <?php echo esc_html( $wbg_btn_border_color ); ?>;
-    color: <?php echo esc_html( $wbg_btn_font_color ); ?>;
-  }
-  .wbg-main-wrapper .wbg-item img {
-    width: <?php echo ( 'full' === $wbg_book_cover_width ) ? '100%' : 'auto'; ?> !important;
-    height: <?php echo ( 'full' === $wbg_book_cover_width ) ? 'auto' : '150px'; ?> !important;
-  }
-  </style>
-
-  <form action="<?php echo esc_attr( get_permalink( get_the_ID() ) ); ?>" method="POST" id="wbg-search-form">
-  <?php if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
+  <!-- form action="<?php //echo esc_attr( get_permalink( get_the_ID() ) ); ?>" method="POST" id="wbg-search-form" -->
+  <form method="POST" action="<?php echo get_permalink($post->ID); ?>" id="wbg-search-form">
+    <?php //if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
     <div class="wrap wbg-search-container">
       <?php
       if( '1' === $wbg_display_search_title ) {
@@ -222,7 +259,33 @@ if ( '1' === $wbg_display_search_panel ) {
       ?>
 
       <div class="wbg-search-item">
-        <input type="submit" name="submit" class="button submit-btn" value="<?php echo esc_attr( $wbg_search_btn_txt ); ?>">
+        <select id="wbg_published_on_s" name="wbg_published_on_s">
+            <option value=""><?php esc_html_e('All Years', WBG_TXT_DOMAIN); ?></option>
+            <?php
+            $wbg_years = $wpdb->get_results( "SELECT DISTINCT YEAR(meta_value) year FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_published_on' and p.post_type = 'books' ORDER BY meta_value DESC", ARRAY_A );
+            foreach( $wbg_years as $year ) { ?>
+              <option value="<?php echo esc_attr( $year['year'] ); ?>" <?php echo ( $wbg_published_on_s == $year['year'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $year['year'] ); ?></option>
+            <?php } ?>
+        </select>
+      </div>
+
+      <div class="wbg-search-item">
+        <input type="text" name="wbg_isbn_s" placeholder="<?php esc_attr_e('ISBN', WBG_TXT_DOMAIN); ?>" value="<?php echo esc_attr( $wbg_isbn_s ); ?>">
+      </div>
+
+      <div class="wbg-search-item">
+        <select id="wbg_language_s" name="wbg_language_s">
+            <option value=""><?php esc_html_e('All Languages', WBG_TXT_DOMAIN); ?></option>
+            <?php
+            $wbg_languages = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_language' and p.post_type = 'books'", ARRAY_A );
+            foreach( $wbg_languages as $lang ) { ?>
+              <option value="<?php echo esc_attr( $lang['meta_value'] ); ?>" <?php echo ( $wbg_language_s == $lang['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $lang['meta_value'] ); ?></option>
+            <?php } ?>
+        </select>
+      </div>
+
+      <div class="wbg-search-item">
+        <input type="submit" class="button submit-btn" value="<?php echo esc_attr( $wbg_search_btn_txt ); ?>">
       </div>
 
     </div>
@@ -230,11 +293,9 @@ if ( '1' === $wbg_display_search_panel ) {
   <?php
 }
 
-wp_reset_query();
+// Perform query and assign it to wp_query
 $wbgBooks = new WP_Query( $wbgBooksArr );
-?>
 
-<?php
 if ( $wbgBooks->have_posts() ) { 
   ?>
   <div class="wbg-main-wrapper <?php echo esc_attr( 'wbg-product-column-' . $wbgGalleryColumn ); ?> <?php echo esc_attr( 'wbg-product-column-mobile-' . $wbg_gallary_column_mobile ); ?>">
@@ -316,9 +377,9 @@ if ( $wbgBooks->have_posts() ) {
         <?php
         $wbgTotalPages = $wbgBooks->max_num_pages;
 
-        if ($wbgTotalPages > 1) {
+        if ( $wbgTotalPages > 1 ) {
 
-          $wbgCurrentPage = max(1, get_query_var('paged'));
+          echo $wbgCurrentPage = max( 1, get_query_var('paged') );
 
           echo paginate_links(array(
             'base'      => get_pagenum_link(1) . '%_%',
@@ -327,15 +388,19 @@ if ( $wbgBooks->have_posts() ) {
             'total'     => $wbgTotalPages,
             'prev_text' => __('« '),
             'next_text' => __(' »'),
+            // here you can pass custom query string to the pagination url
+            'add_args' => array(
+                'wbg_category_s' => ( null !== $wbg_book_category ) ? $wbg_book_category : ''
+            )
           ));
         }
-        wp_reset_postdata();
         ?>
     </div>
     <?php 
   }
 } else {
-  _e( 'Sorry, no books were found.', WBG_TXT_DOMAIN );
+  ?><p class="wbg-no-books-found"><?php _e('No books found.', WBG_TXT_DOMAIN); ?></p><?php
 }
-wp_reset_postdata(); 
+
+wp_reset_postdata();
 ?>
