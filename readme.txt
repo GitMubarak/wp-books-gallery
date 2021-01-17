@@ -197,16 +197,16 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 == Changelog ==
 
 = 2.0 =
+* Search problem to other page fixed
 * Books display order ASC/DESC option added
-* Books cover width full/default option added
+* Books cover/image width full/default option added
 * Enable/Disable book details page option added 
 * Showing the book’s tags in details page
-* Some styling fixed
 * Pages word included in translation in details page
-* Search issue on other page fixed
 * Search By ISBN option added
 * Search By Language option added
 * Search By Published Year option added
+* Some styling fixed
 
 = 1.9 =
 * Search Books Button Text Option Added

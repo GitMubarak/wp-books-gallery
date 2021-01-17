@@ -105,7 +105,7 @@
     margin-bottom: 20px;
 }
 
-.wbg-pagination .page-numbers {
+.wbg-pagination .page-numbers li {
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -117,9 +117,13 @@
     font-weight: 600;
 }
 
-.wbg-pagination .page-numbers.current,
-a.page-numbers:hover {
-    background: #f9f9f9;
+div.wbg-pagination>ul.page-numbers>li>span.page-numbers.current {
+    display: block;
+    background: #DDD;
+}
+
+div.wbg-pagination>ul.page-numbers>li:hover {
+    background: #DDD;
 }
 
 

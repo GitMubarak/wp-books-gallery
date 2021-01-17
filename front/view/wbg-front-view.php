@@ -54,14 +54,21 @@ $wbg_btn_font_color           = isset( $wbgSearchStyles['wbg_btn_font_color'] ) 
 
 <?php
 // Shortcoded Options
-$wbgCategory          = isset( $attr['category'] ) ? $attr['category'] : '';
-$wbgDisplay           = isset( $attr['display'] ) ? $attr['display'] : '';
-$wbgPagination        = isset( $attr['pagination'] ) ? $attr['pagination'] : false;
+$wbgCategory        = isset( $attr['category'] ) ? $attr['category'] : '';
+$wbgDisplay         = isset( $attr['display'] ) ? $attr['display'] : '';
+$wbgPagination      = isset( $attr['pagination'] ) ? $attr['pagination'] : false;
 
-$wbgPaged             = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-$wbg_book_category    = $wbg_book_category = ( isset( $_REQUEST['wbg_category_s'] ) && filter_var( $_REQUEST['wbg_category_s'], FILTER_SANITIZE_STRING ) ) ? $_REQUEST['wbg_category_s'] : ''; //$_REQUEST['wbg_category_s'];
+// Search Items
+$wbgPaged           = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+$wbg_title_s        =  get_query_var('wbg_title_s', '');
+$wbg_category_s     =  get_query_var('wbg_category_s', '');
+$wbg_author_s       =  get_query_var('wbg_author_s', '');
+$wbg_publisher_s    =  get_query_var('wbg_publisher_s', '');
+$wbg_published_on_s =  get_query_var('wbg_published_on_s', '');
+$wbg_language_s     =  get_query_var('wbg_language_s', '');
+$wbg_isbn_s         =  get_query_var('wbg_isbn_s', '');
 
-// Main Query
+// Main Query Arguments
 $wbgBooksArr = array(
   'post_type'   => 'books',
   'post_status' => 'publish',
@@ -92,7 +99,7 @@ if( ( 'title' !== $wbg_gallary_sorting ) && ( 'date' !== $wbg_gallary_sorting ) 
   $wbgBooksArr['meta_key'] = $wbg_gallary_sorting;
 }
 
-// If Categor params found in shortcode
+// If Category params found in shortcode
 if( $wbgCategory != '' ) {
   $wbgBooksArr['tax_query'] = array(
     array(
@@ -104,23 +111,20 @@ if( $wbgCategory != '' ) {
 }
 
 // Search Query
-$wbg_title_s = ( isset( $_POST['wbg_title_s'] ) && ( sanitize_text_field( $_POST['wbg_title_s'] ) != '' ) ) ? sanitize_text_field( $_POST['wbg_title_s'] ) : '';
-if( '' != $wbg_title_s ) {
+if ( '' != $wbg_title_s ) {
   $wbgBooksArr['s'] = $wbg_title_s;
 }
 
-//$wbg_book_category = ( isset( $_POST['wbg_category_s'] ) && filter_var( $_POST['wbg_category_s'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_category_s'] : '';
-if( '' !== $wbg_book_category ) {
+if( '' !== $wbg_category_s ) {
   $wbgBooksArr['tax_query'] = array(
                                       array(
                                         'taxonomy' => 'book_category',
                                         'field' => 'name',
-                                        'terms' => $wbg_book_category
+                                        'terms' => $wbg_category_s
                                       )
                               );
 }
 
-$wbg_author_s = ( isset( $_POST['wbg_author_s'] ) && filter_var( $_POST['wbg_author_s'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_author_s'] : '';
 if( '' != $wbg_author_s ) {
   $wbgBooksArr['meta_query'] = array(
                                       array(
@@ -131,7 +135,6 @@ if( '' != $wbg_author_s ) {
                                   );
 }
 
-$wbg_publisher_s = ( isset( $_POST['wbg_publisher_s'] ) && filter_var( $_POST['wbg_publisher_s'], FILTER_SANITIZE_STRING ) ) ? $_POST['wbg_publisher_s'] : '';
 if( '' != $wbg_publisher_s ) {
   $wbgBooksArr['meta_query'] = array(
                                       array(
@@ -142,7 +145,6 @@ if( '' != $wbg_publisher_s ) {
                                   );
 }
 
-$wbg_isbn_s = ( isset( $_POST['wbg_isbn_s'] ) && ( sanitize_text_field( $_POST['wbg_isbn_s'] ) != '' ) ) ? $_POST['wbg_isbn_s'] : '';
 if( '' != $wbg_isbn_s ) {
   $wbgBooksArr['meta_query'] = array(
                                       array(
@@ -153,7 +155,6 @@ if( '' != $wbg_isbn_s ) {
                                   );
 }
 
-$wbg_language_s = ( isset( $_POST['wbg_language_s'] ) && ( sanitize_text_field( $_POST['wbg_language_s'] ) != '' ) ) ? $_POST['wbg_language_s'] : '';
 if( '' != $wbg_language_s ) {
   $wbgBooksArr['meta_query'] = array(
                                       array(
@@ -164,7 +165,6 @@ if( '' != $wbg_language_s ) {
                                   );
 }
 
-$wbg_published_on_s = ( isset( $_POST['wbg_published_on_s'] ) && ( sanitize_text_field( $_POST['wbg_published_on_s'] ) != '' ) ) ? $_POST['wbg_published_on_s'] : '';
 if( '' != $wbg_published_on_s ) {
   $wbgBooksArr['meta_query'] = array(
                                       array(
@@ -180,7 +180,7 @@ if( '' != $wbg_published_on_s ) {
 */
 if ( '1' === $wbg_display_search_panel ) {
   $wbg_book_categories  = get_terms( array( 'taxonomy' => 'book_category', 'hide_empty' => true, 'order' => $wbg_display_category_order ) );
-  if ( isset( $_POST['wbg_category_s'] ) && ( '' !== $_POST['wbg_category_s'] ) ) {
+  if ( '' !== $wbg_category_s ) {
     $wbg_authors_by_cat = "SELECT DISTINCT pm.meta_value
                           FROM $wpdb->posts p
                           LEFT JOIN $wpdb->term_relationships rel ON rel.object_id = p.ID
@@ -189,20 +189,16 @@ if ( '1' === $wbg_display_search_panel ) {
                           LEFT JOIN $wpdb->postmeta pm ON pm.post_id = p.ID
                           WHERE post_status = 'publish'
                           AND post_type = 'books'
-                          AND t.name = '". $_POST['wbg_category_s'] . "'
+                          AND t.name = '". $wbg_category_s. "'
                           AND tax.taxonomy = 'book_category'
                           AND pm.meta_key = 'wbg_author'
                           ORDER BY pm.meta_value {$wbg_display_author_order}";
     $wbg_authors  = $wpdb->get_results( $wbg_authors_by_cat, ARRAY_A );
   } else {
-  $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_author_order}", ARRAY_A );
+    $wbg_authors  = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_author' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_author_order}", ARRAY_A );
   }
-  // echo '<pre>';
-  // print_r( $wbg_authors );
   ?>
-
-  <!-- form action="<?php //echo esc_attr( get_permalink( get_the_ID() ) ); ?>" method="POST" id="wbg-search-form" -->
-  <form method="POST" action="<?php echo get_permalink($post->ID); ?>" id="wbg-search-form">
+  <form method="GET" action="<?php echo get_permalink($post->ID); ?>" id="wbg-search-form">
     <?php //if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
     <div class="wrap wbg-search-container">
       <?php
@@ -221,7 +217,7 @@ if ( '1' === $wbg_display_search_panel ) {
               <option value=""><?php esc_html_e('All Categories', WBG_TXT_DOMAIN); ?></option>
               <?php
               foreach( $wbg_book_categories as $book_category) { ?>
-                <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_book_category == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
+                <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_category_s == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
               <?php } ?>
           </select>
         </div>
@@ -298,11 +294,11 @@ $wbgBooks = new WP_Query( $wbgBooksArr );
 
 if ( $wbgBooks->have_posts() ) { 
   ?>
+  <!-- p><?php //printf('Total %d Books Found!', $wbgBooks->found_posts); ?></p -->
   <div class="wbg-main-wrapper <?php echo esc_attr( 'wbg-product-column-' . $wbgGalleryColumn ); ?> <?php echo esc_attr( 'wbg-product-column-mobile-' . $wbg_gallary_column_mobile ); ?>">
       <?php
         while( $wbgBooks->have_posts() ) {
           $wbgBooks->the_post();
-          global $post; 
           ?>
           <div class="wbg-item">
             <?php
@@ -379,20 +375,21 @@ if ( $wbgBooks->have_posts() ) {
 
         if ( $wbgTotalPages > 1 ) {
 
-          echo $wbgCurrentPage = max( 1, get_query_var('paged') );
-
-          echo paginate_links(array(
-            'base'      => get_pagenum_link(1) . '%_%',
-            'format'    => 'page/%#%',
-            'current'   => $wbgCurrentPage,
-            'total'     => $wbgTotalPages,
-            'prev_text' => __('« '),
-            'next_text' => __(' »'),
-            // here you can pass custom query string to the pagination url
-            'add_args' => array(
-                'wbg_category_s' => ( null !== $wbg_book_category ) ? $wbg_book_category : ''
-            )
-          ));
+          $wbgPaginateBig = 999999999; // need an unlikely integer
+          $wbgPaginateArgs = array(
+              'base' => str_replace( $wbgPaginateBig, '%#%', esc_url( get_pagenum_link( $wbgPaginateBig ) ) ),
+              'format' => '?page=%#%',
+              'total' => $wbgTotalPages,
+              'current' => max( 1, get_query_var( 'paged') ),
+              'show_all' => true,
+              'end_size' => 1,
+              'mid_size' => 2,
+              'prev_next' => False,
+              'prev_text' => __('« '),
+              'next_text' => __(' »'),
+              'type' => 'list',
+          );
+          echo paginate_links( $wbgPaginateArgs );
         }
         ?>
     </div>

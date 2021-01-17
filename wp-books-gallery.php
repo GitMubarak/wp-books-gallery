@@ -70,4 +70,19 @@ function wbg_custom_post_type_cat_filter( $query ) {
 }
 add_action('pre_get_posts', 'wbg_custom_post_type_cat_filter');
 
+/*
+* Custom Query Vars
+*/
+function themeslug_query_vars( $qvars ) {
+    $qvars[] = 'wbg_title_s';
+    $qvars[] = 'wbg_category_s';
+    $qvars[] = 'wbg_author_s';
+    $qvars[] = 'wbg_publisher_s';
+    $qvars[] = 'wbg_published_on_s';
+    $qvars[] = 'wbg_isbn_s';
+    $qvars[] = 'wbg_language_s';
+    return $qvars;
+}
+add_filter( 'query_vars', 'themeslug_query_vars' );
+
 register_deactivation_hook(__FILE__, array($wbg, WBG_PRFX . 'unregister_settings'));
