@@ -3,7 +3,7 @@
 /**
  *	Admin Parent Class
  */
-class WBG_Admin
+class WBG_Admin 
 {
 	private $wbg_version;
 	private $wbg_assets_prefix;
@@ -49,8 +49,8 @@ class WBG_Admin
 
 		add_submenu_page(
 			$wbg_cpt_menu,
-			esc_html__('Get Help', WBG_TXT_DOMAIN),
-			esc_html__('Get Help', WBG_TXT_DOMAIN),
+			__('Help & Usage', WBG_TXT_DOMAIN),
+			__('Help & Usage', WBG_TXT_DOMAIN),
 			'manage_options',
 			'wbg-get-help',
 			array( $this, WBG_PRFX . 'get_help' )
@@ -164,7 +164,7 @@ class WBG_Admin
 	function wbg_book_details_metaboxes() {
 		add_meta_box(
 			'wbg_book_details_link',
-			'Book Details',
+			'Book Information',
 			array($this, WBG_PRFX . 'book_details_content'),
 			'books',
 			'normal',
@@ -172,163 +172,69 @@ class WBG_Admin
 		);
 	}
 
-	function wbg_book_details_content()
-	{
+	function wbg_book_details_content() {
+
 		global $post;
+
 		// Nonce field to validate form request came from current site
-		wp_nonce_field(basename(__FILE__), 'event_fields');
-		$wbg_author 		= get_post_meta($post->ID, 'wbg_author', true);
-		$wbg_download_link 	= get_post_meta($post->ID, 'wbg_download_link', true);
-		$wbg_publisher 		= get_post_meta($post->ID, 'wbg_publisher', true);
-		$wbg_published_on 	= get_post_meta($post->ID, 'wbg_published_on', true);
-		$wbg_isbn 			= get_post_meta($post->ID, 'wbg_isbn', true);
-		$wbg_pages 			= get_post_meta($post->ID, 'wbg_pages', true);
-		$wbg_country 		= get_post_meta($post->ID, 'wbg_country', true);
-		$wbg_language 		= get_post_meta($post->ID, 'wbg_language', true);
-		$wbg_dimension 		= get_post_meta($post->ID, 'wbg_dimension', true);
-		$wbg_filesize 		= get_post_meta($post->ID, 'wbg_filesize', true);
-		$wbg_status 		= get_post_meta($post->ID, 'wbg_status', true);
-?>
-<table class="form-table">
-    <tr class="wbg_author">
-        <th scope="row">
-            <label for="wbg_author"><?php esc_html_e('Author:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_author" value="<?php echo esc_attr($wbg_author); ?>" class="regular-text">
-        </td>
-    </tr>
-    <tr class="wbg_publisher">
-        <th scope="row">
-            <label for="wbg_publisher"><?php esc_html_e('Publisher:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_publisher" value="<?php echo esc_attr($wbg_publisher); ?>"
-                class="regular-text">
-        </td>
-    </tr>
-    <tr class="wbg_published_on">
-        <th scope="row">
-            <label for="wbg_published_on"><?php esc_html_e('Published On:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_published_on" id="wbg_published_on"
-                value="<?php echo esc_attr($wbg_published_on); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_isbn">
-        <th scope="row">
-            <label for="wbg_isbn"><?php esc_html_e('ISBN:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_isbn" value="<?php echo esc_attr($wbg_isbn); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_pages">
-        <th scope="row">
-            <label for="wbg_pages"><?php esc_html_e('Pages:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_pages" value="<?php echo esc_attr($wbg_pages); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_country">
-        <th scope="row">
-            <label for="wbg_country"><?php esc_html_e('Country:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_country" value="<?php echo esc_attr($wbg_country); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_language">
-        <th scope="row">
-            <label for="wbg_language"><?php esc_html_e('Language:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_language" value="<?php echo esc_attr($wbg_language); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_dimension">
-        <th scope="row">
-            <label for="wbg_dimension"><?php esc_html_e('Dimension:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_dimension" value="<?php echo esc_attr($wbg_dimension); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_download_link">
-        <th scope="row">
-            <label for="wbg_download_link"><?php esc_html_e('External Url:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_download_link" value="<?php echo esc_attr($wbg_download_link); ?>"
-                class="widefat">
-        </td>
-    </tr>
-    <tr class="wbg_filesize">
-        <th scope="row">
-            <label for="wbg_filesize"><?php esc_html_e('File Size:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <input type="text" name="wbg_filesize" value="<?php echo esc_attr($wbg_filesize); ?>" class="medium-text">
-        </td>
-    </tr>
-    <tr class="wbg_status">
-        <th scope="row">
-            <label for="wbg_status"><?php esc_html_e('Status:', WBG_TXT_DOMAIN); ?></label>
-        </th>
-        <td>
-            <select name="wbg_status" class="small-text">
-                <option value="active" <?php if ('active' == esc_attr($wbg_status)) echo 'selected'; ?>>Active</option>
-                <option value="inactive" <?php if ('inactive' == esc_attr($wbg_status)) echo 'selected'; ?>>Inactive
-                </option>
-            </select>
-        </td>
-    </tr>
-</table>
-<?php
+		wp_nonce_field( basename(__FILE__), 'wbg_books_fields' );
+
+		$wbg_author 		= get_post_meta( $post->ID, 'wbg_author', true );
+		$wbg_download_link 	= get_post_meta( $post->ID, 'wbg_download_link', true );
+		$wbg_publisher 		= get_post_meta( $post->ID, 'wbg_publisher', true );
+		$wbg_published_on 	= get_post_meta( $post->ID, 'wbg_published_on', true );
+		$wbg_isbn 			= get_post_meta( $post->ID, 'wbg_isbn', true );
+		$wbg_pages 			= get_post_meta( $post->ID, 'wbg_pages', true );
+		$wbg_country 		= get_post_meta( $post->ID, 'wbg_country', true );
+		$wbg_language 		= get_post_meta( $post->ID, 'wbg_language', true );
+		$wbg_dimension 		= get_post_meta( $post->ID, 'wbg_dimension', true );
+		$wbg_filesize 		= get_post_meta( $post->ID, 'wbg_filesize', true );
+		$wbg_status 		= get_post_meta( $post->ID, 'wbg_status', true );
+
+		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'book-information.php';
+	
 	}
 
 	/**
-	 * Save the metabox data
+	 * Save books information meta data
 	 */
-	function wbg_save_book_meta($post_id)
-	{
+	function wbg_save_book_meta( $post_id ) {
+
 		global $post;
 
-		if (!current_user_can('edit_post', $post_id)) {
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return $post_id;
 		}
 
-		if (!isset($_POST['wbg_author']) || !wp_verify_nonce($_POST['event_fields'], basename(__FILE__))) {
+		if ( ! isset( $_POST['wbg_author'] ) || ! wp_verify_nonce( $_POST['wbg_books_fields'], basename(__FILE__) ) ) {
 			return $post_id;
 		}
 
-		$events_meta['wbg_author'] 			= (!empty($_POST['wbg_author']) && (sanitize_text_field($_POST['wbg_author']) != '')) ? sanitize_text_field($_POST['wbg_author']) : '';
-		$events_meta['wbg_download_link'] 	= (!empty($_POST['wbg_download_link']) && (sanitize_text_field($_POST['wbg_download_link']) != '')) ? sanitize_text_field($_POST['wbg_download_link']) : '';
-		$events_meta['wbg_publisher'] 		= (!empty($_POST['wbg_publisher']) && (sanitize_text_field($_POST['wbg_publisher']) != '')) ? sanitize_text_field($_POST['wbg_publisher']) : '';
-		$events_meta['wbg_published_on'] 	= (!empty($_POST['wbg_published_on']) && (sanitize_text_field($_POST['wbg_published_on']) != '')) ? sanitize_text_field($_POST['wbg_published_on']) : '';
-		$events_meta['wbg_isbn'] 			= (!empty($_POST['wbg_isbn']) && (sanitize_text_field($_POST['wbg_isbn']) != '')) ? sanitize_text_field($_POST['wbg_isbn']) : '';
-		$events_meta['wbg_pages'] 			= (!empty($_POST['wbg_pages']) && (sanitize_text_field($_POST['wbg_pages']) != '')) ? sanitize_text_field($_POST['wbg_pages']) : '';
-		$events_meta['wbg_country'] 		= (!empty($_POST['wbg_country']) && (sanitize_text_field($_POST['wbg_country']) != '')) ? sanitize_text_field($_POST['wbg_country']) : '';
-		$events_meta['wbg_language'] 		= (!empty($_POST['wbg_language']) && (sanitize_text_field($_POST['wbg_language']) != '')) ? sanitize_text_field($_POST['wbg_language']) : '';
-		$events_meta['wbg_dimension'] 		= (!empty($_POST['wbg_dimension']) && (sanitize_text_field($_POST['wbg_dimension']) != '')) ? sanitize_text_field($_POST['wbg_dimension']) : '';
-		$events_meta['wbg_filesize'] 		= (!empty($_POST['wbg_filesize']) && (sanitize_text_field($_POST['wbg_filesize']) != '')) ? sanitize_text_field($_POST['wbg_filesize']) : '';
-		$events_meta['wbg_status'] 			= (!empty($_POST['wbg_status']) && (sanitize_text_field($_POST['wbg_status']) != '')) ? sanitize_text_field($_POST['wbg_status']) : '';
+		$wbg_books_meta['wbg_author'] 			= (!empty($_POST['wbg_author']) && (sanitize_text_field($_POST['wbg_author']) != '')) ? sanitize_text_field($_POST['wbg_author']) : '';
+		$wbg_books_meta['wbg_download_link'] 	= (!empty($_POST['wbg_download_link']) && (sanitize_text_field($_POST['wbg_download_link']) != '')) ? sanitize_text_field($_POST['wbg_download_link']) : '';
+		$wbg_books_meta['wbg_publisher'] 		= (!empty($_POST['wbg_publisher']) && (sanitize_text_field($_POST['wbg_publisher']) != '')) ? sanitize_text_field($_POST['wbg_publisher']) : '';
+		$wbg_books_meta['wbg_published_on'] 	= (!empty($_POST['wbg_published_on']) && (sanitize_text_field($_POST['wbg_published_on']) != '')) ? sanitize_text_field($_POST['wbg_published_on']) : '';
+		$wbg_books_meta['wbg_isbn'] 			= (!empty($_POST['wbg_isbn']) && (sanitize_text_field($_POST['wbg_isbn']) != '')) ? sanitize_text_field($_POST['wbg_isbn']) : '';
+		$wbg_books_meta['wbg_pages'] 			= (!empty($_POST['wbg_pages']) && (sanitize_text_field($_POST['wbg_pages']) != '')) ? sanitize_text_field($_POST['wbg_pages']) : '';
+		$wbg_books_meta['wbg_country'] 			= (!empty($_POST['wbg_country']) && (sanitize_text_field($_POST['wbg_country']) != '')) ? sanitize_text_field($_POST['wbg_country']) : '';
+		$wbg_books_meta['wbg_language'] 		= (!empty($_POST['wbg_language']) && (sanitize_text_field($_POST['wbg_language']) != '')) ? sanitize_text_field($_POST['wbg_language']) : '';
+		$wbg_books_meta['wbg_dimension'] 		= (!empty($_POST['wbg_dimension']) && (sanitize_text_field($_POST['wbg_dimension']) != '')) ? sanitize_text_field($_POST['wbg_dimension']) : '';
+		$wbg_books_meta['wbg_filesize'] 		= (!empty($_POST['wbg_filesize']) && (sanitize_text_field($_POST['wbg_filesize']) != '')) ? sanitize_text_field($_POST['wbg_filesize']) : '';
+		$wbg_books_meta['wbg_status'] 			= (!empty($_POST['wbg_status']) && (sanitize_text_field($_POST['wbg_status']) != '')) ? sanitize_text_field($_POST['wbg_status']) : '';
 
-		foreach ($events_meta as $key => $value) :
-			if ('revision' === $post->post_type) {
+		foreach ( $wbg_books_meta as $key => $value ) {
+			if ( 'revision' === $post->post_type ) {
 				return;
 			}
-			if (get_post_meta($post_id, $key, false)) {
-				update_post_meta($post_id, $key, $value);
+			if ( get_post_meta( $post_id, $key, false ) ) {
+				update_post_meta( $post_id, $key, $value );
 			} else {
-				add_post_meta($post_id, $key, $value);
+				add_post_meta( $post_id, $key, $value );
 			}
-			if (!$value) {
-				delete_post_meta($post_id, $key);
+			if ( ! $value ) {
+				delete_post_meta( $post_id, $key );
 			}
-		endforeach;
+		}
 	}
 
 	function wbg_general_settings() {
@@ -345,22 +251,13 @@ class WBG_Admin
 			return;
 		}
 	
-		$tab = isset ( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : null;
+		$tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : null;
 
 		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'search-settings.php';
 	}
 
 	function wbg_get_help() {
-		?>
-		<div id="poststuff" class="wrap">
-			<div class="postbox">
-				<div style="padding:20px;">
-					<h3>For any help or query please visit us:</h3>
-					<a href="<?php echo esc_url('http://plugin.hossnimubarak.com/wp-books-gallery/'); ?>" class="button button-primary" target="_blank"><?php esc_attr_e('Support & Live Chat', WBG_TXT_DOMAIN); ?></a>
-				</div>
-			</div>
-		</div>
-		<?php
+		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'help-usage.php';
 	}
 
 	function wbg_display_notification($type, $msg) { 
@@ -371,6 +268,41 @@ class WBG_Admin
 			<?php esc_html_e( $msg, WBG_TXT_DOMAIN ); ?>
 		</div>
 		<?php 
+	}
+
+	function wbg_admin_sidebar() {
+		?>
+		<div class="hmacs-admin-sidebar" style="width: 277px; float: left; margin-top: 5px;">
+			<div class="postbox">
+				<h3 class="hndle"><span>Support / Bug / Customization</span></h3>
+				<div class="inside centered">
+					<p>Please feel free to let us know if you have any bugs to report. Your report / suggestion can make the plugin awesome!</p>
+					<p style="margin-bottom: 1px! important;"><a href="http://hossnimubarak.com/#hossnimubarak-contact" target="_blank" class="button button-primary">Get Support</a></p>
+				</div>
+			</div>
+			<div class="postbox">
+				<h3 class="hndle"><span>Buy us a coffee</span></h3>
+				<div class="inside centered">
+					<p>If you like the plugin, would you like to support the advancement of this plugin?</p>
+					<p style="margin-bottom: 1px! important;"><a href='https://www.paypal.me/mhmrajib' class="button button-primary" target="_blank">Donate</a></p>
+				</div>
+			</div>
+
+			<div class="postbox">
+				<h3 class="hndle"><span>Join HM Plugin on facebook</span></h3>
+				<div class="inside centered">
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/hmplugin&amp;width&amp;height=258&amp;colorscheme=dark&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:220px;" allowTransparency="true"></iframe>
+				</div>
+			</div>
+
+			<div class="postbox">
+				<h3 class="hndle"><span>Follow HM Plugin on twitter</span></h3>
+				<div class="inside centered">
+					<a href="https://twitter.com/hmplugin" target="_blank" class="button button-secondary">Follow @hmplugin<span class="dashicons dashicons-twitter" style="position: relative; top: 3px; margin-left: 3px; color: #0fb9da;"></span></a>
+				</div>
+			</div>
+		</div> 
+		<?php
 	}
 }
 ?>

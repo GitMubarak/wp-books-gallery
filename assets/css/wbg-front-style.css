@@ -134,7 +134,7 @@ div.wbg-pagination>ul.page-numbers>li:hover {
     width: 100%;
     display: grid;
     grid-gap: 0px;
-    padding: 0 10px 0 0;
+    padding: 0 10px 10px 0;
     grid-template-columns: repeat( auto-fit, minmax(150px, 1fr));
     margin-bottom: 10px;
     background: #F2F2F2;
@@ -142,7 +142,7 @@ div.wbg-pagination>ul.page-numbers>li:hover {
 
 .wbg-search-container .wbg-search-item {
     border: 0px solid #009900;
-    padding: 10px 0 10px 10px;
+    padding: 10px 0 0 10px;
     min-height: 50px;
     text-align: center;
 }

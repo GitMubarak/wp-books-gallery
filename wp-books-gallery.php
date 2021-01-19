@@ -5,8 +5,8 @@
  * Plugin URI:	http://wordpress.org/plugins/wp-books-gallery/
  * Description:	A simple plugin to display Books Gallery in your Page, using Shortcode: [wp_books_gallery]
  * Version:		2.0
- * Author:		Hossni Mubarak
- * Author URI:	http://www.hossnimubarak.com
+ * Author:		HM Plugin
+ * Author URI:	https://hmplugin.com
  * License:		GPL-2.0+
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -31,7 +31,7 @@ function wbg_plugin_row_meta( $links, $file ) {
 
     if ( WBG_SLUG === $file ) {
         $row_meta = array(
-          'wbg_donation'    => '<a href="' . esc_url( 'https://www.paypal.me/mhmrajib/2' ) . '" target="_blank" aria-label="' . esc_attr__( 'Plugin Additional Links', 'domain' ) . '" style="color:green; font-weight: bold;">' . esc_html__( 'Donate us', 'domain' ) . '</a>'
+          'wbg_donation'    => '<a href="' . esc_url( 'https://www.paypal.me/mhmrajib/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Plugin Additional Links', 'domain' ) . '" style="color:green; font-weight: bold;">' . esc_html__( 'Donate us', 'domain' ) . '</a>'
         );
  
         return array_merge( $links, $row_meta );

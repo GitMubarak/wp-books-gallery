@@ -70,3 +70,87 @@ input#wbg_shortcode {
     padding-bottom: 4px;
     width: 200px;
 }
+
+
+/* Common Admin Styles Started */
+
+.hmacs_personal_wrap.hmacs_personal_help {
+    background: #fff;
+    margin: 0 20px 20px 0;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.hmacs_personal_wrap h1 {
+    font-size: 30px !important;
+    text-align: center;
+    border: none;
+    padding: 15px 10px !important;
+    background: #6029F6;
+    color: #fff;
+    margin: 15px !important;
+    line-height: 1;
+    /*margin: 12px 12px 20px 0 !important;*/
+    border-radius: 3px;
+}
+
+.hmacs_personal_wrap .help-link {
+    padding: 16px;
+}
+
+.hmacs-hlp-btn {
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    margin-right: 10px;
+    padding: 12px 16px;
+}
+
+.hmacs-hlp-btn:hover {
+    color: #f1f1f1;
+}
+
+.hmacs-btn-1 {
+    background-color: #49B158;
+}
+
+.hmacs-btn-2 {
+    background-color: #A62F66;
+}
+
+.hmacs-btn-3 {
+    background-color: #F25757;
+}
+
+.hmacs-btn-4 {
+    background-color: #FC368C;
+}
+
+.hmacs_personal_wrap .hire-ad {
+    padding: 10px 20px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #ffffe0;
+    border: 1px solid #E6DB55;
+    margin: 30px auto;
+    width: 60%;
+}
+
+.hmacs-admin-sidebar .postbox {
+    text-align: center;
+}
+
+.hmacs-admin-sidebar .postbox h3.hndle {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
+    border-bottom: 1px solid #ccd0d4;
+}
+
+
+/* Common Admin Styles Ended */
