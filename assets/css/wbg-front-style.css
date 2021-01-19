@@ -223,8 +223,6 @@ div.wbg-pagination>ul.page-numbers>li:hover {
     border: none;
 }
 
-.wbg-details-wrapper .wbg-details-summary {}
-
 .wbg-details-wrapper .wbg-details-summary h5.wbg-details-book-title {
     margin-bottom: 10px;
     color: #242424;

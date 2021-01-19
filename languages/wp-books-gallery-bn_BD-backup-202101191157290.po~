@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WBG Bangla\n"
 "POT-Creation-Date: 2020-10-12 21:52+0600\n"
-"PO-Revision-Date: 2021-01-19 11:58+0000\n"
+"PO-Revision-Date: 2021-01-19 11:57+0000\n"
 "Last-Translator: Hossni Mubarak\n"
 "Language-Team: Bengali (Bangladesh)\n"
 "MIME-Version: 1.0\n"
@@ -156,7 +156,7 @@ msgstr "বোতামের রঙঃ"
 
 #: admin/view/wbg-search-settings.php:113
 msgid "Button Font Color:"
-msgstr "বোতামের লেখার রঙঃ"
+msgstr ""
 
 #: admin/view/wbg-search-settings.php:89
 msgid "Button:"
@@ -534,7 +534,7 @@ msgstr "বিন্যাস আপডেট"
 
 #: admin/view/wbg-search-settings.php:121
 msgid "Update Styles"
-msgstr "ডিজাইন আপডেট"
+msgstr ""
 
 #: admin/cls-books-gallery-admin.php:103
 msgid "View Book"
