@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name:	WP Books Gallery
- * Plugin URI:	http://wordpress.org/plugins/wp-books-gallery/
+ * Plugin URI:	https://wordpress.org/plugins/wp-books-gallery/
  * Description:	A simple plugin to display Books Gallery in your Page, using Shortcode: [wp_books_gallery]
- * Version:		2.0
+ * Version:		2.1
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com
  * License:		GPL-2.0+
@@ -19,7 +19,7 @@ define( 'WBG_SLUG', plugin_basename( __FILE__ ) );
 define( 'WBG_PRFX', 'wbg_' );
 define( 'WBG_CLS_PRFX', 'cls-books-gallery-' );
 define( 'WBG_TXT_DOMAIN', 'wp-books-gallery' );
-define( 'WBG_VERSION', '2.0' );
+define( 'WBG_VERSION', '2.1' );
 
 require_once WBG_PATH . 'inc/' . WBG_CLS_PRFX . 'master.php';
 $wbg = new WBG_Master();
@@ -31,7 +31,7 @@ function wbg_plugin_row_meta( $links, $file ) {
 
     if ( WBG_SLUG === $file ) {
         $row_meta = array(
-          'wbg_donation'    => '<a href="' . esc_url( 'https://www.paypal.me/mhmrajib/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Plugin Additional Links', 'domain' ) . '" style="color:green; font-weight: bold;">' . esc_html__( 'Donate us', 'domain' ) . '</a>'
+          'wbg_donation'    => '<a href="' . esc_url( 'https://www.paypal.me/mhmrajib/' ) . '" target="_blank" aria-label="' . esc_attr__( 'Plugin Additional Links', 'wp-books-gallery' ) . '" style="color:green; font-weight: bold;">' . esc_html__( 'Donate us', 'wp-books-gallery' ) . '</a>'
         );
  
         return array_merge( $links, $row_meta );

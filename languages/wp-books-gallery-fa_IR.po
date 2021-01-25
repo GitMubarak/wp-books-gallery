@@ -1,0 +1,326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WBG Bangla\n"
+"POT-Creation-Date: 2020-10-20 21:38+0600\n"
+"PO-Revision-Date: 2020-11-25 05:04+0330\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-KeywordsList: esc_attr_e;esc_attr__;esc_html__;esc_html_e\n"
+"Last-Translator: \n"
+"Language: fa_IR\n"
+"X-Poedit-SearchPath-0: admin/view/wbg-details-settings.php\n"
+"X-Poedit-SearchPath-1: admin/view/wbg-general-settings.php\n"
+"X-Poedit-SearchPath-2: admin/view/wbg-search-settings.php\n"
+"X-Poedit-SearchPath-3: front/view/wbg-front-view.php\n"
+"X-Poedit-SearchPath-4: front/view/wbg-single-book.php\n"
+
+#: admin/view/wbg-details-settings.php:56
+msgid "Books Details Settings"
+msgstr "تنظیم مشخصات کتاب"
+
+#: admin/view/wbg-details-settings.php:66
+msgid "Display Author:"
+msgstr "نمایش نویسنده:"
+
+#: admin/view/wbg-details-settings.php:72
+msgid "Author Label:"
+msgstr "برچسب نویسنده:"
+
+#: admin/view/wbg-details-settings.php:81
+msgid "Display Category:"
+msgstr "نمایش دسته:"
+
+#: admin/view/wbg-details-settings.php:89
+msgid "Category Label:"
+msgstr "برچسب دسته:"
+
+#: admin/view/wbg-details-settings.php:98
+msgid "Display Publisher:"
+msgstr "نمایش ناشر:"
+
+#: admin/view/wbg-details-settings.php:106
+msgid "Publisher Label:"
+msgstr "برچسب ناشر:"
+
+#: admin/view/wbg-details-settings.php:115
+msgid "Display Publish Date:"
+msgstr "نمایش تاریخ انتشار:"
+
+#: admin/view/wbg-details-settings.php:121
+msgid "Publish Date Label:"
+msgstr "برچسب تاریخ انتشار:"
+
+#: admin/view/wbg-details-settings.php:128
+msgid "Date Format:"
+msgstr "قالب تاریخ:"
+
+#: admin/view/wbg-details-settings.php:132
+msgid "Full"
+msgstr "کامل"
+
+#: admin/view/wbg-details-settings.php:135
+msgid "Only Year"
+msgstr "فقط سال"
+
+#: admin/view/wbg-details-settings.php:140
+msgid "Display ISBN:"
+msgstr "نمایش شابک:"
+
+#: admin/view/wbg-details-settings.php:146
+msgid "ISBN Label:"
+msgstr "برچسب شابک:"
+
+#: admin/view/wbg-details-settings.php:155
+msgid "Display Pages:"
+msgstr "نمایش تعداد صفحات:"
+
+#: admin/view/wbg-details-settings.php:161
+msgid "Pages Label:"
+msgstr "برچسب تعداد صفحات:"
+
+#: admin/view/wbg-details-settings.php:170
+msgid "Display Country:"
+msgstr "نمایش کشور:"
+
+#: admin/view/wbg-details-settings.php:176
+msgid "Country Label:"
+msgstr "برچسب کشور:"
+
+#: admin/view/wbg-details-settings.php:185
+msgid "Display Language:"
+msgstr "نمایش زبان:"
+
+#: admin/view/wbg-details-settings.php:191
+msgid "Language Label:"
+msgstr "برچسب زبان:"
+
+#: admin/view/wbg-details-settings.php:200
+msgid "Display Dimension:"
+msgstr "نمایش ابعاد:"
+
+#: admin/view/wbg-details-settings.php:206
+msgid "Dimension Label:"
+msgstr "برچسب ابعاد:"
+
+#: admin/view/wbg-details-settings.php:215
+msgid "Display File Size:"
+msgstr "نمایش اندازه فایل:"
+
+#: admin/view/wbg-details-settings.php:221
+msgid "File Size Label:"
+msgstr "برچسب اندازه فایل:"
+
+#: admin/view/wbg-details-settings.php:230
+msgid "Display Download / BuyNow Button:"
+msgstr "نمایش دکمه دانلود/خرید:"
+
+#: admin/view/wbg-details-settings.php:238
+msgid "Display Description:"
+msgstr "نمایش شرح کتاب:"
+
+#: admin/view/wbg-details-settings.php:244
+msgid "Description Label:"
+msgstr "برچسب شرح کتاب:"
+
+#: admin/view/wbg-details-settings.php:253
+#: admin/view/wbg-general-settings.php:185
+#: admin/view/wbg-search-settings.php:196
+msgid "Update Settings"
+msgstr "تنظیمات بروزرسانی"
+
+#: admin/view/wbg-general-settings.php:38
+msgid "Books Gallery Settings"
+msgstr "تنظیمات گالری کتابها"
+
+#: admin/view/wbg-general-settings.php:47
+msgid "Gallary Columns:"
+msgstr "ستون های گالری:"
+
+#: admin/view/wbg-general-settings.php:51
+#: admin/view/wbg-general-settings.php:75
+msgid "--Select One--"
+msgstr "--انتخاب کنید--"
+
+#: admin/view/wbg-general-settings.php:52
+#: admin/view/wbg-general-settings.php:65
+msgid "2"
+msgstr "2"
+
+#: admin/view/wbg-general-settings.php:53
+msgid "3"
+msgstr "3"
+
+#: admin/view/wbg-general-settings.php:54
+msgid "4"
+msgstr "4"
+
+#: admin/view/wbg-general-settings.php:60
+msgid "Gallary Columns In Mobile:"
+msgstr "تعداد ستون ها در موبایل:"
+
+#: admin/view/wbg-general-settings.php:64
+msgid "1"
+msgstr "1"
+
+#: admin/view/wbg-general-settings.php:71
+msgid "Sorting By:"
+msgstr "مرتب کردن براساس:"
+
+#: admin/view/wbg-general-settings.php:76
+msgid "Name"
+msgstr "نام"
+
+#: admin/view/wbg-general-settings.php:77
+msgid "Author"
+msgstr "مولف"
+
+#: admin/view/wbg-general-settings.php:78
+msgid "Date"
+msgstr "تاریخ"
+
+#: admin/view/wbg-general-settings.php:79
+msgid "Publisher"
+msgstr "ناشر"
+
+#: admin/view/wbg-general-settings.php:80
+msgid "Published On"
+msgstr "سال چاپ"
+
+#: admin/view/wbg-general-settings.php:81
+msgid "Language"
+msgstr "زبان"
+
+#: admin/view/wbg-general-settings.php:82
+msgid "Country"
+msgstr "کشور"
+
+#: admin/view/wbg-general-settings.php:89
+msgid "Open Book Details in New Tab?"
+msgstr "شرح کتاب در برگه جدید مرورگر باز شود؟"
+
+#: admin/view/wbg-general-settings.php:98
+msgid "Title Word Length:"
+msgstr "تعداد کلمات عنوان کتاب:"
+
+#: admin/view/wbg-general-settings.php:106
+msgid "Display Category?"
+msgstr "نمایش دسته کتاب؟"
+
+#: admin/view/wbg-general-settings.php:115
+msgid "Category Label Text:"
+msgstr "متن برچسب دسته:"
+
+#: admin/view/wbg-general-settings.php:124
+msgid "Display Author?"
+msgstr "نمایش مولف؟"
+
+#: admin/view/wbg-general-settings.php:133
+msgid "Author Label Text:"
+msgstr "متن برچسب نام مولف:"
+
+#: admin/view/wbg-general-settings.php:142
+msgid "Display Description?"
+msgstr "نمایش شرح کتاب؟"
+
+#: admin/view/wbg-general-settings.php:151
+msgid "Description Word Length:"
+msgstr "تعداد کلمات شرح کتاب:"
+
+#: admin/view/wbg-general-settings.php:159
+msgid "Display Buynow/Download Button?"
+msgstr "نمایش دکمه خرید/دانلود؟"
+
+#: admin/view/wbg-general-settings.php:168
+msgid "Buynow/Download Button Text:"
+msgstr "متن دکمه خرید/دانلود:"
+
+#: admin/view/wbg-general-settings.php:177
+msgid "Shortcode:"
+msgstr "شورت کد:"
+
+#: admin/view/wbg-search-settings.php:51
+msgid "Search Panel Settings"
+msgstr "تنظیمات پانل جستجو"
+
+#: admin/view/wbg-search-settings.php:74
+msgid "Button:"
+msgstr "دکمه:"
+
+#: admin/view/wbg-search-settings.php:80
+msgid "Button Color:"
+msgstr "رنگ دکمه:"
+
+#: admin/view/wbg-search-settings.php:89
+msgid "Button Border Color:"
+msgstr "رنگ حاشیه دکمه:"
+
+#: admin/view/wbg-search-settings.php:98
+msgid "Button Font Color:"
+msgstr "رنگ فونت دکمه:"
+
+#: admin/view/wbg-search-settings.php:106
+msgid "Update Styles"
+msgstr "بروزرسانی سبک ها"
+
+#: admin/view/wbg-search-settings.php:117
+msgid "Display Search Panel?"
+msgstr "نمایش پانل جستجو؟"
+
+#: admin/view/wbg-search-settings.php:125
+msgid "Search By Book Name?"
+msgstr "جستجو براساس نام کتاب؟"
+
+#: admin/view/wbg-search-settings.php:133
+msgid "Search By Category?"
+msgstr "جستجو براساس دسته؟"
+
+#: admin/view/wbg-search-settings.php:139
+#: admin/view/wbg-search-settings.php:157
+#: admin/view/wbg-search-settings.php:175
+msgid "Order By:"
+msgstr "مرتب کردن:"
+
+#: admin/view/wbg-search-settings.php:143
+#: admin/view/wbg-search-settings.php:161
+#: admin/view/wbg-search-settings.php:179
+msgid "Ascending"
+msgstr "صعودی"
+
+#: admin/view/wbg-search-settings.php:146
+#: admin/view/wbg-search-settings.php:164
+#: admin/view/wbg-search-settings.php:182
+msgid "Descending"
+msgstr "نزولی"
+
+#: admin/view/wbg-search-settings.php:151
+msgid "Search By Author?"
+msgstr "جستجو براساس مولف:"
+
+#: admin/view/wbg-search-settings.php:169
+msgid "Search By Publisher?"
+msgstr "جستجو براساس ناشر؟"
+
+#: admin/view/wbg-search-settings.php:187
+msgid "Search Button Text:"
+msgstr "متن دکمه جستجو:"
+
+#: front/view/wbg-front-view.php:166
+msgid "Book Name"
+msgstr "نام کتاب"
+
+#: front/view/wbg-front-view.php:175
+msgid "All Categories"
+msgstr "همه رشته ها"
+
+#: front/view/wbg-front-view.php:189
+msgid "All Authors"
+msgstr "همه مولفان"
+
+#: front/view/wbg-front-view.php:203
+msgid "All Publishers"
+msgstr "همه ناشران"

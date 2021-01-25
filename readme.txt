@@ -1,10 +1,10 @@
 === WordPress Books Gallery ===
-Contributors: mhmrajib
+Contributors: mhmrajib, hmplugin
 Donate link: https://www.paypal.me/mhmrajib
-Tags: book, gallery, store, affiliate, library
+Tags: book, gallery, store, Books, library
 Requires at least: 4.6
 Tested up to: 5.6
-Stable tag: 2.0
+Stable tag: 2.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ A simple plugin to display books in your Page area. Use shortcode: [wp_books_gal
 
 == Description ==
 
-This [WordPress Books Gallery](http://www.hossnimubarak.com) plugin will build a beautiful mobile-friendly Book Store/Gallery in a few minutes.
+This [WordPress Books Gallery](https://hmplugin.com) plugin will build a beautiful mobile-friendly Book Store/Gallery in a few minutes.
 
 When you click on a book, it will open with a details page, where you will find Book Cover, Author, Published On, Publisher, ISBN, Total Pages, Country, Language, Book Dimensions, File Size, Description etc. 
 Use the shortcode: [wp_books_gallery] to display your books in your web page.
@@ -116,15 +116,16 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 
 
 **👨‍💻 Demo / Support/ Live Chat:**
-[WordPress Books Gallery: Demo](http://demo.hmplugin.com/wp-books-gallery/)
+[WordPress Books Gallery: Demo](https://demo.hmplugin.com/wp-books-gallery/)
 
 
 **👍 Feedback/Rating:**
 If you find this plugin helpful, feel free to give us your valuable review. Rate us and share this plugin with your friends and others. This will motivate us and help us to grow.
+[Rate Us](https://wordpress.org/support/plugin/wp-books-gallery/reviews/#new-post)
 
 
 
-**🔥 Other Plugins from [HM Plugin](http://www.hossnimubarak.com)**
+**🔥 Other Plugins from [HM Plugin](https://hmplugin.com)**
 
 👉 [WP Books Gallery](https://wordpress.org/plugins/wp-books-gallery/) Books Gallery Plugin for WordPress
 👉 [Worldwide Breaking News Headlines](https://wordpress.org/plugins/worldwide-breaking-news-headlines/) Breaking News, Headlines Widget Plugin for WordPress
@@ -199,6 +200,9 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 8. WordPress Books Gallery Details Page View
 
 == Changelog ==
+
+= 2.1 =
+* Search problem to other page fixed
 
 = 2.0 =
 * Search problem to other page fixed
