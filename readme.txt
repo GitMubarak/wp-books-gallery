@@ -206,6 +206,11 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 * Applied readonly to published on field to avoid date issue
 * Change Month/Year option in datepicker for published on field
 * NULL value skipped from Year dropdown in search panel
+* Dot appearance between pagination fixed
+* Total books count showing on top
+* Download button background color option added
+* Download button font color option added
+* Some styling fixed
 
 = 2.0 =
 * Search problem to other page fixed

@@ -11,7 +11,7 @@ if( isset( $_POST['updateDetailSettings'] ) ) {
         'wbg_display_publisher'     => isset($_POST['wbg_display_publisher']) && filter_var($_POST['wbg_display_publisher'], FILTER_SANITIZE_NUMBER_INT) ? $_POST['wbg_display_publisher'] : '',
         'wbg_publisher_label'       => sanitize_text_field($_POST['wbg_publisher_label']) != '' ? sanitize_text_field($_POST['wbg_publisher_label']) : 'Publisher',
         'wbg_display_publish_date'  => isset($_POST['wbg_display_publish_date']) && filter_var($_POST['wbg_display_publish_date'], FILTER_SANITIZE_NUMBER_INT) ? $_POST['wbg_display_publish_date'] : '',
-        'wbg_publish_date_label'    => sanitize_text_field($_POST['wbg_publish_date_label']) != '' ? sanitize_text_field($_POST['wbg_publish_date_label']) : 'Publish',
+        'wbg_publish_date_label'    => sanitize_text_field($_POST['wbg_publish_date_label']) != '' ? sanitize_text_field($_POST['wbg_publish_date_label']) : '',
         'wbg_publish_date_format'   => isset( $_POST['wbg_publish_date_format'] ) && filter_var( $_POST['wbg_publish_date_format'], FILTER_SANITIZE_STRING ) ? $_POST['wbg_publish_date_format'] : 'full',
         'wbg_display_isbn'          => ( isset( $_POST['wbg_display_isbn'] ) && filter_var( $_POST['wbg_display_isbn'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_isbn'] : '',
         'wbg_isbn_label'            => ( sanitize_text_field( $_POST['wbg_isbn_label'] ) != '' ) ? sanitize_text_field( $_POST['wbg_isbn_label'] ) : 'ISBN',
@@ -121,7 +121,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_publish_date_label"><?php esc_html_e('Publish Date Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_publish_date_label" class="medium-text" placeholder="Publish"
+                    <input type="text" name="wbg_publish_date_label" class="medium-text" placeholder="Published"
                         value="<?php echo esc_attr($wbgDetailSettings['wbg_publish_date_label']); ?>">
                 </td>
                 <th scope="row" style="text-align: right;">

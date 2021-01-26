@@ -95,6 +95,15 @@
     background: #269FC6;
 }
 
+h2.wbg-total-books-title {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    border: 0px solid #000;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
 
 /* Pagination */
 
@@ -122,7 +131,8 @@ div.wbg-pagination>ul.page-numbers>li>span.page-numbers.current {
     background: #DDD;
 }
 
-div.wbg-pagination>ul.page-numbers>li:hover {
+div.wbg-pagination>ul.page-numbers>li:hover,
+div.wbg-pagination>ul.page-numbers>li>a.page-numbers:hover {
     background: #DDD;
 }
 

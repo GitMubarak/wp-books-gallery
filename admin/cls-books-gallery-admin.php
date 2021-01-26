@@ -238,6 +238,13 @@ class WBG_Admin
 	}
 
 	function wbg_general_settings() {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+	
+		$tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : null;
+		
 		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'general-settings.php';
 	}
 

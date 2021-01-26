@@ -4,12 +4,18 @@
  *
  */
 
-get_header(); ?>
+get_header();
 
-<?php
+// Gallery Settings Content
 $wbgGeneralSettings         = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
 $wbg_buynow_btn_txt         = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Download';
 
+// Gallery Settings Styling
+$wbgGeneralStyling            = stripslashes_deep( unserialize( get_option('wbg_general_styles') ) );
+$wbg_download_btn_color       = isset( $wbgGeneralStyling['wbg_download_btn_color'] ) ? $wbgGeneralStyling['wbg_download_btn_color'] : '#0274be';
+$wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_font_color'] ) ? $wbgGeneralStyling['wbg_download_btn_font_color'] : '#FFFFFF';
+
+// Detail Settings
 $wbgDetailSettings          = stripslashes_deep( unserialize( get_option('wbg_detail_settings') ) );
 $wbgAuthorInfo              = isset( $wbgDetailSettings['wbg_author_info'] ) ? $wbgDetailSettings['wbg_author_info'] : 1;
 $wbgAuthorLabel             = ($wbgDetailSettings['wbg_author_label'] != '') ? $wbgDetailSettings['wbg_author_label'] : 'Author';
@@ -18,7 +24,7 @@ $wbgCategoryLabel           = ($wbgDetailSettings['wbg_category_label'] != '') ?
 $wbgDisplayPublisher        = isset($wbgDetailSettings['wbg_display_publisher']) ? $wbgDetailSettings['wbg_display_publisher'] : 1;
 $wbgPublisherLabel          = ($wbgDetailSettings['wbg_publisher_label'] != '') ? $wbgDetailSettings['wbg_publisher_label'] : 'Publisher';
 $wbg_display_publish_date   = isset($wbgDetailSettings['wbg_display_publish_date']) ? $wbgDetailSettings['wbg_display_publish_date'] : 1;
-$wbg_publish_date_label     = ($wbgDetailSettings['wbg_publish_date_label'] != '') ? $wbgDetailSettings['wbg_publish_date_label'] : 'Publish';
+$wbg_publish_date_label     = ($wbgDetailSettings['wbg_publish_date_label'] != '') ? $wbgDetailSettings['wbg_publish_date_label'] : 'Published';
 $wbg_publish_date_format    = isset( $wbgDetailSettings['wbg_publish_date_format'] ) ? $wbgDetailSettings['wbg_publish_date_format'] : 'full';
 $wbg_display_isbn           = isset( $wbgDetailSettings['wbg_display_isbn'] ) ? $wbgDetailSettings['wbg_display_isbn'] : '1';
 $wbg_isbn_label             = isset( $wbgDetailSettings['wbg_isbn_label'] ) ? $wbgDetailSettings['wbg_isbn_label'] : 'ISBN';
@@ -36,6 +42,13 @@ $wbg_display_download_button    = isset( $wbgDetailSettings['wbg_display_downloa
 $wbg_display_description    = isset( $wbgDetailSettings['wbg_display_description'] ) ? $wbgDetailSettings['wbg_display_description'] : '1';
 $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label'] ) ? $wbgDetailSettings['wbg_description_label'] : 'Description';
 ?>
+
+<style type="text/css">
+  .wbg-details-summary span a.wbg-btn {
+    background: <?php esc_html_e( $wbg_download_btn_color ); ?> !important;
+    color: <?php esc_html_e( $wbg_download_btn_font_color ); ?> !important;
+  }
+</style>
 
 <div class="wbg-details-wrapper">
     <?php 

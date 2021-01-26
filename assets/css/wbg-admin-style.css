@@ -1,5 +1,7 @@
 table.wbg-general-settings-table tr th,
 table.wbg-general-settings-table tr td,
+table.wbg-general-style-settings-table tr th,
+table.wbg-general-style-settings-table tr td,
 table.wbg-details-settings-table tr th,
 table.wbg-details-settings-table tr td,
 table.wbg-search-settings-table tr th,
@@ -11,10 +13,16 @@ table.wbg-search-style-settings-table tr td {
 }
 
 table.wbg-general-settings-table tr th,
+table.wbg-general-style-settings-table tr th,
 table.wbg-details-settings-table tr th,
 table.wbg-search-settings-table tr th,
 table.wbg-search-style-settings-table tr th {
     font-weight: 600;
+}
+
+table.wbg-search-settings-table tr td {
+    border: 1px solid #DDD;
+    background: #EAEAEA;
 }
 
 

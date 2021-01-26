@@ -1,7 +1,7 @@
 <?php
 global $wpdb, $post;
 
-// Gallery Settings
+// Gallery Settings Content
 $wbgGeneralSettings           = stripslashes_deep( unserialize( get_option('wbg_general_settings') ) );
 $wbgGalleryColumn             = ( $wbgGeneralSettings['wbg_gallary_column'] != '' ) ? $wbgGeneralSettings['wbg_gallary_column'] : 3;
 $wbg_book_cover_width         = isset( $wbgGeneralSettings['wbg_book_cover_width'] ) ? $wbgGeneralSettings['wbg_book_cover_width'] : 'default';
@@ -18,9 +18,12 @@ $wbg_display_description      = isset( $wbgGeneralSettings['wbg_display_descript
 $wbg_description_length       = isset( $wbgGeneralSettings['wbg_description_length'] ) ? $wbgGeneralSettings['wbg_description_length'] : 20;
 $wbg_display_buynow           = isset( $wbgGeneralSettings['wbg_display_buynow'] ) ? $wbgGeneralSettings['wbg_display_buynow'] : '1';
 $wbg_buynow_btn_txt           = isset( $wbgGeneralSettings['wbg_buynow_btn_txt'] ) ? $wbgGeneralSettings['wbg_buynow_btn_txt'] : 'Button';
-//$wbg_display_search_panel   = isset( $wbgGeneralSettings['wbg_display_search_panel'] ) ? $wbgGeneralSettings['wbg_display_search_panel'] : '';
-
 $wbg_books_order              = isset( $wbgGeneralSettings['wbg_books_order'] ) ? $wbgGeneralSettings['wbg_books_order'] : 'ASC';
+
+// Gallery Settings Styling
+$wbgGeneralStyling            = stripslashes_deep( unserialize( get_option('wbg_general_styles') ) );
+$wbg_download_btn_color       = isset( $wbgGeneralStyling['wbg_download_btn_color'] ) ? $wbgGeneralStyling['wbg_download_btn_color'] : '#0274be';
+$wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_font_color'] ) ? $wbgGeneralStyling['wbg_download_btn_font_color'] : '#FFFFFF';
 
 // Search Panel Settings
 $wbgSearchSettings            = stripslashes_deep( unserialize( get_option('wbg_search_settings') ) );
@@ -39,6 +42,7 @@ $wbg_display_search_language  = isset( $wbgSearchSettings['wbg_display_search_la
 $wbg_display_language_order   = isset( $wbgSearchSettings['wbg_display_language_order'] ) ? $wbgSearchSettings['wbg_display_language_order'] : 'asc';
 $wbg_display_search_isbn      = isset( $wbgSearchSettings['wbg_display_search_isbn'] ) ? $wbgSearchSettings['wbg_display_search_isbn'] : 1;
 
+// Search Panel Settings Styles
 $wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
 $wbg_btn_border_color         = isset( $wbgSearchStyles['wbg_btn_border_color'] ) ? $wbgSearchStyles['wbg_btn_border_color'] : '#317081';
@@ -54,6 +58,10 @@ $wbg_btn_font_color           = isset( $wbgSearchStyles['wbg_btn_font_color'] ) 
   .wbg-main-wrapper .wbg-item img {
     width: <?php echo ( 'full' === $wbg_book_cover_width ) ? '100%' : 'auto'; ?> !important;
     height: <?php echo ( 'full' === $wbg_book_cover_width ) ? 'auto' : '150px'; ?> !important;
+  }
+  .wbg-main-wrapper .wbg-item a.wbg-btn {
+    background: <?php esc_html_e( $wbg_download_btn_color ); ?> !important;
+    color: <?php esc_html_e( $wbg_download_btn_font_color ); ?> !important;
   }
 </style>
 
@@ -192,7 +200,9 @@ $wbgBooks = new WP_Query( $wbgBooksArr );
 
 if ( $wbgBooks->have_posts() ) { 
   ?>
-  <!-- p><?php //printf('Total %d Books Found!', $wbgBooks->found_posts); ?></p -->
+
+  <h2 class="wbg-total-books-title"><?php printf('Total <strong>%d</strong> Books Found!', $wbgBooks->found_posts); ?></h2>
+
   <div class="wbg-main-wrapper <?php echo esc_attr( 'wbg-product-column-' . $wbgGalleryColumn ); ?> <?php echo esc_attr( 'wbg-product-column-mobile-' . $wbg_gallary_column_mobile ); ?>">
       <?php
         while( $wbgBooks->have_posts() ) {
@@ -279,10 +289,8 @@ if ( $wbgBooks->have_posts() ) {
               'format' => '?page=%#%',
               'total' => $wbgTotalPages,
               'current' => max( 1, get_query_var( 'paged') ),
-              'show_all' => true,
               'end_size' => 1,
               'mid_size' => 2,
-              'prev_next' => False,
               'prev_text' => __('« '),
               'next_text' => __(' »'),
               'type' => 'list',
