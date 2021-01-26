@@ -38,9 +38,13 @@ if ( '' !== $wbg_category_s ) {
                 <option value=""><?php esc_html_e('All Years', WBG_TXT_DOMAIN); ?></option>
                 <?php
                 $wbg_years = $wpdb->get_results( "SELECT DISTINCT YEAR(meta_value) year FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_published_on' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_year_order}", ARRAY_A );
-                foreach( $wbg_years as $year ) { ?>
+                foreach( $wbg_years as $year ) { 
+                  if( NULL != $year['year'] ) { ?>
                     <option value="<?php echo esc_attr( $year['year'] ); ?>" <?php echo ( $wbg_published_on_s == $year['year'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $year['year'] ); ?></option>
-                <?php } ?>
+                    <?php 
+                  } 
+                }
+                ?>
             </select>
         </div>
         <?php

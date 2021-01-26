@@ -202,7 +202,10 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 == Changelog ==
 
 = 2.1 =
-* Search problem to other page fixed
+* Book status field changed dropdown to radio button
+* Applied readonly to published on field to avoid date issue
+* Change Month/Year option in datepicker for published on field
+* NULL value skipped from Year dropdown in search panel
 
 = 2.0 =
 * Search problem to other page fixed

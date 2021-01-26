@@ -22,7 +22,7 @@
         </th>
         <td>
             <input type="text" name="wbg_published_on" id="wbg_published_on"
-                value="<?php echo esc_attr($wbg_published_on); ?>" class="medium-text">
+                value="<?php echo esc_attr($wbg_published_on); ?>" class="medium-text" readonly>
         </td>
     </tr>
     <tr class="wbg_isbn">
@@ -87,11 +87,11 @@
             <label for="wbg_status"><?php esc_html_e('Status:', WBG_TXT_DOMAIN); ?></label>
         </th>
         <td>
-            <select name="wbg_status" class="small-text">
-                <option value="active" <?php if ('active' == esc_attr($wbg_status)) echo 'selected'; ?>>Active</option>
-                <option value="inactive" <?php if ('inactive' == esc_attr($wbg_status)) echo 'selected'; ?>>Inactive
-                </option>
-            </select>
+            <input type="radio" name="wbg_status" class="wbg_status" value="active" <?php echo ( 'inactive' !== $wbg_status ) ? 'checked' : ''; ?> >
+            <label for="wbg_status_active"><span></span><?php esc_html_e( 'Active', WBG_TXT_DOMAIN ); ?></label>
+                &nbsp;&nbsp;
+            <input type="radio" name="wbg_status" class="wbg_status" value="inactive" <?php echo ( 'inactive' === $wbg_status ) ? 'checked' : ''; ?> >
+            <label for="wbg_status_active"><span></span><?php esc_html_e( 'Inactive', WBG_TXT_DOMAIN ); ?></label>
         </td>
     </tr>
 </table>

@@ -10,7 +10,9 @@
     });
 
     $("#wbg_published_on").datepicker({
-        dateFormat: "yy-mm-dd"
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true,
     });
 
     $('.wbg-closebtn').on('click', function() {
