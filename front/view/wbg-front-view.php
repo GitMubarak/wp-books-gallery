@@ -41,6 +41,10 @@ $wbg_display_year_order       = isset( $wbgSearchSettings['wbg_display_year_orde
 $wbg_display_search_language  = isset( $wbgSearchSettings['wbg_display_search_language'] ) ? $wbgSearchSettings['wbg_display_search_language'] : 1;
 $wbg_display_language_order   = isset( $wbgSearchSettings['wbg_display_language_order'] ) ? $wbgSearchSettings['wbg_display_language_order'] : 'asc';
 $wbg_display_search_isbn      = isset( $wbgSearchSettings['wbg_display_search_isbn'] ) ? $wbgSearchSettings['wbg_display_search_isbn'] : 1;
+$wbg_search_category_default  = isset( $wbgSearchSettings['wbg_search_category_default'] ) ? $wbgSearchSettings['wbg_search_category_default'] : 'All Categories';
+$wbg_search_author_default    = isset( $wbgSearchSettings['wbg_search_author_default'] ) ? $wbgSearchSettings['wbg_search_author_default'] : 'All Authors';
+$wbg_search_publishers_default  = isset( $wbgSearchSettings['wbg_search_publishers_default'] ) ? $wbgSearchSettings['wbg_search_publishers_default'] : 'All Publishers';
+$wbg_search_year_default        = isset( $wbgSearchSettings['wbg_search_year_default'] ) ? $wbgSearchSettings['wbg_search_year_default'] : 'All Years';
 
 // Search Panel Settings Styles
 $wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
@@ -217,10 +221,10 @@ if ( $wbgBooks->have_posts() ) {
               $wbgDetailsExternal = '';
             }
             ?>
-            <a href="<?php echo esc_url( $wbgDetailsHref ); ?>" <?php printf( '%s', $wbgDetailsExternal ); ?>>
+            <a class="wgb-item-link" href="<?php echo esc_url( $wbgDetailsHref ); ?>" <?php printf( '%s', $wbgDetailsExternal ); ?>>
               <?php
                 if ( has_post_thumbnail() ) {
-                  the_post_thumbnail();
+                  the_post_thumbnail('full');
                 } else { ?>
                   <img src="<?php echo esc_attr( WBG_ASSETS . 'img/noimage.jpg' ); ?>" alt="No Image Available">
                 <?php

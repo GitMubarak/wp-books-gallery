@@ -51,6 +51,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
 </style>
 
 <div class="wbg-details-wrapper">
+
     <?php 
     if ( have_posts() ) {
         while (have_posts()) { the_post(); ?>

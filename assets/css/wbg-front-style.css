@@ -7,7 +7,7 @@
 
 .wbg-main-wrapper .wbg-item {
     border: 1px solid #DDD;
-    padding: 5px;
+    padding: 15px 10px;
     min-height: 300px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -24,34 +24,33 @@
     border: 0px solid #FF0000;
     height: 150px;
     width: auto;
-    margin: 0px auto 5px;
+    margin: 0 auto 15px;
     display: block;
 }
 
-.wbg-main-wrapper .wbg-item a {
+.wbg-main-wrapper .wbg-item a.wgb-item-link {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     display: inline-block;
-    border: 0px solid #000;
     text-decoration: none!important;
     width: 100%;
     outline: none;
     line-height: 22px;
     color: #242424;
     text-align: center;
-    margin: 0;
+    margin: 0 0 10px;
     padding: 0;
 }
 
-.wbg-main-wrapper .wbg-item a:hover {
+.wbg-main-wrapper .wbg-item a.wgb-item-link:hover {
     color: #999;
 }
 
-.wbg-main-wrapper .wbg-item a.active {
+.wbg-main-wrapper .wbg-item a.wgb-item-link.active {
     color: #242424;
 }
 
-.wbg-main-wrapper .wbg-item a:active {
+.wbg-main-wrapper .wbg-item a.wgb-item-link:active {
     outline: none;
     text-decoration: none !important;
 }
@@ -59,7 +58,7 @@
 .wbg-main-wrapper .wbg-item .wbg-description-content {
     font-size: 12px;
     color: #242424;
-    margin-top: 5px;
+    margin: 0 0 10px;
 }
 
 .wbg-main-wrapper .wbg-item span {
@@ -93,6 +92,10 @@
     width: auto;
     color: #EAEAEA;
     background: #269FC6;
+}
+
+.wbg-main-wrapper .wbg-item a.wbg-btn {
+    margin-top: 15px;
 }
 
 h2.wbg-total-books-title {
@@ -212,7 +215,7 @@ div.wbg-pagination>ul.page-numbers>li>a.page-numbers:hover {
 ********************/
 
 .wbg-details-wrapper {
-    width: 1000px;
+    width: 100%;
     margin: 150px auto;
     display: grid;
     grid-template-columns: 300px auto;
@@ -223,7 +226,7 @@ div.wbg-pagination>ul.page-numbers>li>a.page-numbers:hover {
 .wbg-details-wrapper .wbg-details-image {
     min-height: 100px;
     padding: 5px;
-    margin-right: 20px;
+    margin-right: 40px;
     width: 100%;
 }
 
@@ -231,6 +234,10 @@ div.wbg-pagination>ul.page-numbers>li>a.page-numbers:hover {
     width: 100%;
     height: auto;
     border: none;
+}
+
+.wbg-details-wrapper .wbg-details-summary {
+    padding-left: 20px;
 }
 
 .wbg-details-wrapper .wbg-details-summary h5.wbg-details-book-title {

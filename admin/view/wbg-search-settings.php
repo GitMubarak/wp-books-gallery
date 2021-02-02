@@ -18,6 +18,10 @@ if ( isset( $_POST['updateSearchSettings'] ) ) {
         'wbg_display_search_language'   => ( isset( $_POST['wbg_display_search_language'] ) && filter_var( $_POST['wbg_display_search_language'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_search_language'] : '',
         'wbg_display_language_order'    => isset( $_POST['wbg_display_language_order'] ) && filter_var( $_POST['wbg_display_language_order'], FILTER_SANITIZE_STRING ) ? $_POST['wbg_display_language_order'] : 'asc',
         'wbg_display_search_isbn'       => ( isset( $_POST['wbg_display_search_isbn'] ) && filter_var( $_POST['wbg_display_search_isbn'], FILTER_SANITIZE_NUMBER_INT ) ) ? $_POST['wbg_display_search_isbn'] : '',
+        'wbg_search_category_default'   => isset( $_POST['wbg_search_category_default'] ) ? sanitize_text_field( $_POST['wbg_search_category_default'] ) : 'All Categories',
+        'wbg_search_author_default'     => isset( $_POST['wbg_search_author_default'] ) ? sanitize_text_field( $_POST['wbg_search_author_default'] ) : 'All Authors',
+        'wbg_search_publishers_default' => isset( $_POST['wbg_search_publishers_default'] ) ? sanitize_text_field( $_POST['wbg_search_publishers_default'] ) : 'All Publishers',
+        'wbg_search_year_default'       => isset( $_POST['wbg_search_year_default'] ) ? sanitize_text_field( $_POST['wbg_search_year_default'] ) : 'All Years',
     );
     
     $wbgShowSearchMessage = update_option( 'wbg_search_settings', serialize( $wbgSearchSettingsInfo ) );
@@ -49,7 +53,10 @@ $wbg_display_year_order         = isset( $wbgSearchSettings['wbg_display_year_or
 $wbg_display_search_language    = isset( $wbgSearchSettings['wbg_display_search_language'] ) ? $wbgSearchSettings['wbg_display_search_language'] : 1;
 $wbg_display_language_order     = isset( $wbgSearchSettings['wbg_display_language_order'] ) ? $wbgSearchSettings['wbg_display_language_order'] : 'asc';
 $wbg_display_search_isbn        = isset( $wbgSearchSettings['wbg_display_search_isbn'] ) ? $wbgSearchSettings['wbg_display_search_isbn'] : 1;
-$wbg_search_category_default    = isset( $wbgSearchSettings['wbg_search_category_default'] ) ? $wbgSearchSettings['wbg_search_category_default'] : '';
+$wbg_search_category_default    = isset( $wbgSearchSettings['wbg_search_category_default'] ) ? $wbgSearchSettings['wbg_search_category_default'] : 'All Categories';
+$wbg_search_author_default      = isset( $wbgSearchSettings['wbg_search_author_default'] ) ? $wbgSearchSettings['wbg_search_author_default'] : 'All Authors';
+$wbg_search_publishers_default  = isset( $wbgSearchSettings['wbg_search_publishers_default'] ) ? $wbgSearchSettings['wbg_search_publishers_default'] : 'All Publishers';
+$wbg_search_year_default        = isset( $wbgSearchSettings['wbg_search_year_default'] ) ? $wbgSearchSettings['wbg_search_year_default'] : 'All Years';
 
 $wbgSearchStyles                = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                  = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
@@ -134,7 +141,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_panel"><?php esc_html_e('Display Search Panel?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_panel" class="wbg_display_search_panel" value="1" <?php echo ( '1' === $wbg_display_search_panel ) ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_panel" class="wbg_display_search_panel" id="wbg_display_search_panel" value="1" <?php echo ( '1' === $wbg_display_search_panel ) ? 'checked' : ''; ?> >
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_title">
@@ -142,7 +149,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_title"><?php esc_html_e('Search By Book Name?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_title" class="wbg_display_search_title" value="1" <?php echo ( '1' === $wbg_display_search_title ) ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_title" class="wbg_display_search_title" id="wbg_display_search_title" value="1" <?php echo ( '1' === $wbg_display_search_title ) ? 'checked' : ''; ?> >
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_category">
@@ -150,17 +157,17 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_category"><?php esc_html_e('Search By Category?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_category" class="wbg_display_search_category" value="1" <?php echo ( '1' === $wbg_display_search_category ) ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_category" class="wbg_display_search_category" id="wbg_display_search_category" value="1" <?php echo ( '1' === $wbg_display_search_category ) ? 'checked' : ''; ?> >
                                     </td>
                                     <th style="text-align: right;">
                                         <label for="wbg_display_category_order"><?php esc_html_e('Order By :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="radio" name="wbg_display_category_order" class="wbg_display_category_order" value="asc" <?php echo ( 'desc' !== $wbg_display_category_order ) ? 'checked' : ''; ?> >
-                                        <label for="default-templates"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_category_order" class="wbg_display_category_order" id="wbg_display_category_order_asc" value="asc" <?php echo ( 'desc' !== $wbg_display_category_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_category_order_asc"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
                                             &nbsp;&nbsp;
-                                        <input type="radio" name="wbg_display_category_order" class="wbg_display_category_order" value="desc" <?php echo ( 'desc' === $wbg_display_category_order ) ? 'checked' : ''; ?> >
-                                        <label for="csutom-design"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_category_order" class="wbg_display_category_order" id="wbg_display_category_order_desc" value="desc" <?php echo ( 'desc' === $wbg_display_category_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_category_order_desc"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
                                     </td>
                                     <th>
                                         <label for="wbg_search_category_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
@@ -174,17 +181,23 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_author"><?php esc_html_e('Search By Author?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_author" class="wbg_display_search_author" value="1" <?php echo ( '1' === $wbg_display_search_author ) ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_author" class="wbg_display_search_author" id="wbg_display_search_author" value="1" <?php echo ( '1' === $wbg_display_search_author ) ? 'checked' : ''; ?> >
                                     </td>
                                     <th style="text-align: right;">
                                         <label for="wbg_display_author_order"><?php esc_html_e('Order By :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="radio" name="wbg_display_author_order" class="wbg_display_author_order" value="asc" <?php echo ( 'desc' !== $wbg_display_author_order ) ? 'checked' : ''; ?> >
-                                        <label for="default-templates"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_author_order" class="wbg_display_author_order" id="wbg_display_author_order_asc" value="asc" <?php echo ( 'desc' !== $wbg_display_author_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_author_order_asc"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
                                             &nbsp;&nbsp;
-                                        <input type="radio" name="wbg_display_author_order" class="wbg_display_author_order" value="desc" <?php echo ( 'desc' === $wbg_display_author_order ) ? 'checked' : ''; ?> >
-                                        <label for="csutom-design"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_author_order" class="wbg_display_author_order" id="wbg_display_author_order_desc" value="desc" <?php echo ( 'desc' === $wbg_display_author_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_author_order_desc"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                    </td>
+                                    <th>
+                                        <label for="wbg_search_author_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="text" name="wbg_search_author_default" placeholder="All Authors" class="medium-text" value="<?php echo esc_attr( $wbg_search_author_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_publisher">
@@ -192,17 +205,23 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_publisher"><?php esc_html_e('Search By Publisher?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_publisher" class="wbg_display_search_publisher" value="1" <?php echo ( '1' === $wbg_display_search_publisher ) ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_publisher" class="wbg_display_search_publisher" id="wbg_display_search_publisher" value="1" <?php echo ( '1' === $wbg_display_search_publisher ) ? 'checked' : ''; ?> >
                                     </td>
                                     <th style="text-align: right;">
                                         <label for="wbg_display_publisher_order"><?php esc_html_e('Order By :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="radio" name="wbg_display_publisher_order" class="wbg_display_publisher_order" value="asc" <?php echo ( 'desc' !== $wbg_display_publisher_order ) ? 'checked' : ''; ?> >
-                                        <label for="default-templates"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_publisher_order" class="wbg_display_publisher_order" id="wbg_display_publisher_order_asc" value="asc" <?php echo ( 'desc' !== $wbg_display_publisher_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_publisher_order_asc"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
                                             &nbsp;&nbsp;
-                                        <input type="radio" name="wbg_display_publisher_order" class="wbg_display_publisher_order" value="desc" <?php echo ( 'desc' === $wbg_display_publisher_order ) ? 'checked' : ''; ?> >
-                                        <label for="csutom-design"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_publisher_order" class="wbg_display_publisher_order" id="wbg_display_publisher_order_desc" value="desc" <?php echo ( 'desc' === $wbg_display_publisher_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_publisher_order_desc"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                    </td>
+                                    <th>
+                                        <label for="wbg_search_publishers_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="text" name="wbg_search_publishers_default" placeholder="All Publishers" class="medium-text" value="<?php esc_attr_e( $wbg_search_publishers_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_year">
@@ -210,17 +229,23 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_year"><?php esc_html_e('Search By Year?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_year" class="wbg_display_search_year" value="1" <?php echo $wbg_display_search_year ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_year" class="wbg_display_search_year" id="wbg_display_search_year" value="1" <?php echo $wbg_display_search_year ? 'checked' : ''; ?> >
                                     </td>
                                     <th style="text-align: right;">
                                         <label for="wbg_display_year_order"><?php esc_html_e('Order By :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="radio" name="wbg_display_year_order" class="wbg_display_year_order" value="asc" <?php echo ( 'desc' !== $wbg_display_year_order ) ? 'checked' : ''; ?> >
-                                        <label for="default-templates"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_year_order" class="wbg_display_year_order" id="wbg_display_year_order_asc" value="asc" <?php echo ( 'desc' !== $wbg_display_year_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_year_order_asc"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
                                             &nbsp;&nbsp;
-                                        <input type="radio" name="wbg_display_year_order" class="wbg_display_year_order" value="desc" <?php echo ( 'desc' === $wbg_display_year_order ) ? 'checked' : ''; ?> >
-                                        <label for="csutom-design"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_year_order" class="wbg_display_year_order" id="wbg_display_year_order_desc" value="desc" <?php echo ( 'desc' === $wbg_display_year_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_year_order_desc"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                    </td>
+                                    <th>
+                                        <label for="wbg_search_year_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="text" name="wbg_search_year_default" placeholder="All Years" class="medium-text" value="<?php esc_attr_e( $wbg_search_year_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_language">

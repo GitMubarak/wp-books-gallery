@@ -35,7 +35,7 @@ if ( '' !== $wbg_category_s ) {
         ?>
         <div class="wbg-search-item">
             <select id="wbg_published_on_s" name="wbg_published_on_s">
-                <option value=""><?php esc_html_e('All Years', WBG_TXT_DOMAIN); ?></option>
+                <option value=""><?php esc_html_e( $wbg_search_year_default ); ?></option>
                 <?php
                 $wbg_years = $wpdb->get_results( "SELECT DISTINCT YEAR(meta_value) year FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_published_on' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_year_order}", ARRAY_A );
                 foreach( $wbg_years as $year ) { 
@@ -70,7 +70,7 @@ if ( '' !== $wbg_category_s ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_category_s" name="wbg_category_s">
-              <option value=""><?php esc_html_e('All Categories', WBG_TXT_DOMAIN); ?></option>
+              <option value=""><?php esc_html_e( $wbg_search_category_default ); ?></option>
               <?php
               foreach( $wbg_book_categories as $book_category) { ?>
                 <option value="<?php echo esc_attr( $book_category->name ); ?>" <?php echo ( $wbg_category_s == $book_category->name ) ? "Selected" : "" ; ?> ><?php echo esc_html( $book_category->name ); ?></option>
@@ -85,7 +85,7 @@ if ( '' !== $wbg_category_s ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_author_s" name="wbg_author_s">
-              <option value=""><?php esc_html_e('All Authors', WBG_TXT_DOMAIN); ?></option>
+              <option value=""><?php esc_html_e( $wbg_search_author_default ); ?></option>
               <?php
               foreach( $wbg_authors as $author ) { ?>
                 <option value="<?php echo esc_attr( $author['meta_value'] ); ?>" <?php echo ( $wbg_author_s == $author['meta_value'] ) ? "Selected" : "" ; ?> ><?php echo esc_html( $author['meta_value'] ); ?></option>
@@ -100,7 +100,7 @@ if ( '' !== $wbg_category_s ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_publisher_s" name="wbg_publisher_s">
-              <option value=""><?php esc_html_e('All Publishers', WBG_TXT_DOMAIN); ?></option>
+              <option value=""><?php esc_html_e( $wbg_search_publishers_default ); ?></option>
               <?php
               $wbg_publishers = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_publisher' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_publisher_order}", ARRAY_A );
               foreach( $wbg_publishers as $publisher ) { ?>
