@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Books Gallery\n"
-"POT-Creation-Date: 2021-02-03 18:43+0600\n"
+"POT-Creation-Date: 2021-02-04 00:50+0600\n"
 "PO-Revision-Date: 2020-10-12 21:14+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
