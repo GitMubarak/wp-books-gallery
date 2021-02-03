@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Books Gallery\n"
-"POT-Creation-Date: 2021-01-19 17:28+0600\n"
+"POT-Creation-Date: 2021-02-03 18:43+0600\n"
 "PO-Revision-Date: 2020-10-12 21:14+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -31,7 +31,7 @@ msgid "Book Detail Settings"
 msgstr ""
 
 #: admin/cls-books-gallery-admin.php:43 admin/cls-books-gallery-admin.php:44
-#: admin/view/wbg-search-settings.php:61
+#: admin/view/wbg-search-settings.php:76
 msgid "Search Panel Settings"
 msgstr ""
 
@@ -135,6 +135,10 @@ msgstr ""
 msgid "Book Categories"
 msgstr ""
 
+#: admin/cls-books-gallery-admin.php:167
+msgid "Book Information"
+msgstr ""
+
 #: admin/view/wbg-book-information.php:4
 msgid "Author:"
 msgstr ""
@@ -179,378 +183,471 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
-#: admin/view/wbg-details-settings.php:56
-msgid "Books Details Settings"
+#: admin/view/wbg-book-information.php:91
+msgid "Active"
 msgstr ""
 
-#: admin/view/wbg-details-settings.php:66
+#: admin/view/wbg-book-information.php:94
+msgid "Inactive"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:57
+msgid "Book Details Settings"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:71
 msgid "Display Author:"
 msgstr ""
 
-#: admin/view/wbg-details-settings.php:72
+#: admin/view/wbg-details-settings.php:77
 msgid "Author Label:"
 msgstr ""
 
-#: admin/view/wbg-details-settings.php:81
-msgid "Display Category:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:89
-msgid "Category Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:98
-msgid "Display Publisher:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:106
-msgid "Publisher Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:115
-msgid "Display Publish Date:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:121
-msgid "Publish Date Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:128
-msgid "Date Format:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:132
-#: admin/view/wbg-general-settings.php:80
-msgid "Full"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:135
-msgid "Only Year"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:140
-msgid "Display ISBN:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:146
-msgid "ISBN Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:155
-msgid "Display Pages:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:161
-msgid "Pages Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:170
-msgid "Display Country:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:176
-msgid "Country Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:185
-msgid "Display Language:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:191
-msgid "Language Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:200
-msgid "Display Dimension:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:206
-msgid "Dimension Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:215
-msgid "Display File Size:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:221
-msgid "File Size Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:230
-msgid "Display Download / BuyNow Button:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:238
-msgid "Display Description:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:244
-msgid "Description Label:"
-msgstr ""
-
-#: admin/view/wbg-details-settings.php:253
-#: admin/view/wbg-general-settings.php:219
-#: admin/view/wbg-search-settings.php:256
-msgid "Update Settings"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:45
-msgid "Books Gallery Settings"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:54
-msgid "Gallary Columns:"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:57
-msgid "Desktop:"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:59
-#: admin/view/wbg-general-settings.php:67
-msgid "2"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:60
-msgid "3"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:61
-msgid "4"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:64
-msgid "Mobile:"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:66
-msgid "1"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:73
-msgid "Book Cover Width:"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:77
-msgid "Default"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:85
-msgid "Sorting By:"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:89
-msgid "--Select One--"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:90
-msgid "Name"
-msgstr ""
-
-#: admin/view/wbg-general-settings.php:91
+#: admin/view/wbg-details-settings.php:80
+#: admin/view/wbg-general-settings.php:162
 msgid "Author"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:92
-msgid "Date"
+#: admin/view/wbg-details-settings.php:86
+msgid "Display Category:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:93
+#: admin/view/wbg-details-settings.php:94
+msgid "Category Label:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:97
+msgid "Category"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:103
+msgid "Display Publisher:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:111
+msgid "Publisher Label:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:114
+#: admin/view/wbg-general-settings.php:164
 msgid "Publisher"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:94
-msgid "Published On"
+#: admin/view/wbg-details-settings.php:120
+msgid "Display Publish Date:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:95
-msgid "Language"
+#: admin/view/wbg-details-settings.php:126
+msgid "Publish Date Label:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:96
+#: admin/view/wbg-details-settings.php:129
+msgid "Published"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:133
+msgid "Date Format:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:137
+#: admin/view/wbg-general-settings.php:151
+msgid "Full"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:140
+msgid "Only Year"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:145
+msgid "Display ISBN:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:151
+msgid "ISBN Label:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:154
+#: admin/view/wbg-search-settings.php:179
+msgid "ISBN"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:160
+msgid "Display Pages:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:166
+msgid "Pages Label:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:169
+msgid "Pages"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:175
+msgid "Display Country:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:181
+msgid "Country Label:"
+msgstr ""
+
+#: admin/view/wbg-details-settings.php:184
+#: admin/view/wbg-general-settings.php:167
 msgid "Country"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:100
-#: admin/view/wbg-search-settings.php:155
-#: admin/view/wbg-search-settings.php:173
-#: admin/view/wbg-search-settings.php:191
-#: admin/view/wbg-search-settings.php:209
-#: admin/view/wbg-search-settings.php:227
-msgid "Order By:"
+#: admin/view/wbg-details-settings.php:190
+msgid "Display Language:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:104
-#: admin/view/wbg-search-settings.php:159
-#: admin/view/wbg-search-settings.php:177
-#: admin/view/wbg-search-settings.php:195
-#: admin/view/wbg-search-settings.php:213
-#: admin/view/wbg-search-settings.php:231
-msgid "Ascending"
+#: admin/view/wbg-details-settings.php:196
+msgid "Language Label:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:107
-#: admin/view/wbg-search-settings.php:162
-#: admin/view/wbg-search-settings.php:180
-#: admin/view/wbg-search-settings.php:198
-#: admin/view/wbg-search-settings.php:216
-#: admin/view/wbg-search-settings.php:234
-msgid "Descending"
+#: admin/view/wbg-details-settings.php:199
+#: admin/view/wbg-general-settings.php:166
+msgid "Language"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:113
-msgid "Enable Book Details Page?"
+#: admin/view/wbg-details-settings.php:205
+msgid "Display Dimension:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:123
-msgid "Open Book Details in New Tab?"
+#: admin/view/wbg-details-settings.php:211
+msgid "Dimension Label:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:132
-msgid "Title Word Length:"
+#: admin/view/wbg-details-settings.php:214
+msgid "Dimension"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:140
-msgid "Display Category?"
+#: admin/view/wbg-details-settings.php:220
+msgid "Display File Size:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:149
-msgid "Category Label Text:"
+#: admin/view/wbg-details-settings.php:226
+msgid "File Size Label:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:158
-msgid "Display Author?"
+#: admin/view/wbg-details-settings.php:229
+msgid "File Size"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:167
-msgid "Author Label Text:"
+#: admin/view/wbg-details-settings.php:235
+msgid "Display Download / BuyNow Button:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:176
-msgid "Display Description?"
+#: admin/view/wbg-details-settings.php:243
+msgid "Display Description:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:185
-msgid "Description Word Length:"
+#: admin/view/wbg-details-settings.php:249
+msgid "Description Label:"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:193
-msgid "Display Buynow/Download Button?"
+#: admin/view/wbg-details-settings.php:252
+msgid "Description"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:202
-msgid "Buynow/Download Button Text:"
+#: admin/view/wbg-details-settings.php:258
+#: admin/view/wbg-general-settings.php:290
+#: admin/view/wbg-search-settings.php:313
+msgid "Save Settings"
 msgstr ""
 
-#: admin/view/wbg-general-settings.php:211
-msgid "Shortcode:"
+#: admin/view/wbg-general-settings.php:61
+msgid "Books Gallery Settings"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:84
-msgid "Styles Settings"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:89
-msgid "Button:"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:95
-msgid "Button Color:"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:104
-msgid "Button Border Color:"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:113
-msgid "Button Font Color:"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:121
-msgid "Update Styles"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:128
+#: admin/view/wbg-general-settings.php:73 admin/view/wbg-search-settings.php:88
 msgid "Content Settings"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:133
+#: admin/view/wbg-general-settings.php:74 admin/view/wbg-search-settings.php:89
+msgid "Styles Settings"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:84 admin/view/wbg-search-settings.php:99
+msgid "Styles Settings :"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:89
+msgid "Download Button:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:95
+#: admin/view/wbg-search-settings.php:110
+msgid "Button Color:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:104
+#: admin/view/wbg-search-settings.php:128
+msgid "Button Font Color:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:112
+msgid "Save Styles"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:119
+#: admin/view/wbg-search-settings.php:143
+msgid "Content Settings :"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:125
+msgid "Gallary Columns:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:128
+msgid "Desktop:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:130
+#: admin/view/wbg-general-settings.php:138
+msgid "2"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:131
+msgid "3"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:132
+msgid "4"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:135
+msgid "Mobile:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:137
+msgid "1"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:144
+msgid "Book Cover Width:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:148
+msgid "Default"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:156
+msgid "Sorting By:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:160
+msgid "--Select One--"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:161
+msgid "Name"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:163
+msgid "Date"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:165
+msgid "Published On"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:171
+msgid "Order By:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:175
+#: admin/view/wbg-search-settings.php:194
+#: admin/view/wbg-search-settings.php:218
+#: admin/view/wbg-search-settings.php:242
+#: admin/view/wbg-search-settings.php:266
+#: admin/view/wbg-search-settings.php:290
+msgid "Ascending"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:178
+#: admin/view/wbg-search-settings.php:197
+#: admin/view/wbg-search-settings.php:221
+#: admin/view/wbg-search-settings.php:245
+#: admin/view/wbg-search-settings.php:269
+#: admin/view/wbg-search-settings.php:293
+msgid "Descending"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:184
+msgid "Enable Book Details Page?"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:194
+msgid "Open Book Details in New Tab?"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:203
+msgid "Title Word Length:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:211
+msgid "Display Category?"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:220
+msgid "Category Label Text:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:223
+msgid "Category:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:229
+msgid "Display Author?"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:238
+msgid "Author Label Text:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:241
+msgid "By:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:247
+msgid "Display Description?"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:256
+msgid "Description Word Length:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:264
+msgid "Display Buynow/Download Button?"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:273
+msgid "Buynow/Download Button Text:"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:276
+msgid "Download/Buynow"
+msgstr ""
+
+#: admin/view/wbg-general-settings.php:282
+msgid "Shortcode:"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:104
+msgid "Button:"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:119
+msgid "Button Border Color:"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:136
+msgid "Update Styles"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:148
 msgid "Display Search Panel?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:141
+#: admin/view/wbg-search-settings.php:156
 msgid "Search By Book Name?"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:149
-msgid "Search By Category?"
+#: admin/view/wbg-search-settings.php:162
+#: admin/view/wbg-search-settings.php:176
+msgid "Placeholder Text :"
 msgstr ""
 
-#: admin/view/wbg-search-settings.php:167
-msgid "Search By Author?"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:185
-msgid "Search By Publisher?"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:203
-msgid "Search By Year?"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:221
-msgid "Search By Language?"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:239
-msgid "Search By ISBN?"
-msgstr ""
-
-#: admin/view/wbg-search-settings.php:247
-msgid "Search Button Text:"
-msgstr ""
-
-#: front/view/wbg-front-view.php:286
-msgid "« "
-msgstr ""
-
-#: front/view/wbg-front-view.php:287
-msgid " »"
-msgstr ""
-
-#: front/view/wbg-front-view.php:297
-msgid "No books found."
-msgstr ""
-
-#: front/view/wbg-single-book.php:130
-#, php-format
-msgid "%d Pages"
-msgstr ""
-
-#: front/view/wgb-search-panel.php:28
+#: admin/view/wbg-search-settings.php:165
 msgid "Book Name"
 msgstr ""
 
-#: front/view/wgb-search-panel.php:38
-msgid "All Years"
+#: admin/view/wbg-search-settings.php:170
+msgid "Search By ISBN?"
 msgstr ""
 
-#: front/view/wgb-search-panel.php:54
-msgid "All Languages"
+#: admin/view/wbg-search-settings.php:184
+msgid "Search By Category?"
 msgstr ""
 
-#: front/view/wgb-search-panel.php:69
+#: admin/view/wbg-search-settings.php:190
+#: admin/view/wbg-search-settings.php:214
+#: admin/view/wbg-search-settings.php:238
+#: admin/view/wbg-search-settings.php:262
+#: admin/view/wbg-search-settings.php:286
+msgid "Order By :"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:200
+#: admin/view/wbg-search-settings.php:224
+#: admin/view/wbg-search-settings.php:248
+#: admin/view/wbg-search-settings.php:272
+#: admin/view/wbg-search-settings.php:296
+msgid "Default Option :"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:203
 msgid "All Categories"
 msgstr ""
 
-#: front/view/wgb-search-panel.php:84
+#: admin/view/wbg-search-settings.php:208
+msgid "Search By Author?"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:227
 msgid "All Authors"
 msgstr ""
 
-#: front/view/wgb-search-panel.php:99
+#: admin/view/wbg-search-settings.php:232
+msgid "Search By Publisher?"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:251
 msgid "All Publishers"
 msgstr ""
 
-#: front/view/wgb-search-panel.php:114
-msgid "ISBN"
+#: admin/view/wbg-search-settings.php:256
+msgid "Search By Year?"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:275
+msgid "All Years"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:280
+msgid "Search By Language?"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:299
+msgid "All Languages"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:304
+msgid "Search Button Text:"
+msgstr ""
+
+#: admin/view/wbg-search-settings.php:307
+msgid "Search Books"
+msgstr ""
+
+#: front/view/wbg-front-view.php:211
+#, php-format
+msgid "Total <strong>%d</strong> Books Found!"
+msgstr ""
+
+#: front/view/wbg-front-view.php:301
+msgid "« "
+msgstr ""
+
+#: front/view/wbg-front-view.php:302
+msgid " »"
+msgstr ""
+
+#: front/view/wbg-front-view.php:312
+msgid "No books found."
+msgstr ""
+
+#: front/view/wbg-single-book.php:144
+#, php-format
+msgid "%d Pages"
 msgstr ""

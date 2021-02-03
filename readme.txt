@@ -30,18 +30,14 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Add Unlimited Books
 * Fully Responsive Plugin
 * Search By Various Options
-* Active/Inactive A Bbook
+* Active/Inactive Book
 * Number Of Books To Be Shown ( Using Shortcode )
 * Display Books By Category  ( Using Shortcode )
 * Pagination ( Using Shortcode )
 * Search By ISBN
 * Search By Language
 * Search By Published Year
-
-
-**📋 Translation Ready:**
-
-* POT file included (/languages/)
+* Display total number of books
 
 
 **✅ Options In Gallery Settings **
@@ -62,6 +58,7 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Books display order ASC/DESC
 * Enable/Disable books details page
 * Books cover width full/default
+* BuyNow/Download Button Text/Background Color Option
 
 
 **✅ Options In Search Panel **
@@ -80,7 +77,8 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 * Publisher Order ASC/DESC in Search Panel
 * Show/Hide Year Search Option
 * ASC/DESC Year Order in Search Panel
-* Show/Hide ISBN seacrh Option
+* Show/Hide ISBN Seacrh Option
+* Set Default Option for Search Dropdown Items
 
 
 **✅ Options In Books Details Settings **
@@ -113,6 +111,13 @@ WordPress Books Gallery is a simple, effective and powerful plugin to showcase y
 <strong> Showing Books from a category </strong>
 
 <pre> [wp_books_gallery category="Noble"] </pre>
+
+
+**📋 Translation Ready:**
+
+* POT file included (/languages/)
+* Bengoli translation available
+* Farsi (Iran) translation available
 
 
 **👨‍💻 Demo / Support/ Live Chat:**
@@ -210,6 +215,7 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 * Total books count showing on top
 * Download button background color option added
 * Download button font color option added
+* Default Option for search items
 * Some styling fixed
 
 = 2.0 =

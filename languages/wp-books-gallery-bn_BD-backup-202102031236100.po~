@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WBG Bangla\n"
 "POT-Creation-Date: 2020-10-12 21:52+0600\n"
-"PO-Revision-Date: 2021-02-03 12:43+0000\n"
+"PO-Revision-Date: 2021-02-03 12:33+0000\n"
 "Last-Translator: Hossni Mubarak\n"
-"Language-Team: Bengali (Bangladesh)\n"
+"Language-Team: বাংলা\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -135,10 +135,6 @@ msgstr "বইয়ের বিশদ বিন্যাস"
 msgid "Book Details Settings"
 msgstr "বইয়ের বিশদ বিন্যাস"
 
-#: admin/cls-books-gallery-admin.php:167
-msgid "Book Information"
-msgstr "বইয়ের তথ্য"
-
 #: admin/view/wbg-search-settings.php:165
 msgid "Book Name"
 msgstr "বইয়ের নাম"
@@ -203,6 +199,7 @@ msgstr "বিষয়বস্তু বিন্যাস"
 
 #: admin/view/wbg-general-settings.php:119
 #: admin/view/wbg-search-settings.php:143
+#, fuzzy
 #| msgid "Content Settings"
 msgid "Content Settings :"
 msgstr "বিষয়বস্তু বিন্যাস"
@@ -610,6 +607,7 @@ msgid "Styles Settings"
 msgstr "ডিজাইন বিন্যাস"
 
 #: admin/view/wbg-general-settings.php:84 admin/view/wbg-search-settings.php:99
+#, fuzzy
 #| msgid "Styles Settings"
 msgid "Styles Settings :"
 msgstr "ডিজাইন বিন্যাস"

@@ -22,10 +22,11 @@ if ( '' !== $wbg_category_s ) {
   <?php //if(function_exists('wp_nonce_field')) { wp_nonce_field('wbg_nonce_field'); } ?>
   <div class="wrap wbg-search-container">
     <?php
-    if( '1' === $wbg_display_search_title ) {
+    // Book Title
+    if ( $wbg_display_search_title ) {
       ?>
       <div class="wbg-search-item">
-        <input type="text" name="wbg_title_s" placeholder="<?php esc_attr_e('Book Name', WBG_TXT_DOMAIN); ?>" value="<?php echo esc_attr( $wbg_title_s ); ?>">
+        <input type="text" name="wbg_title_s" placeholder="<?php esc_attr_e( $wbg_display_search_title_placeholder ); ?>" value="<?php echo esc_attr( $wbg_title_s ); ?>">
       </div>
       <?php
     }
@@ -55,7 +56,7 @@ if ( '' !== $wbg_category_s ) {
         ?>
         <div class="wbg-search-item">
             <select id="wbg_language_s" name="wbg_language_s">
-                <option value=""><?php esc_html_e('All Languages', WBG_TXT_DOMAIN); ?></option>
+                <option value=""><?php esc_html_e( $wbg_search_language_default ); ?></option>
                 <?php
                 $wbg_languages = $wpdb->get_results( "SELECT DISTINCT meta_value FROM $wpdb->postmeta pm, $wpdb->posts p WHERE meta_key = 'wbg_language' and p.post_type = 'books' ORDER BY meta_value {$wbg_display_language_order}", ARRAY_A );
                 foreach( $wbg_languages as $lang ) { ?>
@@ -65,6 +66,7 @@ if ( '' !== $wbg_category_s ) {
         </div>
         <?php
     }
+
     // Categories Started
     if( '1' === $wbg_display_search_category ) {
         ?>
@@ -96,7 +98,7 @@ if ( '' !== $wbg_category_s ) {
     }
 
     // Publishers Started
-    if( '1' === $wbg_display_search_publisher ) {
+    if ( '1' === $wbg_display_search_publisher ) {
         ?>
         <div class="wbg-search-item">
           <select id="wbg_publisher_s" name="wbg_publisher_s">
@@ -112,10 +114,10 @@ if ( '' !== $wbg_category_s ) {
     }
     
     // ISBN Started
-    if( $wbg_display_search_isbn ) {
+    if ( $wbg_display_search_isbn ) {
       ?>
       <div class="wbg-search-item">
-          <input type="text" name="wbg_isbn_s" placeholder="<?php esc_attr_e('ISBN', WBG_TXT_DOMAIN); ?>" value="<?php echo esc_attr( $wbg_isbn_s ); ?>">
+          <input type="text" name="wbg_isbn_s" placeholder="<?php esc_attr_e( $wbg_display_search_isbn_placeholder ); ?>" value="<?php echo esc_attr( $wbg_isbn_s ); ?>">
       </div>
       <?php
     }

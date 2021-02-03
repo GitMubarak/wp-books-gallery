@@ -95,23 +95,23 @@ class WBG_Admin
 
 	function wbg_custom_post_type() {
 		$labels = array(
-			'name'                	=> __('Books'),
-			'singular_name'       	=> __('Book'),
-			'menu_name'           	=> __('WBG Books'),
-			'parent_item_colon'   	=> __('Parent Book'),
-			'all_items'           	=> __('All Books'),
-			'view_item'           	=> __('View Book'),
-			'add_new_item'        	=> __('Add New Book'),
-			'add_new'             	=> __('Add New'),
-			'edit_item'           	=> __('Edit Book'),
-			'update_item'         	=> __('Update Book'),
-			'search_items'        	=> __('Search Book'),
-			'not_found'           	=> __('Not Found'),
-			'not_found_in_trash'  	=> __('Not found in Trash')
+			'name'                	=> __('Books', WBG_TXT_DOMAIN),
+			'singular_name'       	=> __('Book', WBG_TXT_DOMAIN),
+			'menu_name'           	=> __('WBG Books', WBG_TXT_DOMAIN),
+			'parent_item_colon'   	=> __('Parent Book', WBG_TXT_DOMAIN),
+			'all_items'           	=> __('All Books', WBG_TXT_DOMAIN),
+			'view_item'           	=> __('View Book', WBG_TXT_DOMAIN),
+			'add_new_item'        	=> __('Add New Book', WBG_TXT_DOMAIN),
+			'add_new'             	=> __('Add New', WBG_TXT_DOMAIN),
+			'edit_item'           	=> __('Edit Book', WBG_TXT_DOMAIN),
+			'update_item'         	=> __('Update Book', WBG_TXT_DOMAIN),
+			'search_items'        	=> __('Search Book', WBG_TXT_DOMAIN),
+			'not_found'           	=> __('Not Found', WBG_TXT_DOMAIN),
+			'not_found_in_trash'  	=> __('Not found in Trash', WBG_TXT_DOMAIN)
 		);
 		$args = array(
-			'label'               	=> __('books'),
-			'description'         	=> __('Description For Books'),
+			'label'               	=> __('books', WBG_TXT_DOMAIN),
+			'description'         	=> __('Description For Books', WBG_TXT_DOMAIN),
 			'labels'              	=> $labels,
 			'supports'            	=> array('title', 'editor', 'thumbnail'),
 			'public'              	=> true,
@@ -140,7 +140,7 @@ class WBG_Admin
 		$labels = array(
 			'name' 				=> _x('Book Categories', 'taxonomy general name'),
 			'singular_name' 	=> _x('Book Category', 'taxonomy singular name'),
-			'search_items' 		=>  __('Search Book Categories'),
+			'search_items' 		=> __('Search Book Categories'),
 			'all_items' 		=> __('All Book Categories'),
 			'parent_item' 		=> __('Parent Book Category'),
 			'parent_item_colon'	=> __('Parent Book Category:'),
@@ -148,7 +148,7 @@ class WBG_Admin
 			'update_item' 		=> __('Update Book Category'),
 			'add_new_item' 		=> __('Add New Book Category'),
 			'new_item_name' 	=> __('New Book Category Name'),
-			'menu_name' 		=> __('Book Categories'),
+			'menu_name' 		=> __('Book Categories', WBG_TXT_DOMAIN),
 		);
 
 		register_taxonomy('book_category', array('books'), array(
@@ -164,7 +164,7 @@ class WBG_Admin
 	function wbg_book_details_metaboxes() {
 		add_meta_box(
 			'wbg_book_details_link',
-			'Book Information',
+			__('Book Information', WBG_TXT_DOMAIN),
 			array($this, WBG_PRFX . 'book_details_content'),
 			'books',
 			'normal',

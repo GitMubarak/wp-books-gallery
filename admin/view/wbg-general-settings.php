@@ -70,8 +70,8 @@ $wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_fo
     <div class="hmacs-wrap">
 
         <nav class="nav-tab-wrapper">
-            <a href="?post_type=books&page=wbg-general-settings&tab=content" class="nav-tab <?php if ( $tab !== 'styles' ) { ?>nav-tab-active<?php } ?>">Content Settings</a>
-            <a href="?post_type=books&page=wbg-general-settings&tab=styles" class="nav-tab <?php if ( $tab === 'styles' ) { ?>nav-tab-active<?php } ?>">Styles Settings</a>
+            <a href="?post_type=books&page=wbg-general-settings&tab=content" class="nav-tab <?php if ( $tab !== 'styles' ) { ?>nav-tab-active<?php } ?>"><?php _e('Content Settings', WBG_TXT_DOMAIN); ?></a>
+            <a href="?post_type=books&page=wbg-general-settings&tab=styles" class="nav-tab <?php if ( $tab === 'styles' ) { ?>nav-tab-active<?php } ?>"><?php _e('Styles Settings', WBG_TXT_DOMAIN); ?></a>
         </nav>
 
         <div class="hmacs_personal_wrap hmacs_personal_help" style="width: 845px; float: left; margin-top: 5px;">
@@ -109,7 +109,7 @@ $wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_fo
                                     </td>
                                 </tr>
                             </table>
-                            <p class="submit"><button id="updateGeneralStyles" name="updateGeneralStyles" class="button button-primary"><?php esc_attr_e('Save Styles', WBG_TXT_DOMAIN); ?></button></p>
+                            <p class="submit"><button id="updateGeneralStyles" name="updateGeneralStyles" class="button button-primary"><?php _e('Save Styles', WBG_TXT_DOMAIN); ?></button></p>
 
                         </form>
                         <?php
@@ -220,7 +220,7 @@ $wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_fo
                                         <label for="wbg_cat_label_txt"><?php esc_html_e('Category Label Text:', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_cat_label_txt" placeholder="Category:" class="medium-text"
+                                        <input type="text" name="wbg_cat_label_txt" placeholder="<?php _e('Category:', WBG_TXT_DOMAIN); ?>" class="medium-text"
                                             value="<?php echo esc_attr($wbgGeneralSettings['wbg_cat_label_txt']); ?>">
                                     </td>
                                 </tr>
@@ -238,7 +238,7 @@ $wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_fo
                                         <label for="wbg_author_label_txt"><?php esc_html_e('Author Label Text:', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_author_label_txt" placeholder="By:" class="medium-text"
+                                        <input type="text" name="wbg_author_label_txt" placeholder="<?php _e('By:', WBG_TXT_DOMAIN); ?>" class="medium-text"
                                             value="<?php echo esc_attr($wbgGeneralSettings['wbg_author_label_txt']); ?>">
                                     </td>
                                 </tr>
@@ -273,7 +273,7 @@ $wbg_download_btn_font_color    = isset( $wbgGeneralStyling['wbg_download_btn_fo
                                         <label for="wbg_buynow_btn_txt"><?php esc_html_e('Buynow/Download Button Text:', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_buynow_btn_txt" placeholder="Download / Buynow" class="medium-text"
+                                        <input type="text" name="wbg_buynow_btn_txt" placeholder="<?php _e('Download/Buynow', WBG_TXT_DOMAIN); ?>" class="medium-text"
                                             value="<?php echo esc_attr( $wbg_buynow_btn_txt ); ?>">
                                     </td>
                                 </tr>

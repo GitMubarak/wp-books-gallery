@@ -22,6 +22,9 @@ if ( isset( $_POST['updateSearchSettings'] ) ) {
         'wbg_search_author_default'     => isset( $_POST['wbg_search_author_default'] ) ? sanitize_text_field( $_POST['wbg_search_author_default'] ) : 'All Authors',
         'wbg_search_publishers_default' => isset( $_POST['wbg_search_publishers_default'] ) ? sanitize_text_field( $_POST['wbg_search_publishers_default'] ) : 'All Publishers',
         'wbg_search_year_default'       => isset( $_POST['wbg_search_year_default'] ) ? sanitize_text_field( $_POST['wbg_search_year_default'] ) : 'All Years',
+        'wbg_search_language_default'   => isset( $_POST['wbg_search_language_default'] ) ? sanitize_text_field( $_POST['wbg_search_language_default'] ) : 'All Languages',
+        'wbg_display_search_isbn_placeholder'   => isset( $_POST['wbg_display_search_isbn_placeholder'] ) ? sanitize_text_field( $_POST['wbg_display_search_isbn_placeholder'] ) : 'ISBN',
+        'wbg_display_search_title_placeholder'  => isset( $_POST['wbg_display_search_title_placeholder'] ) ? sanitize_text_field( $_POST['wbg_display_search_title_placeholder'] ) : 'Book Name',
     );
     
     $wbgShowSearchMessage = update_option( 'wbg_search_settings', serialize( $wbgSearchSettingsInfo ) );
@@ -57,6 +60,10 @@ $wbg_search_category_default    = isset( $wbgSearchSettings['wbg_search_category
 $wbg_search_author_default      = isset( $wbgSearchSettings['wbg_search_author_default'] ) ? $wbgSearchSettings['wbg_search_author_default'] : 'All Authors';
 $wbg_search_publishers_default  = isset( $wbgSearchSettings['wbg_search_publishers_default'] ) ? $wbgSearchSettings['wbg_search_publishers_default'] : 'All Publishers';
 $wbg_search_year_default        = isset( $wbgSearchSettings['wbg_search_year_default'] ) ? $wbgSearchSettings['wbg_search_year_default'] : 'All Years';
+$wbg_search_language_default    = isset( $wbgSearchSettings['wbg_search_language_default'] ) ? $wbgSearchSettings['wbg_search_language_default'] : 'All Languages';
+$wbg_display_search_isbn_placeholder    = isset( $wbgSearchSettings['wbg_display_search_isbn_placeholder'] ) ? $wbgSearchSettings['wbg_display_search_isbn_placeholder'] : 'ISBN';
+$wbg_display_search_title_placeholder   = isset( $wbgSearchSettings['wbg_display_search_title_placeholder'] ) ? $wbgSearchSettings['wbg_display_search_title_placeholder'] : 'Book Name';
+
 
 $wbgSearchStyles                = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
 $wbg_btn_color                  = isset( $wbgSearchStyles['wbg_btn_color'] ) ? $wbgSearchStyles['wbg_btn_color'] : '#0274be';
@@ -78,8 +85,8 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
     <div class="hmacs-wrap">
 
         <nav class="nav-tab-wrapper">
-            <a href="?post_type=books&page=wbg-search-panel-settings&tab=settings" class="nav-tab <?php if ( $tab != 'styles' ) { ?>nav-tab-active<?php } ?>">Content Settings</a>
-            <a href="?post_type=books&page=wbg-search-panel-settings&tab=styles" class="nav-tab <?php if ( $tab === 'styles' ) { ?>nav-tab-active<?php } ?>">Styles Settings</a>
+            <a href="?post_type=books&page=wbg-search-panel-settings&tab=settings" class="nav-tab <?php if ( $tab != 'styles' ) { ?>nav-tab-active<?php } ?>"><?php _e('Content Settings', WBG_TXT_DOMAIN); ?></a>
+            <a href="?post_type=books&page=wbg-search-panel-settings&tab=styles" class="nav-tab <?php if ( $tab === 'styles' ) { ?>nav-tab-active<?php } ?>"><?php _e('Styles Settings', WBG_TXT_DOMAIN); ?></a>
         </nav>
 
         <div class="hmacs_personal_wrap hmacs_personal_help" style="width: 895px; float: left; margin-top: 5px;">
@@ -151,6 +158,26 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                     <td>
                                         <input type="checkbox" name="wbg_display_search_title" class="wbg_display_search_title" id="wbg_display_search_title" value="1" <?php echo ( '1' === $wbg_display_search_title ) ? 'checked' : ''; ?> >
                                     </td>
+                                    <th style="text-align: right;">
+                                        <label for="wbg_display_search_title_placeholder"><?php esc_html_e('Placeholder Text :', WBG_TXT_DOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="text" name="wbg_display_search_title_placeholder" placeholder="<?php esc_attr_e('Book Name', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php esc_attr_e( $wbg_display_search_title_placeholder ); ?>">
+                                    </td>
+                                </tr>
+                                <tr class="wbg_display_search_isbn">
+                                    <th scope="row" style="text-align: right;">
+                                        <label for="wbg_display_search_isbn"><?php esc_html_e('Search By ISBN?', WBG_TXT_DOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="checkbox" name="wbg_display_search_isbn" class="wbg_display_search_isbn" id="wbg_display_search_isbn" value="1" <?php echo ( $wbg_display_search_isbn ) ? 'checked' : ''; ?>>
+                                    </td>
+                                    <th style="text-align: right;">
+                                        <label for="wbg_display_search_isbn_placeholder"><?php esc_html_e('Placeholder Text :', WBG_TXT_DOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="text" name="wbg_display_search_isbn_placeholder" placeholder="<?php esc_attr_e('ISBN', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php esc_attr_e( $wbg_display_search_isbn_placeholder ); ?>">
+                                    </td>
                                 </tr>
                                 <tr class="wbg_display_search_category">
                                     <th scope="row" style="text-align: right;">
@@ -173,7 +200,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_search_category_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_search_category_default" placeholder="All Categories" class="medium-text" value="<?php echo esc_attr( $wbg_search_category_default ); ?>">
+                                        <input type="text" name="wbg_search_category_default" placeholder="<?php esc_attr_e('All Categories', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php echo esc_attr( $wbg_search_category_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_author">
@@ -197,7 +224,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_search_author_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_search_author_default" placeholder="All Authors" class="medium-text" value="<?php echo esc_attr( $wbg_search_author_default ); ?>">
+                                        <input type="text" name="wbg_search_author_default" placeholder="<?php esc_attr_e('All Authors', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php echo esc_attr( $wbg_search_author_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_publisher">
@@ -221,7 +248,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_search_publishers_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_search_publishers_default" placeholder="All Publishers" class="medium-text" value="<?php esc_attr_e( $wbg_search_publishers_default ); ?>">
+                                        <input type="text" name="wbg_search_publishers_default" placeholder="<?php esc_attr_e('All Publishers', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php esc_attr_e( $wbg_search_publishers_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_year">
@@ -245,7 +272,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_search_year_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="text" name="wbg_search_year_default" placeholder="All Years" class="medium-text" value="<?php esc_attr_e( $wbg_search_year_default ); ?>">
+                                        <input type="text" name="wbg_search_year_default" placeholder="<?php esc_attr_e('All Years', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php esc_attr_e( $wbg_search_year_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_display_search_language">
@@ -253,25 +280,23 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_display_search_language"><?php esc_html_e('Search By Language?', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_language" class="wbg_display_search_language" value="1" <?php echo $wbg_display_search_language ? 'checked' : ''; ?> >
+                                        <input type="checkbox" name="wbg_display_search_language" class="wbg_display_search_language" id="wbg_display_search_language" value="1" <?php echo $wbg_display_search_language ? 'checked' : ''; ?> >
                                     </td>
                                     <th style="text-align: right;">
                                         <label for="wbg_display_language_order"><?php esc_html_e('Order By :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="radio" name="wbg_display_language_order" class="wbg_display_language_order" value="asc" <?php echo ( 'desc' !== $wbg_display_language_order ) ? 'checked' : ''; ?> >
-                                        <label for="default-templates"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_language_order" class="wbg_display_language_order" id="wbg_display_language_order_asc" value="asc" <?php echo ( 'desc' !== $wbg_display_language_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_language_order_asc"><span></span><?php esc_html_e( 'Ascending', WBG_TXT_DOMAIN ); ?></label>
                                             &nbsp;&nbsp;
-                                        <input type="radio" name="wbg_display_language_order" class="wbg_display_language_order" value="desc" <?php echo ( 'desc' === $wbg_display_language_order ) ? 'checked' : ''; ?> >
-                                        <label for="csutom-design"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
+                                        <input type="radio" name="wbg_display_language_order" class="wbg_display_language_order" id="wbg_display_language_order_desc" value="desc" <?php echo ( 'desc' === $wbg_display_language_order ) ? 'checked' : ''; ?> >
+                                        <label for="wbg_display_language_order_desc"><span></span><?php esc_html_e( 'Descending', WBG_TXT_DOMAIN ); ?></label>
                                     </td>
-                                </tr>
-                                <tr class="wbg_display_search_isbn">
-                                    <th scope="row" style="text-align: right;">
-                                        <label for="wbg_display_search_isbn"><?php esc_html_e('Search By ISBN?', WBG_TXT_DOMAIN); ?></label>
+                                    <th>
+                                        <label for="wbg_search_language_default"><?php esc_html_e('Default Option :', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td>
-                                        <input type="checkbox" name="wbg_display_search_isbn" class="wbg_display_search_isbn" value="1" <?php echo ( $wbg_display_search_isbn ) ? 'checked' : ''; ?>>
+                                        <input type="text" name="wbg_search_language_default" placeholder="<?php esc_attr_e('All Languages', WBG_TXT_DOMAIN); ?>" class="medium-text" value="<?php esc_attr_e( $wbg_search_language_default ); ?>">
                                     </td>
                                 </tr>
                                 <tr class="wbg_cat_label_txt">
@@ -279,7 +304,7 @@ $wbg_btn_font_color             = isset( $wbgSearchStyles['wbg_btn_font_color'] 
                                         <label for="wbg_search_btn_txt"><?php esc_html_e('Search Button Text:', WBG_TXT_DOMAIN); ?></label>
                                     </th>
                                     <td colspan="2">
-                                        <input type="text" name="wbg_search_btn_txt" placeholder="Search Books" class="medium-text"
+                                        <input type="text" name="wbg_search_btn_txt" placeholder="<?php esc_attr_e('Search Books', WBG_TXT_DOMAIN); ?>" class="medium-text"
                                             value="<?php echo esc_attr( $wbg_search_btn_txt ); ?>">
                                     </td>
                                 </tr>

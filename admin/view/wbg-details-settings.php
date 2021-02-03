@@ -52,11 +52,16 @@ $wbg_display_description        = isset( $wbgDetailSettings['wbg_display_descrip
 $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_label'] ) ? $wbgDetailSettings['wbg_description_label'] : 'Description';
 ?>
 <div id="wph-wrap-all" class="wrap wbg-settings-page">
+    
     <div class="settings-banner">
-        <h2><?php esc_html_e('Books Details Settings', WBG_TXT_DOMAIN); ?></h2>
+        <h2><?php _e('Book Details Settings', WBG_TXT_DOMAIN); ?></h2>
     </div>
-    <?php if ($wbgShowDetailMessage) : $this->wbg_display_notification('success', 'Your information updated successfully.');
-    endif; ?>
+    
+    <?php 
+    if ( $wbgShowDetailMessage ) { 
+        $this->wbg_display_notification('success', 'Your information updated successfully.');
+    } 
+    ?>
 
     <form name="wbg_detail_settings_form" role="form" class="form-horizontal" method="post" action=""
         id="wbg-detail-settings-form">
@@ -72,7 +77,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_author_label"><?php esc_html_e('Author Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_author_label" class="medium-text" placeholder="Author"
+                    <input type="text" name="wbg_author_label" class="medium-text" placeholder="<?php _e('Author', WBG_TXT_DOMAIN); ?>"
                         value="<?php echo esc_attr($wbgDetailSettings['wbg_author_label']); ?>">
                 </td>
             </tr>
@@ -89,7 +94,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_category_label"><?php esc_html_e('Category Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_category_label" class="medium-text" placeholder="Category"
+                    <input type="text" name="wbg_category_label" class="medium-text" placeholder="<?php _e('Category', WBG_TXT_DOMAIN); ?>"
                         value="<?php echo esc_attr($wbgDetailSettings['wbg_category_label']); ?>">
                 </td>
             </tr>
@@ -106,7 +111,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_publisher_label"><?php esc_html_e('Publisher Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_publisher_label" class="medium-text" placeholder="Publisher"
+                    <input type="text" name="wbg_publisher_label" class="medium-text" placeholder="<?php _e('Publisher', WBG_TXT_DOMAIN); ?>"
                         value="<?php echo esc_attr($wbgDetailSettings['wbg_publisher_label']); ?>">
                 </td>
             </tr>
@@ -121,7 +126,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_publish_date_label"><?php esc_html_e('Publish Date Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_publish_date_label" class="medium-text" placeholder="Published"
+                    <input type="text" name="wbg_publish_date_label" class="medium-text" placeholder="<?php _e('Published', WBG_TXT_DOMAIN); ?>"
                         value="<?php echo esc_attr($wbgDetailSettings['wbg_publish_date_label']); ?>">
                 </td>
                 <th scope="row" style="text-align: right;">
@@ -146,7 +151,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_isbn_label"><?php esc_html_e('ISBN Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_isbn_label" placeholder="ISBN" class="medium-text"
+                    <input type="text" name="wbg_isbn_label" placeholder="<?php _e('ISBN', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_isbn_label ); ?>">
                 </td>
             </tr>
@@ -161,7 +166,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_page_label"><?php esc_html_e('Pages Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_page_label" placeholder="Pages" class="medium-text"
+                    <input type="text" name="wbg_page_label" placeholder="<?php _e('Pages', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_page_label ); ?>">
                 </td>
             </tr>
@@ -176,7 +181,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_country_label"><?php esc_html_e('Country Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_country_label" placeholder="Country" class="medium-text"
+                    <input type="text" name="wbg_country_label" placeholder="<?php _e('Country', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_country_label ); ?>">
                 </td>
             </tr>
@@ -191,7 +196,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_language_label"><?php esc_html_e('Language Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_language_label" placeholder="Language" class="medium-text"
+                    <input type="text" name="wbg_language_label" placeholder="<?php _e('Language', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_language_label ); ?>">
                 </td>
             </tr>
@@ -206,7 +211,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_dimension_label"><?php esc_html_e('Dimension Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_dimension_label" placeholder="Dimension" class="medium-text"
+                    <input type="text" name="wbg_dimension_label" placeholder="<?php _e('Dimension', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_dimension_label ); ?>">
                 </td>
             </tr>
@@ -221,7 +226,7 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_filesize_label"><?php esc_html_e('File Size Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_filesize_label" placeholder="File Size" class="medium-text"
+                    <input type="text" name="wbg_filesize_label" placeholder="<?php _e('File Size', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_filesize_label ); ?>">
                 </td>
             </tr>
@@ -244,12 +249,12 @@ $wbg_description_label          = isset( $wbgDetailSettings['wbg_description_lab
                     <label for="wbg_description_label"><?php esc_html_e('Description Label:', WBG_TXT_DOMAIN); ?></label>
                 </th>
                 <td>
-                    <input type="text" name="wbg_description_label" placeholder="Description" class="medium-text"
+                    <input type="text" name="wbg_description_label" placeholder="<?php _e('Description', WBG_TXT_DOMAIN); ?>" class="medium-text"
                         value="<?php echo esc_attr( $wbg_description_label ); ?>">
                 </td>
             </tr>
         </table>
         <p class="submit"><button id="updateDetailSettings" name="updateDetailSettings"
-                class="button button-primary"><?php esc_attr_e('Update Settings', WBG_TXT_DOMAIN); ?></button></p>
+                class="button button-primary"><?php _e('Save Settings', WBG_TXT_DOMAIN); ?></button></p>
     </form>
 </div>

@@ -45,6 +45,9 @@ $wbg_search_category_default  = isset( $wbgSearchSettings['wbg_search_category_d
 $wbg_search_author_default    = isset( $wbgSearchSettings['wbg_search_author_default'] ) ? $wbgSearchSettings['wbg_search_author_default'] : 'All Authors';
 $wbg_search_publishers_default  = isset( $wbgSearchSettings['wbg_search_publishers_default'] ) ? $wbgSearchSettings['wbg_search_publishers_default'] : 'All Publishers';
 $wbg_search_year_default        = isset( $wbgSearchSettings['wbg_search_year_default'] ) ? $wbgSearchSettings['wbg_search_year_default'] : 'All Years';
+$wbg_search_language_default    = isset( $wbgSearchSettings['wbg_search_language_default'] ) ? $wbgSearchSettings['wbg_search_language_default'] : 'All Languages';
+$wbg_display_search_isbn_placeholder    = isset( $wbgSearchSettings['wbg_display_search_isbn_placeholder'] ) ? $wbgSearchSettings['wbg_display_search_isbn_placeholder'] : 'ISBN';
+$wbg_display_search_title_placeholder   = isset( $wbgSearchSettings['wbg_display_search_title_placeholder'] ) ? $wbgSearchSettings['wbg_display_search_title_placeholder'] : 'Book Name';
 
 // Search Panel Settings Styles
 $wbgSearchStyles              = stripslashes_deep( unserialize( get_option('wbg_search_styles') ) );
@@ -205,7 +208,7 @@ $wbgBooks = new WP_Query( $wbgBooksArr );
 if ( $wbgBooks->have_posts() ) { 
   ?>
 
-  <h2 class="wbg-total-books-title"><?php printf('Total <strong>%d</strong> Books Found!', $wbgBooks->found_posts); ?></h2>
+  <h2 class="wbg-total-books-title"><?php printf( __( 'Total <strong>%d</strong> Books Found!', WBG_TXT_DOMAIN ), $wbgBooks->found_posts ); ?></h2>
 
   <div class="wbg-main-wrapper <?php echo esc_attr( 'wbg-product-column-' . $wbgGalleryColumn ); ?> <?php echo esc_attr( 'wbg-product-column-mobile-' . $wbg_gallary_column_mobile ); ?>">
       <?php
