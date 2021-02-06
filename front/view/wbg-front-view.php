@@ -78,8 +78,17 @@ $wbgCategory        = isset( $attr['category'] ) ? $attr['category'] : '';
 $wbgDisplay         = isset( $attr['display'] ) ? $attr['display'] : '';
 $wbgPagination      = isset( $attr['pagination'] ) ? $attr['pagination'] : false;
 
+if ( is_front_page() ) {
+ 
+  $wbgPaged           = ( get_query_var('page') ) ? get_query_var('page') : 1;
+
+} else {
+
+  $wbgPaged           = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+}
+
 // Search Items
-$wbgPaged           = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 $wbg_title_s        =  get_query_var('wbg_title_s', '');
 $wbg_category_s     =  get_query_var('wbg_category_s', '');
 $wbg_author_s       =  get_query_var('wbg_author_s', '');
@@ -87,6 +96,7 @@ $wbg_publisher_s    =  get_query_var('wbg_publisher_s', '');
 $wbg_published_on_s =  get_query_var('wbg_published_on_s', '');
 $wbg_language_s     =  get_query_var('wbg_language_s', '');
 $wbg_isbn_s         =  get_query_var('wbg_isbn_s', '');
+
 
 // Main Query Arguments
 $wbgBooksArr = array(
@@ -198,7 +208,7 @@ if( '' != $wbg_published_on_s ) {
 /*
 * Search Panel Started
 */
-if ( '1' === $wbg_display_search_panel ) {
+if ( $wbg_display_search_panel ) {
   include WBG_PATH . 'front/view/wgb-search-panel.php';
 }
 
@@ -295,7 +305,7 @@ if ( $wbgBooks->have_posts() ) {
               'base' => str_replace( $wbgPaginateBig, '%#%', esc_url( get_pagenum_link( $wbgPaginateBig ) ) ),
               'format' => '?page=%#%',
               'total' => $wbgTotalPages,
-              'current' => max( 1, get_query_var( 'paged') ),
+              'current' => max( 1, $wbgPaged ),
               'end_size' => 1,
               'mid_size' => 2,
               'prev_text' => __('« '),
@@ -312,5 +322,6 @@ if ( $wbgBooks->have_posts() ) {
   ?><p class="wbg-no-books-found"><?php _e('No books found.', WBG_TXT_DOMAIN); ?></p><?php
 }
 
+// Reset Post Data
 wp_reset_postdata();
 ?>

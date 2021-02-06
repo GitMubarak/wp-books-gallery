@@ -4,7 +4,7 @@
  * Plugin Name:	WP Books Gallery
  * Plugin URI:	https://wordpress.org/plugins/wp-books-gallery/
  * Description:	A simple plugin to display Books Gallery in your Page, using Shortcode: [wp_books_gallery]
- * Version:		2.1
+ * Version:		2.2
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com
  * License:		GPL-2.0+
@@ -19,7 +19,7 @@ define( 'WBG_SLUG', plugin_basename( __FILE__ ) );
 define( 'WBG_PRFX', 'wbg_' );
 define( 'WBG_CLS_PRFX', 'cls-books-gallery-' );
 define( 'WBG_TXT_DOMAIN', 'wp-books-gallery' );
-define( 'WBG_VERSION', '2.1' );
+define( 'WBG_VERSION', '2.2' );
 
 require_once WBG_PATH . 'inc/' . WBG_CLS_PRFX . 'master.php';
 $wbg = new WBG_Master();
