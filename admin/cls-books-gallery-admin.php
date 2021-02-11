@@ -1,15 +1,12 @@
 <?php
+if ( ! defined('ABSPATH') ) exit;
 
-/**
- *	Admin Parent Class
- */
-class WBG_Admin 
-{
+class WBG_Admin {
+
 	private $wbg_version;
 	private $wbg_assets_prefix;
 
-	function __construct($version)
-	{
+	function __construct($version) {
 		$this->wbg_version = $version;
 		$this->wbg_assets_prefix = substr(WBG_PRFX, 0, -1) . '-';
 	}
@@ -17,8 +14,7 @@ class WBG_Admin
 	/**
 	 *	Loading admin menu
 	 */
-	function wbg_admin_menu()
-	{
+	function wbg_admin_menu() {
 		$wbg_cpt_menu = 'edit.php?post_type=books';
 		add_submenu_page(
 			$wbg_cpt_menu,
@@ -191,7 +187,7 @@ class WBG_Admin
 		$wbg_filesize 		= get_post_meta( $post->ID, 'wbg_filesize', true );
 		$wbg_status 		= get_post_meta( $post->ID, 'wbg_status', true );
 
-		require_once WBG_PATH . 'admin/view/' . $this->wbg_assets_prefix . 'book-information.php';
+		require_once WBG_PATH . 'admin/view/partial/' . $this->wbg_assets_prefix . 'book-information.php';
 	
 	}
 

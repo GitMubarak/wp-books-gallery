@@ -206,6 +206,15 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 
 == Changelog ==
 
+= 2.2 =
+* Hide search via shortcode (search=false)
+* Show/Hide total books option added
+* Book title color option added
+* Book title hover color option added
+* Book title font-size option added
+* Book description color option added
+* Book description font-size option added
+
 = 2.1 =
 * Book status field changed dropdown to radio button
 * Applied readonly to published on field to avoid date issue

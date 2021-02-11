@@ -216,7 +216,7 @@ div.wbg-pagination>ul.page-numbers>li>a.page-numbers:hover {
 
 .wbg-details-wrapper {
     width: 100%;
-    margin: 150px auto;
+    margin: 0px auto;
     display: grid;
     grid-template-columns: 300px auto;
     grid-gap: 10px;

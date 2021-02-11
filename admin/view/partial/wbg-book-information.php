@@ -1,3 +1,6 @@
+<?php
+if ( ! defined('ABSPATH') ) exit;
+?>
 <table class="form-table">
     <tr class="wbg_author">
         <th scope="row">

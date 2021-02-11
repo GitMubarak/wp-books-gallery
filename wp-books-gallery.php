@@ -11,7 +11,7 @@
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-if (!defined('ABSPATH')) exit;
+if ( ! defined('ABSPATH') ) exit;
 
 define( 'WBG_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WBG_ASSETS', plugins_url('/assets/', __FILE__) );
@@ -61,15 +61,55 @@ function wbg_custom_post_type_cat_filter( $query ) {
     
     if ( is_category() && ( ! isset( $query->query_vars['suppress_filters'] ) || false == $query->query_vars['suppress_filters'] ) ) {
         $query->set( 'post_type', array( 'post', 'books' ) );
-        
     }
     if ( $query->is_tag() && $query->is_main_query() ) {
         $query->set( 'post_type', array( 'post', 'books' ) );
     }
-    
+    /*
+    if ( $query->is_main_query() ) {
+        unset($query->query['wbg_title_s']);
+        unset($query->query_vars['wbg_title_s']);
+    }
+    //echo '<pre>';
+    //print_r($query);
+    */
     return $query;
 }
 add_action('pre_get_posts', 'wbg_custom_post_type_cat_filter');
+
+/*
+function wpb_filter_query( $query ) {
+    if ( is_front_page() ) {
+        echo 'Yes';
+        unset($query->query['wbg_title_s']);
+        unset($query->query_vars['wbg_title_s']);
+    }
+}
+add_action( 'parse_query', 'wpb_filter_query' );
+*/
+
+// Creating Book Details Page
+function wpsd_create_thank_you_page() {
+  
+    $thank_you_page   = 'Book Details';
+    $check_page_exist = get_page_by_title( $thank_you_page , 'OBJECT', 'page');
+    $post_content     = '[wp_books_gallery_details]';
+    if ( empty( $check_page_exist ) ) {
+        wp_insert_post( array(
+            'comment_status' => 'close',
+            'ping_status'    => 'close',
+            'post_author'    => 1,
+            'post_title'     => ucwords($thank_you_page ),
+            'post_name'      => sanitize_title($thank_you_page ),
+            'post_status'    => 'publish',
+            'post_content'   => $post_content,
+            'post_type'      => 'page',
+            'post_parent'    => ''
+            )
+        );
+    }
+}
+add_action( 'init', 'wpsd_create_thank_you_page' );
 
 
 // Custom Query Vars for search page
@@ -81,6 +121,7 @@ function themeslug_query_vars( $qvars ) {
     $qvars[] = 'wbg_published_on_s';
     $qvars[] = 'wbg_isbn_s';
     $qvars[] = 'wbg_language_s';
+    $qvars[] = 'book-id';
     return $qvars;
 }
 add_filter( 'query_vars', 'themeslug_query_vars' );

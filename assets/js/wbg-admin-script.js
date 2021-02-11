@@ -3,7 +3,9 @@
     // USE STRICT
     "use strict";
 
-    var wbgColorPicker = ['#wbg_btn_color', '#wbg_btn_font_color', '#wbg_btn_border_color', '#wbg_download_btn_color', '#wbg_download_btn_font_color'];
+    var wbgColorPicker = ['#wbg_btn_color', '#wbg_btn_font_color', '#wbg_btn_border_color', '#wbg_download_btn_color', '#wbg_download_btn_font_color', '#wbg_title_color',
+        '#wbg_title_hover_color', '#wbg_description_color'
+    ];
 
     $.each(wbgColorPicker, function(index, value) {
         $(value).wpColorPicker();
