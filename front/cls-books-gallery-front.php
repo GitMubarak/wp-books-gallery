@@ -29,21 +29,12 @@ class WBG_Front {
 
 	function wbg_load_shortcode(){
 		add_shortcode( 'wp_books_gallery', array( $this, 'wbg_load_shortcode_view' ) );
-		add_shortcode( 'wp_books_gallery_details', array( $this, 'wbg_load_gallery_details_view' ) );
 	}
 	
-	function wbg_load_shortcode_view( $attr ){
+	function wbg_load_shortcode_view( $attr ) {
 		$output = '';
 		ob_start();
 		include WBG_PATH . 'front/view/' . $this->wbg_assets_prefix . 'front-view.php';
-		$output .= ob_get_clean();
-		return $output;
-	}
-
-	function wbg_load_gallery_details_view( $attr ){
-		$output = '';
-		ob_start();
-		include WBG_PATH . 'front/view/wbg-book-details.php';
 		$output .= ob_get_clean();
 		return $output;
 	}
@@ -53,7 +44,7 @@ class WBG_Front {
 		global $post;
 		
 		if ( 'books' === $post->post_type  ) {
-			return WBG_PATH . 'front/view/wbg-book-details.php';
+			return WBG_PATH . 'front/view/wbg-single-book.php';
 		}
 
 		return $template;

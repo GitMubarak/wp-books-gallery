@@ -260,7 +260,7 @@ if ( $wbgBooks->have_posts() ) {
           <div class="wbg-item">
             <?php
             if ( '1' === $wbg_display_details_page ) {
-              $wbgDetailsHref = get_site_url() . '/book-details/?book-id=' . $post->ID; //get_the_permalink( $post->ID );
+              $wbgDetailsHref = get_the_permalink( $post->ID );
             } else {
               $wbgDetailsHref = '#';
               $wbgDetailsExternal = '';

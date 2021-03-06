@@ -59,57 +59,28 @@ function wbg_flush_rewrite_rules_maybe() {
 // include your custom post type on category and tags pages
 function wbg_custom_post_type_cat_filter( $query ) {
     
+    global $pagenow;
+    $type = 'post';
+    if ( isset( $_GET['post_type'] ) ) {
+        $type = $_GET['post_type'];
+    }
     if ( is_category() && ( ! isset( $query->query_vars['suppress_filters'] ) || false == $query->query_vars['suppress_filters'] ) ) {
         $query->set( 'post_type', array( 'post', 'books' ) );
     }
     if ( $query->is_tag() && $query->is_main_query() ) {
+       
         $query->set( 'post_type', array( 'post', 'books' ) );
     }
-    /*
-    if ( $query->is_main_query() ) {
-        unset($query->query['wbg_title_s']);
-        unset($query->query_vars['wbg_title_s']);
+    if ( is_admin() && 'books' == $type && $query->is_main_query() && $pagenow == 'edit.php' ) {
+        $query->set( 'post_type', 'books' );
     }
-    //echo '<pre>';
-    //print_r($query);
-    */
+    if ( is_admin() && 'post' == $type && $query->is_main_query() && $pagenow == 'edit.php' ) {
+        $query->set( 'post_type', 'post' );
+    }
+
     return $query;
 }
 add_action('pre_get_posts', 'wbg_custom_post_type_cat_filter');
-
-/*
-function wpb_filter_query( $query ) {
-    if ( is_front_page() ) {
-        echo 'Yes';
-        unset($query->query['wbg_title_s']);
-        unset($query->query_vars['wbg_title_s']);
-    }
-}
-add_action( 'parse_query', 'wpb_filter_query' );
-*/
-
-// Creating Book Details Page
-function wpsd_create_thank_you_page() {
-  
-    $thank_you_page   = 'Book Details';
-    $check_page_exist = get_page_by_title( $thank_you_page , 'OBJECT', 'page');
-    $post_content     = '[wp_books_gallery_details]';
-    if ( empty( $check_page_exist ) ) {
-        wp_insert_post( array(
-            'comment_status' => 'close',
-            'ping_status'    => 'close',
-            'post_author'    => 1,
-            'post_title'     => ucwords($thank_you_page ),
-            'post_name'      => sanitize_title($thank_you_page ),
-            'post_status'    => 'publish',
-            'post_content'   => $post_content,
-            'post_type'      => 'page',
-            'post_parent'    => ''
-            )
-        );
-    }
-}
-add_action( 'init', 'wpsd_create_thank_you_page' );
 
 
 // Custom Query Vars for search page
@@ -126,4 +97,4 @@ function themeslug_query_vars( $qvars ) {
 }
 add_filter( 'query_vars', 'themeslug_query_vars' );
 
-register_deactivation_hook(__FILE__, array($wbg, WBG_PRFX . 'unregister_settings'));
+//register_deactivation_hook(__FILE__, array($wbg, WBG_PRFX . 'unregister_settings'));

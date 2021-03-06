@@ -218,6 +218,7 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                 } 
             }
             ?>
+            
         </div>
         
         <div class="wbg-details-description">
@@ -232,12 +233,12 @@ $wbg_description_label      = isset( $wbgDetailSettings['wbg_description_label']
                     </div>
                 <?php } ?>
             <?php } ?>
+            <a href="#" onclick="javascript:history.back()"><?php _e( '<< Back', 'wp-books-gallery' ); ?></a>
         </div>
         <?php 
         }
     } 
     ?>
-
+    
 </div>
-
 <?php get_footer(); ?>

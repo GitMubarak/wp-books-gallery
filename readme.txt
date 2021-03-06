@@ -214,6 +214,8 @@ Please go to Settings -> Permalinks. Just Save Changes and refresh the page.
 * Book title font-size option added
 * Book description color option added
 * Book description font-size option added
+* Styling updated
+* Bug fixed in filter list in admin panel for books and posts
 
 = 2.1 =
 * Book status field changed dropdown to radio button
